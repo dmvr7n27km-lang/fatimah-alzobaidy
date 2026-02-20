@@ -3,47 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>دعاء ختم القرآن الكريم</title>
+    <title>دعاء ختم القرآن - فاطمة الزبيدي</title>
     <style>
-        body { background-color: #431f4a; font-family: 'Segoe UI', serif; margin: 0; padding: 20px; color: white; text-align: center; }
-        .dua-card { 
-            background-color: #f4cfcf; border-radius: 25px; padding: 30px; 
-            max-width: 600px; margin: auto; box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        body {
+            background-color: #431f4a; /* نفس الموف الغامق في الواجهة الرئيسية */
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: white;
+            padding: 20px;
         }
-        h1 { color: #431f4a; font-size: 1.8rem; border-bottom: 2px solid #431f4a; padding-bottom: 10px; margin-bottom: 20px; }
-        .dua-content { 
-            color: #000000; text-align: justify; line-height: 2; font-size: 1.2rem; 
-            white-space: pre-line; font-weight: 500;
+
+        .dua-container {
+            background-color: #f4cfcf; /* اللون الوردي الهادئ للبطاقة */
+            border-radius: 25px;
+            padding: 30px;
+            max-width: 600px;
+            width: 90%;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            color: #000000; /* الخط باللون الأسود الواضح */
+            line-height: 2;
+            text-align: justify;
         }
-        .back-btn { 
-            display: inline-block; margin-top: 25px; padding: 12px 30px; 
-            background-color: #431f4a; color: white; text-decoration: none; 
-            border-radius: 15px; font-weight: bold; 
+
+        h1 {
+            color: #431f4a;
+            text-align: center;
+            font-size: 1.8rem;
+            margin-top: 0;
+            border-bottom: 2px solid #431f4a;
+            padding-bottom: 10px;
+        }
+
+        .dua-text {
+            font-size: 1.2rem;
+            white-space: pre-line; /* للحفاظ على المسافات بين الأسطر */
+        }
+
+        .back-btn {
+            margin-top: 30px;
+            background-color: #f7d081; /* لون ذهبي للزر */
+            color: #431f4a;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .back-btn:hover {
+            transform: scale(1.1);
+            background-color: #e6c174;
         }
     </style>
 </head>
 <body>
 
-    <div class="dua-card">
+    <div class="dua-container">
         <h1>🤲 دعاء ختم القرآن الكريم</h1>
-        <div class="dua-content">
-            اللهم ارحمني بالقرآن، واجعله لي إماماً ونوراً وهدى ورحمة..
-            
-            اللهم ذكرني منه ما نسيت، وعلمني منه ما جهلت، وارزقني تلاوته آناء الليل وأطراف النهار، واجعله لي حجة يا رب العالمين.
-            
-            اللهم أصلح لي ديني الذي هو عصمة أمري، وأصلح لي دنياي التي فيها معاشي، وأصلح لي آخرتي التي فيها معادي، واجعل الحياة زيادة لي في كل خير، واجعل الموت راحة لي من كل شر.
-            
-            اللهم اجعل خير عمري آخره، وخير عملي خواتمه، وخير أيامي يوم ألقاك فيه.
-            
-            اللهم إني أسألك عيشة هنية، وميتة سوية، ومرداً غير مخزٍ ولا فاضح.
-            
-            اللهم إني أسألك خير المسألة، وخير الدعاء، وخير النجاح، وخير العلم، وخير العمل، وخير الثواب، وخير الحياة، وخير الممات، وثبتني وثقل موازيني، وحقق إيماني، وارفع درجتي، وتقبل صلاتي، واغفر خطيئاتي، وأسألك العلا من الجنة.
-            
-            اللهم لا تدع لنا ذنباً إلا غفرته، ولا هماً إلا فرجته، ولا ديناً إلا قضيته، ولا حاجة من حوائج الدنيا والآخرة إلا قضيتها يا أرحم الراحمين.
+        <div class="dua-text">
+            اللَّهُمَّ ارْحَمْنِي بالقُرْءَانِ وَاجْعَلْهُ لِي إِمَاماً وَنُوراً وَهُدًى وَرَحْمَةً..
+
+            اللَّهُمَّ ذَكِّرْنِي مِنْهُ مَا نَسِيتُ وَعَلِّمْنِي مِنْهُ مَا جَهِلْتُ وَارْزُقْنِي تِلاَوَتَهُ آنَاءَ اللَّيْلِ وَأَطْرَافَ النَّهَارِ وَاجْعَلْهُ لِي حُجَّةً يَا رَبَّ العَالَمِينَ.
+
+            اللَّهُمَّ أَصْلِحْ لِي دِينِي الَّذِي هُوَ عِصْمَةُ أَمْرِي، وَأَصْلِحْ لِي دُنْيَايَ الَّتِي فِيهَا مَعَاشِي، وَأَصْلِحْ لِي آخِرَتِي الَّتِي فِيهَا مَعَادِي، وَاجْعَلِ الحَيَاةَ زِيَادَةً لِي فِي كُلِّ خَيْرٍ وَاجْعَلِ المَوْتَ رَاحَةً لِي مِنْ كُلِّ شَرٍّ.
+
+            اللَّهُمَّ اجْعَلْ خَيْرَ عُمْرِي آخِرَهُ وَخَيْرَ عَمَلِي خَوَاتِمَهُ وَخَيْرَ أَيَّامِي يَوْمَ أَلْقَاكَ فِيهِ.
+
+            اللَّهُمَّ إِنِّي أَسْأَلُكَ عِيشَةً هَنِيَّةً وَمِيتَةً سَوِيَّةً وَمَرَدًّا غَيْرَ مُخْزٍ وَلاَ فَاضِحٍ.
+
+            اللَّهُمَّ إِنِّي أَسْأَلُكَ خَيْرَ المَسْأَلَةِ وَخَيْرَ الدُّعَاءِ وَخَيْرَ النَّجَاحِ وَخَيْرَ العِلْمِ وَخَيْرَ العَمَلِ وَخَيْرَ الثَّوَابِ وَخَيْرَ الحَيَاةِ وَخَيْرَ المَمَاتِ وَثَبِّتْنِي وَثَقِّلْ مَوَازِينِي وَحَقِّقْ إِيمَانِي وَارْفَعْ دَرَجَتِي وَتَقَبَّلْ صَلاَتِي وَاغْفِرْ خَطِيئَاتِي وَأَسْأَلُكَ العُلاَ مِنَ الجَنَّةِ.
+
+            اللَّهُمَّ إِنِّي أَسْأَلُكَ مُوجِبَاتِ رَحْمَتِكَ وَعَزَائِمَ مَغْفِرَتِكَ وَالسَّلاَمَةَ مِنْ كُلِّ إِثْمٍ وَالغَنِيمَةَ مِنْ كُلِّ بِرٍّ وَالفَوْزَ بِالجَنَّةِ وَالنَّجَاةَ مِنَ النَّارِ.
         </div>
-        <a href="index.html" class="back-btn">🏠 العودة للرئيسية</a>
     </div>
+
+    <a href="index.html" class="back-btn">🏠 العودة للرئيسية</a>
 
 </body>
 </html>
-
