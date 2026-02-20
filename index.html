@@ -5,28 +5,120 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>زاد الصائم - فاطمة الزبيدي</title>
     <style>
-        body { font-family: sans-serif; background-color: #f3e5f5; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
-        .container { background-color: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); text-align: center; max-width: 350px; width: 90%; border: 2px solid #8e44ad; }
-        h1 { color: #6a1b9a; margin-bottom: 10px; }
-        p { color: #4a148c; font-size: 0.9rem; margin-bottom: 25px; }
-        .button { background-color: #8e44ad; color: white; border: none; padding: 15px; margin: 10px 0; width: 100%; border-radius: 12px; font-size: 1.1rem; font-weight: bold; cursor: pointer; transition: 0.3s; }
-        .footer { margin-top: 20px; font-size: 0.8rem; color: #9b59b6; }
+        /* التنسيق العام المستوحى من الصورة */
+        body {
+            background-color: #431f4a; /* اللون الموف الغامق للخلفية */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: white;
+            padding-bottom: 50px;
+        }
+
+        .header {
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .header img {
+            width: 120px; /* صورة الهلال والنجوم */
+            margin-bottom: 10px;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin: 0;
+            color: #f7d081; /* لون ذهبي للعنوان */
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            color: #f7d081;
+            opacity: 0.8;
+        }
+
+        /* حاوية الأزرار (الشبكة) */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* زرين بجانب بعض */
+            gap: 15px;
+            width: 90%;
+            max-width: 500px;
+        }
+
+        .card-btn {
+            background-color: #f4cfcf; /* اللون الوردي الهادئ للبطاقات */
+            border-radius: 20px;
+            padding: 25px 10px;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .card-btn:hover {
+            transform: translateY(-5px);
+            background-color: #ebbcbc;
+        }
+
+        .icon {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .card-btn span {
+            color: #000000; /* الخط باللون الأسود */
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        /* زر الإذاعة العريض في الأسفل */
+        .full-width {
+            grid-column: span 2;
+        }
     </style>
 </head>
 <body>
-<div class="container">
-    <h1>🌙 زاد الصائم 🌙</h1>
-    <p>مرحباً بكم في مبادرة فاطمة الزبيدي الرمضانية</p>
-    
-    <a href="azkar.html" style="text-decoration: none;">
-        <button class="button">✨ أذكار اليوم</button>
-    </a>
-    
-    <button class="button">📅 جدول الختمة</button>
-    <button class="button">💌 بطاقات تهنئة</button>
-    
-    <div class="footer">تصميم وإعداد: فاطمة الزبيدي</div>
-</div>
+
+    <div class="header">
+        <h1>🌙 زاد الصائم</h1>
+        <p>رمضان كريم</p>
+    </div>
+
+    <div class="grid-container">
+        <a href="azkar.html" class="card-btn">
+            <div class="icon">📿</div>
+            <span>الأذكار</span>
+        </a>
+
+        <a href="khatma.html" class="card-btn">
+            <div class="icon">📅</div>
+            <span>جدول الختمة</span>
+        </a>
+
+        <div class="card-btn">
+            <div class="icon">🕌</div>
+            <span>السنن</span>
+        </div>
+
+        <div class="card-btn">
+            <div class="icon">⭐</div>
+            <span>الفضائل</span>
+        </div>
+
+        <div class="card-btn full-width">
+            <div class="icon">📻</div>
+            <span>إذاعة القرآن الكريم</span>
+        </div>
+    </div>
+
 </body>
 </html>
 
