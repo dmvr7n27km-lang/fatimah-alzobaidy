@@ -1,1 +1,78 @@
 
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تحدي الختمة الرمضانية</title>
+    <style>
+        :root { --main-purple: #8e44ad; --light-purple: #f3e5f5; }
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; background-color: var(--light-purple); text-align: center; padding: 20px; }
+        .container { max-width: 500px; margin: auto; }
+        h1 { color: #4a148c; font-size: 1.8rem; margin-bottom: 5px; }
+        .subtitle { color: #8e44ad; margin-bottom: 25px; font-weight: bold; }
+        
+        /* تصميم البطاقات التحفيزية */
+        .milestone-card { 
+            background: white; border-radius: 20px; padding: 20px; margin-bottom: 15px;
+            border-right: 8px solid var(--main-purple); box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            text-align: right; transition: 0.3s;
+        }
+        .milestone-card:hover { transform: scale(1.02); }
+        .day-label { color: var(--main-purple); font-weight: bold; font-size: 0.9rem; display: block; }
+        .surah-name { color: #2c3e50; font-size: 1.2rem; font-weight: bold; display: block; margin: 5px 0; }
+        .motivation { color: #7f8c8d; font-size: 0.85rem; font-style: italic; }
+        
+        .check-circle { float: left; width: 30px; height: 30px; border: 2px solid #ddd; border-radius: 50%; }
+        
+        .back-btn { 
+            display: inline-block; margin-top: 20px; padding: 15px 40px; 
+            background: var(--main-purple); color: white; text-decoration: none; 
+            border-radius: 50px; font-weight: bold; box-shadow: 0 4px 10px rgba(142, 68, 173, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🏆 تحدي الختمة</h1>
+        <p class="subtitle">كل يوم خطوة نحو الجنة</p>
+
+        <div class="milestone-card">
+            <div class="check-circle"></div>
+            <span class="day-label">المحطة الأولى (اليوم 1 - 3)</span>
+            <span class="surah-name">البقرة إلى آل عمران</span>
+            <p class="motivation">"البقرة تُنير بيتك، ابدأ بقوة!"</p>
+        </div>
+
+        <div class="milestone-card">
+            <div class="check-circle"></div>
+            <span class="day-label">المحطة الثانية (اليوم 4 - 7)</span>
+            <span class="surah-name">النساء إلى المائدة</span>
+            <p class="motivation">"أنت الآن تجتاز الربع الأول، رائع!"</p>
+        </div>
+
+        <div class="milestone-card">
+            <div class="check-circle"></div>
+            <span class="day-label">المحطة الثالثة (اليوم 8 - 15)</span>
+            <span class="surah-name">الأنعام إلى الكهف</span>
+            <p class="motivation">"وصلت لنور الكهف، منتصف الطريق!"</p>
+        </div>
+
+        <div class="milestone-card">
+            <div class="check-circle"></div>
+            <span class="day-label">المحطة الخامسة (اليوم 16 - 25)</span>
+            <span class="surah-name">مريم إلى يس</span>
+            <p class="motivation">"قلب القرآن يحيي قلبك، استمر!"</p>
+        </div>
+
+        <div class="milestone-card" style="border-right-color: #ff9800;">
+            <div class="check-circle"></div>
+            <span class="day-label" style="color: #ff9800;">المحطة الأخيرة (العشر الأواخر)</span>
+            <span class="surah-name">الصافات إلى الناس</span>
+            <p class="motivation">"شارفت على القمة.. هنيئاً لك الختام!"</p>
+        </div>
+
+        <a href="index.html" class="back-btn">🏠 العودة للمبادرة</a>
+    </div>
+</body>
+</html>
