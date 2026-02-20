@@ -1,0 +1,327 @@
+// بيانات سور القرآن
+const quranSurahs = [
+    { name: 'البقرة', verses: 286 },
+    { name: 'آل عمران', verses: 200 },
+    { name: 'النساء', verses: 176 },
+    { name: 'المائدة', verses: 120 },
+    { name: 'الأنعام', verses: 165 },
+    { name: 'الأعراف', verses: 206 },
+    { name: 'الأنفال', verses: 75 },
+    { name: 'التوبة', verses: 129 },
+    { name: 'يونس', verses: 109 },
+    { name: 'هود', verses: 123 },
+    { name: 'يوسف', verses: 111 },
+    { name: 'الرعد', verses: 43 },
+    { name: 'إبراهيم', verses: 52 },
+    { name: 'الحجر', verses: 99 },
+    { name: 'النحل', verses: 128 },
+    { name: 'الإسراء', verses: 111 },
+    { name: 'الكهف', verses: 110 },
+    { name: 'مريم', verses: 98 },
+    { name: 'طه', verses: 135 },
+    { name: 'الأنبياء', verses: 112 },
+    { name: 'الحج', verses: 78 },
+    { name: 'المؤمنون', verses: 118 },
+    { name: 'النور', verses: 64 },
+    { name: 'الفرقان', verses: 77 },
+    { name: 'الشعراء', verses: 227 },
+    { name: 'النمل', verses: 93 },
+    { name: 'القصص', verses: 88 },
+    { name: 'العنكبوت', verses: 69 },
+    { name: 'الروم', verses: 60 },
+    { name: 'لقمان', verses: 34 },
+    { name: 'السجدة', verses: 30 },
+    { name: 'الأحزاب', verses: 73 },
+    { name: 'سبأ', verses: 54 },
+    { name: 'فاطر', verses: 45 },
+    { name: 'يس', verses: 83 },
+    { name: 'الصافات', verses: 182 },
+    { name: 'ص', verses: 88 },
+    { name: 'الزمر', verses: 75 },
+    { name: 'غافر', verses: 85 },
+    { name: 'فصلت', verses: 54 },
+    { name: 'الشورى', verses: 53 },
+    { name: 'الزخرف', verses: 89 },
+    { name: 'الدخان', verses: 59 },
+    { name: 'الجاثية', verses: 37 },
+    { name: 'الأحقاف', verses: 35 },
+    { name: 'محمد', verses: 38 },
+    { name: 'الفتح', verses: 29 },
+    { name: 'الحجرات', verses: 18 },
+    { name: 'ق', verses: 45 },
+    { name: 'الذاريات', verses: 60 },
+    { name: 'الطور', verses: 49 },
+    { name: 'النجم', verses: 62 },
+    { name: 'القمر', verses: 55 },
+    { name: 'الرحمن', verses: 78 },
+    { name: 'الواقعة', verses: 96 },
+    { name: 'الحديد', verses: 29 },
+    { name: 'المجادلة', verses: 22 },
+    { name: 'الحشر', verses: 24 },
+    { name: 'الممتحنة', verses: 13 },
+    { name: 'الصف', verses: 14 },
+    { name: 'الجمعة', verses: 11 },
+    { name: 'المنافقون', verses: 11 },
+    { name: 'التغابن', verses: 18 },
+    { name: 'الطلاق', verses: 12 },
+    { name: 'التحريم', verses: 12 },
+    { name: 'الملك', verses: 30 },
+    { name: 'القلم', verses: 52 },
+    { name: 'الحاقة', verses: 52 },
+    { name: 'المعارج', verses: 44 },
+    { name: 'نوح', verses: 28 },
+    { name: 'الجن', verses: 28 },
+    { name: 'المزمل', verses: 20 },
+    { name: 'المدثر', verses: 56 },
+    { name: 'القيامة', verses: 40 },
+    { name: 'الإنسان', verses: 31 },
+    { name: 'المرسلات', verses: 50 },
+    { name: 'النبأ', verses: 40 },
+    { name: 'النازعات', verses: 46 },
+    { name: 'عبس', verses: 42 },
+    { name: 'التكوير', verses: 29 },
+    { name: 'الإنفطار', verses: 19 },
+    { name: 'المطففين', verses: 36 },
+    { name: 'الانشقاق', verses: 25 },
+    { name: 'البروج', verses: 22 },
+    { name: 'الطارق', verses: 17 },
+    { name: 'الأعلى', verses: 19 },
+    { name: 'الغاشية', verses: 26 },
+    { name: 'الفجر', verses: 30 },
+    { name: 'البلد', verses: 20 },
+    { name: 'الشمس', verses: 15 },
+    { name: 'الليل', verses: 21 },
+    { name: 'الضحى', verses: 11 },
+    { name: 'الشرح', verses: 8 },
+    { name: 'التين', verses: 8 },
+    { name: 'العلق', verses: 19 },
+    { name: 'القدر', verses: 5 },
+    { name: 'البينة', verses: 8 },
+    { name: 'الزلزلة', verses: 8 },
+    { name: 'العاديات', verses: 11 },
+    { name: 'القارعة', verses: 11 },
+    { name: 'التكاثر', verses: 8 },
+    { name: 'العصر', verses: 3 },
+    { name: 'الهمزة', verses: 9 },
+    { name: 'الفيل', verses: 5 },
+    { name: 'قريش', verses: 4 },
+    { name: 'الماعون', verses: 7 },
+    { name: 'الكوثر', verses: 3 },
+    { name: 'الكافرون', verses: 6 },
+    { name: 'النصر', verses: 3 },
+    { name: 'المسد', verses: 5 },
+    { name: 'الإخلاص', verses: 4 },
+    { name: 'الفلق', verses: 5 },
+    { name: 'الناس', verses: 6 }
+];
+
+// بيانات الأذكار
+const azkaar = [
+    { text: 'سبحان الله وبحمده سبحان الله العظيم', count: 'مائة مرة' },
+    { text: 'لا إله إلا الله وحده لا شريك له، له الملك وله الحمد وهو على كل شيء قدير', count: 'مائة مرة' },
+    { text: 'اللهم صل وسلم على نبينا محمد', count: 'عشر مرات' },
+    { text: 'استغفر الله العظيم الذي لا إله إلا هو الحي القيوم وأتوب إليه', count: 'سبع مرات' },
+    { text: 'لا حول ولا قوة إلا بالله العلي العظيم', count: 'مائة مرة' },
+    { text: 'حسبنا الله ونعم الوكيل', count: 'ثلاث مرات' },
+    { text: 'اللهم إني أعوذ بك من الهم والحزن', count: 'صباحاً ومساءً' },
+    { text: 'رب اغفر لي وللمؤمنين والمؤمنات', count: 'في السجود' },
+    { text: 'سمع الله لمن حمده، الحمد لله رب العالمين', count: 'في الصلاة' },
+    { text: 'اللهم أنت السلام ومنك السلام، تباركت يا ذا الجلال والإكرام', count: 'في التسليم' }
+];
+
+// بيانات بطاقات التهنئة
+const greetingCards = [
+    { emoji: '🌙', text: 'كل عام وأنتم بألف خير' },
+    { emoji: '✨', text: 'رمضان كريم' },
+    { emoji: '💚', text: 'رمضان مبارك' },
+    { emoji: '🕌', text: 'كل عام وأنتم أقرب إلى الجنة' },
+    { emoji: '🤲', text: 'اللهم بلغنا رمضان' },
+    { emoji: '📖', text: 'رمضان شهر القرآن' },
+    { emoji: '⭐', text: 'رمضان شهر الخير' },
+    { emoji: '🌸', text: 'مبارك عليكم الشهر' },
+    { emoji: '💜', text: 'رمضان في قلوبنا' },
+    { emoji: '🎉', text: 'كل عام والإسلام أعز وأكرم' }
+];
+
+// دالة لعرض القسم المختار
+function showSection(sectionId) {
+    // إخفاء جميع الأقسام
+    const sections = document.querySelectorAll('.section');
+    sections.forEach(section => {
+        section.classList.remove('active');
+    });
+    
+    // عرض القسم المختار
+    const activeSection = document.getElementById(sectionId);
+    if (activeSection) {
+        activeSection.classList.add('active');
+    }
+    
+    // تحميل البيانات للقسم المختار
+    if (sectionId === 'quran') {
+        loadQuran();
+    } else if (sectionId === 'azkaar') {
+        loadAzkaar();
+    } else if (sectionId === 'cards') {
+        loadCards();
+    }
+}
+
+// دالة لتحميل سور القرآن
+function loadQuran() {
+    const quranGrid = document.getElementById('quranGrid');
+    quranGrid.innerHTML = '';
+    
+    quranSurahs.forEach((surah, index) => {
+        const item = document.createElement('div');
+        item.className = 'quran-item';
+        item.innerHTML = `
+            <div class="quran-name">${surah.name}</div>
+            <div class="quran-verses">${surah.verses} آية</div>
+        `;
+        item.onclick = () => openQuranSurah(surah.name);
+        quranGrid.appendChild(item);
+    });
+}
+
+// دالة للبحث عن السور
+document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.getElementById('quranSearch');
+    if (searchInput) {
+        searchInput.addEventListener('input', function(e) {
+            const searchTerm = e.target.value;
+            const filtered = quranSurahs.filter(surah => 
+                surah.name.includes(searchTerm)
+            );
+            
+            const quranGrid = document.getElementById('quranGrid');
+            quranGrid.innerHTML = '';
+            
+            filtered.forEach((surah, index) => {
+                const item = document.createElement('div');
+                item.className = 'quran-item';
+                item.innerHTML = `
+                    <div class="quran-name">${surah.name}</div>
+                    <div class="quran-verses">${surah.verses} آية</div>
+                `;
+                item.onclick = () => openQuranSurah(surah.name);
+                quranGrid.appendChild(item);
+            });
+        });
+    }
+});
+
+// دالة لفتح السورة (يمكن ربطها برابط خارجي)
+function openQuranSurah(surahName) {
+    alert('سورة ' + surahName + ' - يمكن إضافة رابط لقراءة السورة');
+}
+
+// دالة لتحميل الأذكار
+function loadAzkaar() {
+    const azkaarContainer = document.querySelector('.azkaar-container');
+    azkaarContainer.innerHTML = '';
+    
+    azkaar.forEach(dhikr => {
+        const card = document.createElement('div');
+        card.className = 'dhikr-card';
+        card.innerHTML = `
+            <div class="dhikr-text">${dhikr.text}</div>
+            <div class="dhikr-count">${dhikr.count}</div>
+        `;
+        azkaarContainer.appendChild(card);
+    });
+}
+
+// دالة لتحميل بطاقات التهنئة
+function loadCards() {
+    const cardsContainer = document.getElementById('cardsContainer');
+    cardsContainer.innerHTML = '';
+    
+    greetingCards.forEach((card, index) => {
+        const cardElement = document.createElement('div');
+        cardElement.className = 'greeting-card';
+        cardElement.innerHTML = `
+            <div class="greeting-emoji">${card.emoji}</div>
+            <div class="greeting-text">${card.text}</div>
+            <button class="greeting-download" onclick="downloadCard(${index})">📥 تحميل</button>
+        `;
+        cardsContainer.appendChild(cardElement);
+    });
+}
+
+// دالة تحميل البطاقة كصورة
+function downloadCard(index) {
+    const card = greetingCards[index];
+    const canvas = document.createElement('canvas');
+    canvas.width = 600;
+    canvas.height = 600;
+    const ctx = canvas.getContext('2d');
+    
+    // خلفية متدرجة
+    const gradient = ctx.createLinearGradient(0, 0, 600, 600);
+    gradient.addColorStop(0, '#9B59B6');
+    gradient.addColorStop(1, '#E91E8C');
+    ctx.fillStyle = gradient;
+    ctx.fillRect(0, 0, 600, 600);
+    
+    // الإيموجي
+    ctx.font = 'bold 120px Arial';
+    ctx.textAlign = 'center';
+    ctx.fillText(card.emoji, 300, 200);
+    
+    // النص
+    ctx.font = 'bold 48px Tajawal, Cairo';
+    ctx.fillStyle = '#F1C40F';
+    ctx.textAlign = 'center';
+    const maxWidth = 500;
+    wrapText(ctx, card.text, 300, 350, maxWidth, 60);
+    
+    // تحميل
+    const link = document.createElement('a');
+    link.href = canvas.toDataURL('image/png');
+    link.download = 'ramadan-greeting.png';
+    link.click();
+}
+
+// دالة مساعدة لكتابة نص ملتفّ
+function wrapText(context, text, x, y, maxWidth, lineHeight) {
+    const words = text.split(' ');
+    let line = '';
+    
+    for (let i = 0; i < words.length; i++) {
+        const testLine = line + words[i] + ' ';
+        const metrics = context.measureText(testLine);
+        
+        if (metrics.width > maxWidth && i > 0) {
+            context.fillText(line, x, y);
+            line = words[i] + ' ';
+            y += lineHeight;
+        } else {
+            line = testLine;
+        }
+    }
+    context.fillText(line, x, y);
+}
+
+// تشغيل الدعاء تلقائياً عند الفتح
+window.addEventListener('load', function() {
+    const duaaAudio = document.getElementById('duaaAudio');
+    if (duaaAudio) {
+        duaaAudio.play().catch(err => console.log('لا يمكن تشغيل الصوت تلقائياً'));
+    }
+    
+    // تحميل الصفحة الرئيسية بشكل افتراضي
+    showSection('home');
+});
+
+// تحديث شريط التقدم
+function updateProgress() {
+    const progressFill = document.getElementById('progressFill');
+    const progress = Math.random() * 100;
+    if (progressFill) {
+        progressFill.style.width = progress + '%';
+    }
+}
+
+// استدعاء تحديث التقدم عند التحميل
+document.addEventListener('DOMContentLoaded', updateProgress);
