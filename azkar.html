@@ -3,48 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>أذكار المسلم - زاد الصائم</title>
+    <title>أذكار المسلم الشاملة - زاد الصائم</title>
     <style>
-        body { font-family: 'Segoe UI', sans-serif; background-color: #f3e5f5; text-align: center; padding: 20px; }
-        .card { background: white; padding: 20px; border-radius: 20px; border: 2px solid #8e44ad; max-width: 500px; margin: auto; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
-        h1 { color: #6a1b9a; border-bottom: 2px solid #eee; padding-bottom: 10px; }
-        h2 { color: #8e44ad; font-size: 1.2rem; margin-top: 20px; background: #f9f2fc; padding: 5px; border-radius: 10px; }
-        .dua-box { background: #fdfbff; padding: 15px; border-radius: 12px; border-right: 5px solid #8e44ad; margin: 15px 0; text-align: right; line-height: 1.8; }
-        .count { color: #9b59b6; font-weight: bold; font-size: 0.9rem; display: block; margin-top: 10px; border-top: 1px dashed #ddd; padding-top: 5px; }
-        .back-btn { display: inline-block; margin-top: 20px; padding: 12px 30px; background: #8e44ad; color: white; text-decoration: none; border-radius: 12px; font-weight: bold; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f3e5f5; text-align: center; padding: 20px; line-height: 1.6; }
+        .card { background: white; padding: 25px; border-radius: 20px; border: 2px solid #8e44ad; box-shadow: 0 10px 30px rgba(0,0,0,0.1); max-width: 600px; margin: auto; }
+        h1 { color: #6a1b9a; margin-bottom: 20px; border-bottom: 2px solid #f3e5f5; padding-bottom: 10px; }
+        
+        /* تنسيق الخانات */
+        .section-title { background: #8e44ad; color: white; padding: 12px; border-radius: 12px; margin-top: 30px; font-size: 1.3rem; display: flex; align-items: center; justify-content: center; gap: 10px; }
+        .dua-box { background: #fff; padding: 20px; border-radius: 15px; border-right: 6px solid #8e44ad; margin: 15px 0; text-align: right; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+        .dua-text { font-size: 1.1rem; color: #2c3e50; font-weight: 500; }
+        .count { display: inline-block; margin-top: 10px; color: #9b59b6; font-weight: bold; font-size: 0.85rem; background: #f3e5f5; padding: 2px 12px; border-radius: 20px; }
+        
+        .back-btn { display: inline-block; margin-top: 30px; padding: 15px 40px; background: #8e44ad; color: white; text-decoration: none; border-radius: 15px; font-weight: bold; transition: 0.3s; }
+        .back-btn:hover { background: #6a1b9a; transform: translateY(-3px); }
     </style>
 </head>
 <body>
     <div class="card">
-        <h1>✨ أذكار اليوم</h1>
+        <h1>✨ حصن المسلم</h1>
 
-        <h2>☀️ من أذكار الصباح</h2>
+        <div class="section-title">☀️ أذكار الصباح</div>
         <div class="dua-box">
-            "أصبحنا وأصبح الملك لله، والحمد لله، لا إله إلا الله وحده لا شريك له، له الملك وله الحمد وهو على كل شيء قدير"
+            <div class="dua-text">"أصبحنا وأصبح الملك لله، والحمد لله، لا إله إلا الله وحده لا شريك له، له الملك وله الحمد وهو على كل شيء قدير"</div>
             <span class="count">مرة واحدة</span>
         </div>
         <div class="dua-box">
-            "اللهم بك أصبحنا، وبك أمسينا، وبك نحيا، وبك نموت، وإليك النشور"
-            <span class="count">مرة واحدة</span>
-        </div>
-
-        <h2>🌙 من أذكار المساء</h2>
-        <div class="dua-box">
-            "أمسينا وأمسى الملك لله، والحمد لله، لا إله إلا الله وحده لا شريك له، له الملك وله الحمد وهو على كل شيء قدير"
-            <span class="count">مرة واحدة</span>
-        </div>
-        <div class="dua-box">
-            "اللهم بك أمسينا، وبك أصبحنا، وبك نحيا، وبك نموت، وإليك المصير"
+            <div class="dua-text">"أية الكرسي: اللَّهُ لَا إِلَهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ..."</div>
             <span class="count">مرة واحدة</span>
         </div>
 
-        <h2>💎 أذكار عامة</h2>
+        <div class="section-title">🌙 أذكار المساء</div>
         <div class="dua-box">
-            "رضيت بالله رباً، وبالإسلام ديناً، وبمحمد صلى الله عليه وسلم نبياً"
-            <span class="count">3 مرات</span>
+            <div class="dua-text">"أمسينا وأمسى الملك لله، والحمد لله، لا إله إلا الله وحده لا شريك له، له الملك وله الحمد وهو على كل شيء قدير"</div>
+            <span class="count">مرة واحدة</span>
         </div>
         <div class="dua-box">
-            "سبحان الله وبحمده: عدد خلقه، ورضا نفسه، وزنة عرشه، ومداد كلماته"
+            <div class="dua-text">"اللهم بك أمسينا، وبك أصبحنا، وبك نحيا، وبك نموت، وإليك المصير"</div>
+            <span class="count">مرة واحدة</span>
+        </div>
+
+        <div class="section-title">📿 أذكار ما بعد الصلاة</div>
+        <div class="dua-box">
+            <div class="dua-text">"أستغفر الله (ثلاثاً).. اللهم أنت السلام ومنك السلام، تباركت يا ذا الجلال والإكرام"</div>
+            <span class="count">مرة واحدة</span>
+        </div>
+        <div class="dua-box">
+            <div class="dua-text">"سبحان الله، والحمد لله، والله أكبر"</div>
+            <span class="count">33 مرة</span>
+        </div>
+
+        <div class="section-title">😴 أذكار النوم</div>
+        <div class="dua-box">
+            <div class="dua-text">"باسمك ربي وضعت جنبي، وبك أرفعه، فإن أمسكت نفسي فارحمها، وإن أرسلتها فاحفظها بما تحفظ به عبادك الصالحين"</div>
+            <span class="count">مرة واحدة</span>
+        </div>
+        <div class="dua-box">
+            <div class="dua-text">"اللهم قني عذابك يوم تبعث عبادك"</div>
             <span class="count">3 مرات</span>
         </div>
 
