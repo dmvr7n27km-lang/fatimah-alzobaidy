@@ -6,30 +6,35 @@
     <title>مبدعة الفهم الرياضي</title>
     <style>
         body {
-            background: linear-gradient(135deg, #FFF5F7 0%, #F3E5F5 100%); 
+            background: linear-gradient(135deg, #FFF0F5 0%, #E6E6FA 100%); 
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0; padding: 0; display: flex; flex-direction: column; align-items: center; min-height: 100vh;
         }
-        /* شعار الوزارة - مرسوم برمجياً لضمان الظهور 100% */
-        .moe-logo-svg {
-            width: 150px; margin-top: 30px; margin-bottom: 15px;
+        /* الجزء الخاص بالنص الرسمي أعلى اليمين */
+        .official-header {
+            width: 90%;
+            text-align: right;
+            margin-top: 20px;
+            color: #4A235A;
+            font-size: 14px;
+            line-height: 1.6;
+            font-weight: bold;
         }
         .header-card {
             background: white; width: 88%; padding: 25px; border-radius: 30px;
             box-shadow: 0 10px 25px rgba(255, 182, 193, 0.3); text-align: center;
-            border: 2px solid #FFD1DC;
+            border: 2px solid #FFD1DC; margin-top: 20px;
         }
         h1 { color: #9C27B0; margin: 0; font-size: 26px; font-weight: bold; }
         .sub-text { color: #673AB7; font-weight: bold; margin: 12px 0; font-size: 17px; }
         .teacher-name { color: #E91E63; font-weight: bold; font-size: 16px; }
-        .school-name { color: #BA68C8; font-size: 14px; margin-top: 5px; }
 
         .stats-container {
             display: flex; justify-content: space-around; background: white; width: 90%;
             margin: 25px 0; padding: 20px; border-radius: 20px; border: 1px solid #F8BBD0;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
         }
-        /* الأرقام بالأسود العريض جداً كما طلبتِ */
+        /* الأرقام بالأسود العريض جداً للوضوح */
         .stat-box { flex: 1; text-align: center; }
         .stat-num { display: block; font-size: 26px; font-weight: 900; color: #000000 !important; }
         .stat-label { font-size: 14px; color: #000000 !important; font-weight: bold; margin-top: 4px; display: block; }
@@ -45,19 +50,17 @@
 </head>
 <body>
 
-    <div class="moe-logo-svg">
-        <svg viewBox="0 0 300 150" xmlns="http://www.w3.org/2000/svg">
-            <path d="M150 20c-15 0-28 12-28 28s13 28 28 28 28-12 28-28-13-28-28-28z" fill="#007A3D"/>
-            <path d="M100 85h100v8H100zm15 15h70v8h-70zm20 15h30v8h-30z" fill="#007A3D"/>
-            <text x="150" y="145" text-anchor="middle" font-family="Arial" font-size="20" font-weight="bold" fill="#007A3D">وزارة التعليم</text>
-        </svg>
+    <div class="official-header">
+        المملكة العربية السعودية<br>
+        وزارة التعليم<br>
+        إدارة التعليم بمنطقة مكة المكرمة<br>
+        المدرسة: المتوسطة الأولى بالليث
     </div>
 
     <div class="header-card">
         <h1>🌸 مُبدعة الفهم الرياضي 🌸</h1>
         <div class="sub-text">مادة الرياضيات - الصف الثاني متوسط</div>
         <div class="teacher-name">إعداد وتنفيذ المعلمة: فاطمة حسن الزبيدي</div>
-        <div class="school-name">المتوسطة الأولى بالليث</div>
     </div>
 
     <div class="stats-container">
