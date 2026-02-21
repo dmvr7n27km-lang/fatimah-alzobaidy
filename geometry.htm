@@ -3,29 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>منصة تقاريري الاحترافية - فاطمة حسن الزبيدي</title>
+    <title>منصة تقاريري المميزة - فاطمة حسن الزبيدي</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        :root { --main-blue: #1e3a8a; --light-blue: #f1f5f9; --text-color: #334155; }
-        body { font-family: 'Segoe UI', Tahoma, sans-serif; background-color: #f8fafc; margin: 0; padding: 0; color: var(--text-color); }
+        :root { 
+            --purple-main: #6b21a8; /* موف غامق */
+            --purple-light: #f5f3ff; /* خلفية موف فاتحة جداً */
+            --gray-light: #f8fafc; /* رصاصي فاتح للخلفية */
+            --gray-border: #e2e8f0; 
+            --text-dark: #1e293b;
+        }
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; background-color: var(--gray-light); margin: 0; padding: 0; color: var(--text-dark); }
         
-        .navbar { background: var(--main-blue); color: white; padding: 15px 20px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .navbar { background: var(--purple-main); color: white; padding: 15px 20px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 4px 12px rgba(107, 33, 168, 0.2); }
         .navbar h2 { margin: 0; font-size: 1.2rem; }
 
         .container { padding: 20px; max-width: 1000px; margin: auto; }
-        .welcome-section { text-align: center; margin-bottom: 30px; }
-        .welcome-section h1 { color: var(--main-blue); font-size: 1.5rem; }
+        .welcome-section { text-align: center; margin-bottom: 30px; padding-top: 10px; }
+        .welcome-section h1 { color: var(--purple-main); font-size: 1.8rem; margin-bottom: 5px; }
+        .welcome-section p { color: #64748b; font-size: 1rem; }
 
-        .grid-container { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
+        .grid-container { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
         
-        .card { background: white; border-radius: 15px; padding: 20px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border: 1px solid #e2e8f0; transition: transform 0.2s; cursor: pointer; text-decoration: none; color: inherit; }
-        .card:hover { transform: translateY(-5px); border-color: var(--main-blue); }
-        .card i { font-size: 2.5rem; color: var(--main-blue); margin-bottom: 15px; display: block; }
-        .card h3 { margin: 10px 0 5px; font-size: 1.1rem; color: var(--main-blue); }
-        .card p { margin: 0; font-size: 0.85rem; color: #64748b; line-height: 1.4; }
+        .card { background: white; border-radius: 20px; padding: 25px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.02); border: 2px solid transparent; transition: all 0.3s ease; text-decoration: none; color: inherit; display: flex; flex-direction: column; align-items: center; }
+        .card:hover { transform: translateY(-8px); border-color: var(--purple-main); box-shadow: 0 10px 20px rgba(107, 33, 168, 0.1); }
+        
+        /* دائرة الأيقونة */
+        .icon-box { background-color: var(--purple-light); width: 70px; height: 70px; border-radius: 18px; display: flex; align-items: center; justify-content: center; margin-bottom: 15px; }
+        .card i { font-size: 2rem; color: var(--purple-main); }
+        
+        .card h3 { margin: 10px 0 8px; font-size: 1.2rem; color: var(--purple-main); }
+        .card p { margin: 0; font-size: 0.9rem; color: #64748b; line-height: 1.5; }
 
-        .footer { text-align: center; padding: 20px; margin-top: 40px; border-top: 1px solid #e2e8f0; font-size: 0.9rem; background: white; }
-        .footer strong { color: var(--main-blue); }
+        .footer { text-align: center; padding: 25px; margin-top: 50px; border-top: 1px solid var(--gray-border); font-size: 0.95rem; background: white; }
+        .footer strong { color: var(--purple-main); }
 
         @media (max-width: 480px) { .grid-container { grid-template-columns: 1fr; } }
     </style>
@@ -34,44 +45,44 @@
 
 <div class="navbar">
     <i class="fas fa-bars"></i>
-    <h2>منصة التوثيق الرقمي</h2>
-    <i class="fas fa-file-invoice"></i>
+    <h2>تقاريري المميزة</h2>
+    <i class="fas fa-file-signature"></i>
 </div>
 
 <div class="container">
     <div class="welcome-section">
-        <h1>تقاريري المميزة</h1>
-        <p>إعداد وتصميم الأستاذة: فاطمة حسن الزبيدي</p>
+        <h1>الأقسام الرئيسية</h1>
+        <p>اختر القسم المناسب وابدأ بتعبئة النموذج فوراً</p>
     </div>
 
     <div class="grid-container">
         <a href="#" class="card">
-            <i class="fas fa-file-alt"></i>
+            <div class="icon-box"><i class="fas fa-file-alt"></i></div>
             <h3>تقارير</h3>
             <p>توثيق البرامج والأنشطة التعليمية</p>
         </a>
 
         <a href="#" class="card">
-            <i class="fas fa-award"></i>
+            <div class="icon-box"><i class="fas fa-images"></i></div>
             <h3>ملحق شواهد</h3>
             <p>شواهد تقييم الأداء الوظيفي</p>
         </a>
 
         <a href="#" class="card">
-            <i class="fas fa-chart-line"></i>
+            <div class="icon-box"><i class="fas fa-chart-pie"></i></div>
             <h3>تحليل النتائج</h3>
-            <p>تحليل الاختبارات والتقييمات</p>
+            <p>تحليل الاختبارات والتقييمات الرقمية</p>
         </a>
 
         <a href="#" class="card">
-            <i class="fas fa-medal"></i>
+            <div class="icon-box"><i class="fas fa-award"></i></div>
             <h3>شهادات شكر</h3>
-            <p>تصميم شهادات شكر وتقدير احترافية</p>
+            <p>إصدار شهادات شكر وتقدير فورية</p>
         </a>
     </div>
 
     <div class="footer">
-        جميع الحقوق محفوظة © 2026 | <strong>تصميم وتنفيذ: فاطمة حسن الزبيدي</strong>
+        جميع الحقوق محفوظة © 2026 | <strong>إعداد وتصميم: فاطمة حسن الزبيدي</strong>
     </div>
 </div>
 
