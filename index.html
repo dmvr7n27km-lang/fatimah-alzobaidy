@@ -15,23 +15,19 @@
             align-items: center;
             min-height: 100vh;
         }
-        /* تعديل حاوية الشعار لضمان الظهور */
         .logo-box {
-            width: 150px;
-            height: 100px;
-            margin-top: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            width: 140px;
+            margin-top: 25px;
+            margin-bottom: 10px;
         }
         .moe-logo {
             width: 100%;
             height: auto;
+            filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.1));
         }
         .header {
             background: rgba(255, 255, 255, 0.9);
             width: 85%;
-            margin-top: 10px;
             padding: 20px;
             border-radius: 25px;
             box-shadow: 0 10px 20px rgba(255, 182, 193, 0.2);
@@ -49,7 +45,7 @@
             border-radius: 20px;
             border: 1px solid #FADADD;
         }
-        /* الأرقام والخط باللون الأسود */
+        /* اللون الأسود الصريح للأرقام والكلمات */
         .stat-item { 
             flex: 1; 
             text-align: center; 
@@ -79,8 +75,7 @@
 <body>
 
     <div class="logo-box">
-        <img src="https://upload.wikimedia.org/wikipedia/ar/2/20/Saudi_Ministry_of_Education_logo.svg" 
-             alt="شعار وزارة التعليم" class="moe-logo">
+        <img src="https://upload.wikimedia.org/wikipedia/ar/2/20/Saudi_Ministry_of_Education_logo.svg" alt="شعار وزارة التعليم" class="moe-logo">
     </div>
 
     <div class="header">
