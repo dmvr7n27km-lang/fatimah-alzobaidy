@@ -15,16 +15,23 @@
             align-items: center;
             min-height: 100vh;
         }
-        .moe-logo {
+        /* تعديل حاوية الشعار لضمان الظهور */
+        .logo-box {
             width: 150px;
-            margin-top: 25px;
+            height: 100px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .moe-logo {
+            width: 100%;
             height: auto;
-            filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.1));
         }
         .header {
             background: rgba(255, 255, 255, 0.9);
             width: 85%;
-            margin-top: 15px;
+            margin-top: 10px;
             padding: 20px;
             border-radius: 25px;
             box-shadow: 0 10px 20px rgba(255, 182, 193, 0.2);
@@ -42,6 +49,7 @@
             border-radius: 20px;
             border: 1px solid #FADADD;
         }
+        /* الأرقام والخط باللون الأسود */
         .stat-item { 
             flex: 1; 
             text-align: center; 
@@ -70,12 +78,14 @@
 </head>
 <body>
 
-    <img src="https://upload.wikimedia.org/wikipedia/ar/2/20/Saudi_Ministry_of_Education_logo.svg" 
-         alt="شعار وزارة التعليم" class="moe-logo">
+    <div class="logo-box">
+        <img src="https://upload.wikimedia.org/wikipedia/ar/2/20/Saudi_Ministry_of_Education_logo.svg" 
+             alt="شعار وزارة التعليم" class="moe-logo">
+    </div>
 
     <div class="header">
         <h1>🌸 مُبدعة الفهم الرياضي 🌸</h1>
-        <p style="margin: 8px 0; color: #7D3C98; font-weight: bold; font-size: 16px;">مادة الرياضيات - الصف الثاني متوسط</p>
+        <p style="margin: 8px 0; color: #7D3C98; font-weight: bold; font-size: 15px;">مادة الرياضيات - الصف الثاني متوسط</p>
         <p style="margin: 5px 0; color: #9370DB; font-weight: bold;">إعداد وتنفيذ المعلمة: فاطمة حسن الزبيدي</p>
         <small style="color: #DB7093;">المتوسطة الأولى بالليث</small>
     </div>
