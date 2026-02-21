@@ -3,57 +3,168 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مسابقة المساحة والحجوم - أ/ فاطمة الزبيدي</title>
+    <title>إعلان مسابقة ملهمات الهندسة</title>
     <style>
-        :root { --blue: #1976d2; --gold: #ffd700; --bg: #f0f4f8; }
-        body { background-color: var(--bg); font-family: 'Segoe UI', sans-serif; text-align: center; margin: 0; padding: 20px; }
-        .header { background: white; padding: 20px; border-radius: 15px; border-bottom: 5px solid var(--blue); margin-bottom: 20px; }
-        .question-box { background: white; padding: 25px; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); margin-bottom: 20px; text-align: right; }
-        .option { background: #fff; border: 2px solid #ddd; padding: 15px; margin: 10px 0; border-radius: 10px; cursor: pointer; font-weight: bold; transition: 0.3s; }
-        .option:hover { border-color: var(--blue); background: #e3f2fd; }
-        .correct { background: #c8e6c9 !important; border-color: #4caf50 !important; }
-        .wrong { background: #ffcdd2 !important; border-color: #f44336 !important; }
-        .btn { background: var(--blue); color: white; border: none; padding: 10px 30px; border-radius: 20px; font-weight: bold; cursor: pointer; display: none; margin: 20px auto; }
+        :root {
+            --primary-color: #4a148c; /* بنفسجي ملكي */
+            --secondary-color: #1976d2; /* أزرق رياضي */
+            --accent-color: #ffd600; /* ذهبي مشرق */
+            --text-dark: #2c3e50;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .announcement-card {
+            background: white;
+            width: 100%;
+            max-width: 800px;
+            border-radius: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            overflow: hidden;
+            border: 8px solid white;
+            position: relative;
+        }
+
+        .header-banner {
+            background: var(--primary-color);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .header-banner h1 {
+            margin: 0;
+            font-size: 2.2em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header-banner p {
+            font-size: 1.2em;
+            margin-top: 10px;
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        .content-body {
+            padding: 40px;
+            color: var(--text-dark);
+            line-height: 1.8;
+        }
+
+        .section-title {
+            color: var(--secondary-color);
+            border-right: 5px solid var(--accent-color);
+            padding-right: 15px;
+            margin-top: 30px;
+            font-size: 1.4em;
+        }
+
+        .list-items {
+            list-style: none;
+            padding: 0;
+        }
+
+        .list-items li {
+            background: #f9f9f9;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 10px;
+            border-right: 4px solid var(--secondary-color);
+        }
+
+        .footer-table {
+            width: 100%;
+            margin-top: 50px;
+            border-top: 2px dashed #eee;
+            padding-top: 20px;
+        }
+
+        .footer-table td {
+            vertical-align: top;
+            width: 50%;
+        }
+
+        .signature-box {
+            padding: 20px;
+        }
+
+        .name-label {
+            font-weight: bold;
+            color: var(--primary-color);
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .name-value {
+            font-size: 1.1em;
+            color: #333;
+        }
+
+        .math-icons {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 3em;
+            opacity: 0.2;
+            color: white;
+        }
     </style>
 </head>
 <body>
 
-    <div class="header">
-        <h2 style="color: var(--blue);">📐 مسابقة المساحة والحجوم 📐</h2>
-        <p>الصف: الثاني متوسط | المتوسطة الأولى بالليث</p>
+<div class="announcement-card">
+    <div class="header-banner">
+        <div class="math-icons">📐📏</div>
+        <h1>🌟 مسابقة ملهمات الهندسة 🌟</h1>
+        <p>فصل المساحة والحجم - الصف الثاني متوسط</p>
     </div>
 
-    <div id="quiz-container">
-        <div class="question-box">
-            <h3 id="story-title">📖 اقرأ بتركيز:</h3>
-            <p id="story-text">يريد نجار صنع صندوق خشبي على شكل <b>منشور مستطيل</b> طوله ٥ سم، وعرضه ٣ سم، وارتفاعه ٢ سم. يرغب النجار في معرفة كمية الخشب المطلوبة لتغطية <b>السطح الخارجي</b> للصندوق بالكامل.</p>
-            <hr>
-            <p id="question-text">ما هو المفهوم الرياضي الذي يجب على النجار حسابه في هذه المسألة؟</p>
-            <div id="options">
-                <div class="option" onclick="check(this, false)">حجم المنشور</div>
-                <div class="option" onclick="check(this, true)">المساحة الكلية لسطح المنشور</div>
-                <div class="option" onclick="check(this, false)">المساحة الجانبية فقط</div>
-                <div class="option" onclick="check(this, false)">محيط القاعدة</div>
-            </div>
-        </div>
-        <button id="nextBtn" class="btn" onclick="nextLevel()">التحدي التالي ⬅️</button>
-    </div>
+    <div class="content-body">
+        <p style="text-align: center; font-size: 1.2em; font-weight: bold;">
+            تعلن أسرة الرياضيات عن بدء التحدي الهندسي الأكبر لاكتشاف مبدعات الحساب والقياس!
+        </p>
 
-    <script>
-        function check(el, isCorrect) {
-            if(isCorrect) {
-                el.classList.add('correct');
-                document.getElementById('nextBtn').style.display = 'block';
-                alert("ممتازة! الفهم القرائي الصحيح للمطلوب هو نصف الحل.");
-            } else {
-                el.classList.add('wrong');
-                alert("حاولي مرة أخرى.. ركزي في جملة (تغطية السطح الخارجي)");
-            }
-        }
-        function nextLevel() {
-            alert("سيتم إضافة مستويات الحجوم في التحديث القادم!");
-        }
-    </script>
+        <h3 class="section-title">🎯 الهدف من المسابقة:</h3>
+        <ul class="list-items">
+            <li>تعزيز مهارات الفهم القرائي للمسائل الهندسية وتحليل معطياتها بدقة.</li>
+            <li>ربط المفاهيم الرياضية (المساحة والحجم) بتطبيقات واقعية وممتعة.</li>
+            <li>رفع روح التنافس الشريف وزيادة الثقة بالنفس لدى الطالبات.</li>
+        </ul>
+
+        <h3 class="section-title">📝 شروط المسابقة:</h3>
+        <ul class="list-items">
+            <li>القراءة بتركيز: فهم نص المسألة وتحديد المطلوب قبل البدء.</li>
+            <li>الدقة والسرعة: إنجاز المهام في الوقت المحدد وبخطوات صحيحة.</li>
+            <li>الاستنتاج السليم: اختيار القوانين المناسبة لكل شكل هندسي.</li>
+        </ul>
+
+        <table class="footer-table">
+            <tr>
+                <td style="text-align: right;">
+                    <div class="signature-box">
+                        <span class="name-label">معلمتا مادة الرياضيات:</span>
+                        <div class="name-value">أ/ فاطمة حسن الزبيدي</div>
+                        <div class="name-value">أ/ صالحة عيضة الرحماني</div>
+                    </div>
+                </td>
+                <td style="text-align: left;">
+                    <div class="signature-box">
+                        <span class="name-label">مديرة المدرسة:</span>
+                        <div class="name-value">أ/ فادية سامي ديوان</div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
 </body>
 </html>
-
