@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مبدعة الفهم الرياضي - فاطمة الزبيدي</title>
+    
+    <title>مبدعة الرياضيات: فاطمة الزبيدي</title>
+
     <style>
         :root {
             --mauve: #7b1fa2;
@@ -24,6 +26,7 @@
             text-align: right; color: #111; font-size: 14px; 
             font-weight: bold; line-height: 1.6; border-bottom: 2px solid var(--pink-border);
             box-sizing: border-box;
+            display: flex; justify-content: space-between; align-items: center;
         }
 
         .teacher-info-card {
@@ -43,7 +46,6 @@
         .stat-box .num { display: block; font-size: 28px; font-weight: bold; color: var(--mauve); }
         .stat-box .text { font-size: 14px; color: #555; font-weight: bold; }
 
-        /* عنوان اختر الدرس */
         .select-lesson-title {
             width: 90%; text-align: right; color: var(--mauve);
             font-size: 18px; font-weight: bold; margin: 10px 0;
@@ -109,10 +111,16 @@
 
     <div id="main-menu" class="screen active-screen">
         <div class="official-header">
-            المملكة العربية السعودية<br>
-            وزارة التعليم<br>
-            إدارة التعليم بمنطقة مكة المكرمة<br>
-            المدرسة: المتوسطة الأولى بالليث
+            <div>
+                المملكة العربية السعودية<br>
+                وزارة التعليم<br>
+                إدارة التعليم بمنطقة مكة المكرمة<br>
+                المدرسة: المتوسطة الأولى بالليث
+            </div>
+            <div style="text-align: left; color: var(--accent-pink); font-size: 16px;">
+                ملف الإنجاز الرقمي<br>
+                أ. فاطمة حسن الزبيدي
+            </div>
         </div>
         
         <div class="teacher-info-card">
@@ -126,8 +134,8 @@
 
         <div class="stats-bar">
             <div class="stat-box"><span class="num">5</span><span class="text">دروس متاحة</span></div>
-            <div class="stat-box"><span id="done-count" class="num">0</span><span class="text">تم إنجازها</span></div>
-            <div class="stat-box"><span id="stars-count" class="num" style="color:#fb8c00;">0</span><span class="text">النجوم ⭐</span></div>
+            <div class="stat-box"><span id="done-count-display" class="num">0</span><span class="text">تم إنجازها</span></div>
+            <div class="stat-box"><span id="stars-count-display" class="num" style="color:#fb8c00;">0</span><span class="text">النجوم ⭐</span></div>
         </div>
 
         <div class="select-lesson-title">الرجاء اختيار الدرس للبدء:</div>
@@ -170,27 +178,34 @@
             <div style="font-size:80px; margin-bottom:20px;">🏆</div>
             <h2 id="res-msg" style="font-size:30px;">ممتازة يا مبدعة!</h2>
             <p id="res-score" style="font-size:22px; color:#666; margin-bottom:30px;"></p>
-            <button onclick="location.reload()" style="background:#26a69a; color:white; padding:15px 40px; border:none; border-radius:15px; font-weight:bold; cursor:pointer;">العودة للرئيسية</button>
+            <button onclick="backToMenu()" style="background:#26a69a; color:white; padding:15px 40px; border:none; border-radius:15px; font-weight:bold; cursor:pointer;">العودة للرئيسية</button>
         </div>
     </div>
 
     <script>
-        let stars = 0; let done = 0; let currentL = ''; let currentQ = 1; let score = 0;
+        let totalStars = 0; 
+        let lessonsCompleted = 0;
+        let currentL = ''; 
+        let currentQ = 1; 
+        let sessionScore = 0;
+
         const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 
         function playSfx(win) {
-            if (audioCtx.state === 'suspended') audioCtx.resume();
-            const osc = audioCtx.createOscillator();
-            const gain = audioCtx.createGain();
-            osc.connect(gain); gain.connect(audioCtx.destination);
-            osc.frequency.setValueAtTime(win ? 600 : 200, audioCtx.currentTime);
-            if(win) osc.frequency.exponentialRampToValueAtTime(1200, audioCtx.currentTime + 0.1);
-            gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
-            osc.start(); osc.stop(audioCtx.currentTime + 0.2);
+            try {
+                if (audioCtx.state === 'suspended') audioCtx.resume();
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.connect(gain); gain.connect(audioCtx.destination);
+                osc.frequency.setValueAtTime(win ? 600 : 200, audioCtx.currentTime);
+                if(win) osc.frequency.exponentialRampToValueAtTime(1200, audioCtx.currentTime + 0.1);
+                gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
+                osc.start(); osc.stop(audioCtx.currentTime + 0.2);
+            } catch(e) {}
         }
 
         function startLesson(id) {
-            currentL = id; currentQ = 1; score = 0;
+            currentL = id; currentQ = 1; sessionScore = 0;
             document.getElementById('main-menu').classList.remove('active-screen');
             document.getElementById('lesson-screen').classList.add('active-screen');
             loadLesson();
@@ -219,32 +234,32 @@
             let qText = ""; let opts = []; let correct = 0; let feed = "";
 
             if(currentL === 'takhmeen') {
-                if(currentQ === 1) { qText = "ما هي المعطيات الرياضية في قصة سارة؟"; opts = ["حب سارة للمكتبة", "المجموع ٤٥ والفرق ٩", "سعر الكتاب ٤٥", "المكان"]; correct = 1; feed="💡 ممتاز! تحديد المجموع والفرق هو مفتاح التخمين."; }
-                else if(currentQ === 2) { qText = "أي التخمينات التالية يعتبر صحيحاً؟"; opts = ["(٢٠ ، ٢٥)", "(١٥ ، ٣٠)", "(٢٧ ، ١٨)", "(٢٨ ، ١٧)"]; correct = 2; feed="💡 رائعة! ٢٧+١٨=٤٥ والفرق بينهما ٩."; }
-                else { qText = "كيف نتحقق من صحة الحل؟"; opts = ["بالجمع والطرح", "بالسؤال", "بالتكرار", "بالانتظار"]; correct = 0; feed="💡 أحسنتِ! التحقق هو مطابقة الحل مع المعطيات."; }
+                if(currentQ === 1) { qText = "ما هي المعطيات الرياضية في قصة سارة؟"; opts = ["أ) حب سارة للمكتبة", "ب) المجموع ٤٥ والفرق ٩", "ج) سعر الكتاب ٤٥", "د) المكان"]; correct = 1; feed="💡 ممتاز! تحديد المجموع والفرق هو مفتاح التخمين."; }
+                else if(currentQ === 2) { qText = "أي التخمينات التالية يعتبر صحيحاً؟"; opts = ["أ) (٢٠ ، ٢٥)", "ب) (١٥ ، ٣٠)", "ج) (٢٧ ، ١٨)", "د) (٢٨ ، ١٧)"]; correct = 2; feed="💡 رائعة! ٢٧+١٨=٤٥ والفرق بينهما ٩."; }
+                else { qText = "كيف نتحقق من صحة الحل؟"; opts = ["أ) بالجمع والطرح", "ب) بالسؤال", "ج) بالتكرار", "د) بالانتظار"]; correct = 0; feed="💡 أحسنتِ! التحقق هو مطابقة الحل مع المعطيات."; }
             } else if(currentL === 'namat') {
-                if(currentQ === 1) { qText = "ما المعطيات الأساسية؟"; opts = ["الاسم", "عدد الصفحات اليومي", "الوقت", "المكان"]; correct = 1; feed="💡 صح! المعلومات الرقمية هي أساس النمط."; }
-                else if(currentQ === 2) { qText = "ما مقدار الزيادة في النمط؟"; opts = ["ثابتة (+٢)", "متغيرة (+٣، +٤...)", "نقصان", "ضرب"]; correct = 1; feed="💡 ذكية! الزيادة تزيد بمقدار ١ كل مرة."; }
-                else { qText = "عدد صفحات اليوم السادس؟"; opts = ["٢٠", "٢٥", "٢٧", "٣٠"]; correct = 2; feed="💡 ممتازة! اليوم الخامس ٢٠ واليوم السادس ٢٧."; }
+                if(currentQ === 1) { qText = "ما المعطيات الأساسية؟"; opts = ["أ) الاسم", "ب) عدد الصفحات اليومي", "ج) الوقت", "د) المكان"]; correct = 1; feed="💡 صح! المعلومات الرقمية هي أساس النمط."; }
+                else if(currentQ === 2) { qText = "ما مقدار الزيادة في النمط؟"; opts = ["أ) ثابتة (+٢)", "ب) متغيرة (+٣، +٤...)", "ج) نقصان", "د) ضرب"]; correct = 1; feed="💡 ذكية! الزيادة تزيد بمقدار ١ كل مرة."; }
+                else { qText = "عدد صفحات اليوم السادس؟"; opts = ["أ) ٢٠", "ب) ٢٥", "ج) ٢٧", "د) ٣٠"]; correct = 2; feed="💡 ممتازة! اليوم الخامس ٢٠ واليوم السادس ٢٧."; }
             } else if(currentL === 'aksian') {
-                if(currentQ === 1) { qText = "ما الخطوة الأولى للحل عكسياً؟"; opts = ["الضرب", "طرح ٥ من ٢٦", "الجمع", "القسمة"]; correct = 1; feed="💡 رائعة! نبدأ بعكس آخر عملية (الجمع) فتصبح طرحاً."; }
-                else if(currentQ === 2) { qText = "ما العملية العكسية للضرب في ٣؟"; opts = ["الضرب", "الطرح", "القسمة على ٣", "الجمع"]; correct = 2; feed="💡 صح! عكس الضرب هو القسمة."; }
-                else { qText = "ما هو العدد الأصلي؟"; opts = ["٥", "٩", "٧", "١٢"]; correct = 2; feed="💡 عبقرية! ٢١ ÷ ٣ = ٧."; }
+                if(currentQ === 1) { qText = "ما الخطوة الأولى للحل عكسياً؟"; opts = ["أ) الضرب", "ب) طرح ٥ من ٢٦", "ج) الجمع", "د) القسمة"]; correct = 1; feed="💡 رائعة! نبدأ بعكس آخر عملية (الجمع) فتصبح طرحاً."; }
+                else if(currentQ === 2) { qText = "ما العملية العكسية للضرب في ٣؟"; opts = ["أ) الضرب", "ب) الطرح", "ج) القسمة على ٣", "د) الجمع"]; correct = 2; feed="💡 صح! عكس الضرب هو القسمة."; }
+                else { qText = "ما هو العدد الأصلي؟"; opts = ["أ) ٥", "ب) ٩", "ج) ٧", "د) ١٢"]; correct = 2; feed="💡 عبقرية! ٢١ ÷ ٣ = ٧."; }
             } else if(currentL === 'abast') {
-                if(currentQ === 1) { qText = "لماذا نبسط المسألة؟"; opts = ["لصعوبتها", "لفهم النمط والقاعدة", "للتسلية", "للنسيان"]; correct = 1; feed="💡 أحسنتِ! التبسيط يكشف لنا القوانين بسهولة."; }
-                else if(currentQ === 2) { qText = "كم زوجاً مجموعه ١٠١ في ١٠٠ عدد؟"; opts = ["١٠٠", "٢٥", "٥٠", "٧٥"]; correct = 2; feed="💡 ذكية! نصف الـ ١٠٠ هو ٥٠ زوجاً."; }
-                else { qText = "مجموع الأعداد من ١ إلى ١٠٠؟"; opts = ["٥٠٥٠", "١٠٠٠", "٥١٠٠", "٤٩٥٠"]; correct = 0; feed="💡 مبدعة! ٥٠ × ١٠١ = ٥٠٥٠."; }
+                if(currentQ === 1) { qText = "لماذا نبسط المسألة؟"; opts = ["أ) لصعوبتها", "ب) لفهم النمط والقاعدة", "ج) للتسلية", "د) للنسيان"]; correct = 1; feed="💡 أحسنتِ! التبسيط يكشف لنا القوانين بسهولة."; }
+                else if(currentQ === 2) { qText = "كم زوجاً مجموعه ١٠١ في ١٠٠ عدد؟"; opts = ["أ) ١٠٠", "ب) ٢٥", "ج) ٥٠", "د) ٧٥"]; correct = 2; feed="💡 ذكية! نصف الـ ١٠٠ هو ٥٠ زوجاً."; }
+                else { qText = "مجموع الأعداد من ١ إلى ١٠٠؟"; opts = ["أ) ٥٠٥٠", "ب) ١٠٠٠", "ج) ٥١٠٠", "د) ٤٩٥٠"]; correct = 0; feed="💡 مبدعة! ٥٠ × ١٠١ = ٥٠٥٠."; }
             } else if(currentL === 'jadwal') {
-                if(currentQ === 1) { qText = "ما فائدة الجدول؟"; opts = ["الرسم", "تضييع الوقت", "تنظيم البيانات", "التلوين"]; correct = 2; feed="💡 صح! الجدول ينظم المعلومات المشتتة."; }
-                else if(currentQ === 2) { qText = "كم يضع خالد في اليوم الخامس؟"; opts = ["٧", "٩", "١١", "١٣"]; correct = 1; feed="💡 رائعة! النمط هو زيادة ريالين (١،٣،٥،٧،٩)."; }
-                else { qText = "مجموع ما جمعه في ٥ أيام؟"; opts = ["١٥", "٢٠", "٢٥", "٣٠"]; correct = 2; feed="💡 عبقرية! ١+٣+٥+٧+٩ = ٢٥ ريالاً."; }
+                if(currentQ === 1) { qText = "ما فائدة الجدول؟"; opts = ["أ) الرسم", "ب) تضييع الوقت", "ج) تنظيم البيانات", "د) التلوين"]; correct = 2; feed="💡 صح! الجدول ينظم المعلومات المشتتة."; }
+                else if(currentQ === 2) { qText = "كم يضع خالد في اليوم الخامس؟"; opts = ["أ) ٧", "ب) ٩", "ج) ١١", "د) ١٣"]; correct = 1; feed="💡 رائعة! النمط هو زيادة ريالين (١،٣،٥،٧،٩)."; }
+                else { qText = "مجموع ما جمعه في ٥ أيام؟"; opts = ["أ) ١٥", "ب) ٢٠", "ج) ٢٥", "د) ٣٠"]; correct = 2; feed="💡 عبقرية! ١+٣+٥+٧+٩ = ٢٥ ريالاً."; }
             }
 
             let html = `<p style="font-weight:bold; color:var(--mauve); width:90%; margin:20px 0; font-size:20px;">${currentQ}️⃣ ${qText}</p>`;
             opts.forEach((o, i) => {
                 html += `<div class="option" onclick="checkAnswer(this, ${i === correct}, '${feed}')">
                             <div class="char-circle">${['أ','ب','ج','د'][i]}</div>
-                            <span>${o}</span>
+                            <span>${o.substring(3)}</span>
                          </div>`;
             });
             area.innerHTML = html;
@@ -253,8 +268,11 @@
         function checkAnswer(el, isCorrect, feedbackText) {
             playSfx(isCorrect);
             if(isCorrect) {
-                el.classList.add('correct'); score++; stars += 3;
-                document.getElementById('stars-count').innerText = stars;
+                el.classList.add('correct'); 
+                sessionScore++; 
+                totalStars += 3;
+                document.getElementById('stars-count-display').innerText = totalStars;
+                
                 const fBox = document.getElementById('feedback-area');
                 fBox.innerText = feedbackText; fBox.style.display = 'block';
                 document.getElementById('next-btn').style.display = 'block';
@@ -266,13 +284,21 @@
         }
 
         function nextQuestion() {
-            if(currentQ < 3) { currentQ++; showQuestion(); }
-            else { 
-                done++; document.getElementById('done-count').innerText = done;
+            if(currentQ < 3) { 
+                currentQ++; 
+                showQuestion(); 
+            } else { 
+                lessonsCompleted++; 
+                document.getElementById('done-count-display').innerText = lessonsCompleted;
                 document.getElementById('lesson-screen').classList.remove('active-screen');
                 document.getElementById('result-screen').classList.add('active-screen');
-                document.getElementById('res-score').innerText = `لقد أنجزتِ المهمة بنجاح وحصلتِ على ${score} من ٣ إجابات صحيحة`;
+                document.getElementById('res-score').innerText = `انتهى الدرس! مجموع نجومك الآن: ${totalStars} ⭐`;
             }
+        }
+
+        function backToMenu() {
+            document.getElementById('result-screen').classList.remove('active-screen');
+            document.getElementById('main-menu').classList.add('active-screen');
         }
     </script>
 </body>
