@@ -5,128 +5,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>مسابقة من ستربح الـ 150</title>
     <style>
-        :root {
-            --win-green: #2e7d32; /* لون العملة */
-            --win-gold: #ffd700;
-            --win-blue: #1565c0;
-        }
-
-        body {
-            background-color: #f4f4f9;
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 15px;
-            display: flex;
-            justify-content: center;
-        }
-
-        .contest-poster {
-            background: white;
-            width: 100%;
-            max-width: 550px;
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-            border: 4px solid var(--win-green);
-            overflow: hidden;
-        }
-
-        .hero-section {
-            background: linear-gradient(45deg, var(--win-green), #66bb6a);
-            color: white;
-            padding: 30px 15px;
-            text-align: center;
-            position: relative;
-        }
-
-        .prize-circle {
-            width: 100px;
-            height: 100px;
-            background: var(--win-gold);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 15px;
-            font-size: 2.2em;
-            font-weight: bold;
-            color: #333;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-            border: 5px solid white;
-        }
-
-        .hero-section h1 { margin: 5px 0; font-size: 1.8em; }
-        .hero-section p { margin: 0; font-weight: bold; opacity: 0.9; }
-
-        .main-content { padding: 25px; }
-
-        .info-card {
-            background: #f1f8e9;
-            border-right: 6px solid var(--win-green);
-            padding: 15px;
-            margin-bottom: 20px;
-            border-radius: 5px;
-        }
-
-        .info-card h3 { color: var(--win-green); margin-top: 0; display: flex; align-items: center; gap: 8px; }
-
-        ul { padding-right: 20px; margin: 0; }
-        li { margin-bottom: 10px; color: #444; line-height: 1.6; }
-
-        .footer-signatures {
-            background: #eee;
-            display: flex;
-            justify-content: space-between;
-            padding: 20px;
-            border-top: 2px solid #ddd;
-        }
-
-        .sig-group { text-align: center; width: 48%; }
-        .sig-label { font-weight: bold; color: var(--win-blue); display: block; margin-bottom: 8px; border-bottom: 1px solid #ccc; padding-bottom: 5px; }
-        .sig-name { font-size: 0.95em; color: #333; margin-bottom: 3px; }
-
-        .money-icons { font-size: 1.5em; margin-bottom: 10px; display: block; }
+        :root { --win-green: #1b5e20; --win-gold: #c5a059; }
+        body { background-color: #f0f4f7; font-family: 'Arial', sans-serif; display: flex; justify-content: center; padding: 20px; }
+        .poster { background: white; width: 100%; max-width: 600px; border: 5px solid var(--win-green); border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .header { background: linear-gradient(to bottom, #2e7d32, #1b5e20); color: white; text-align: center; padding: 30px 10px; }
+        .money-img { width: 220px; height: auto; border: 3px solid var(--win-gold); border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.3); margin-bottom: 15px; }
+        .content { padding: 30px; }
+        .info-box { background: #f9fdf9; border-right: 5px solid var(--win-gold); padding: 15px; margin-bottom: 20px; }
+        .footer { background: #eeeeee; display: flex; justify-content: space-between; padding: 20px; border-top: 2px solid #ddd; }
+        .sig { text-align: center; width: 48%; }
+        .sig-title { font-weight: bold; color: #1565c0; border-bottom: 1px solid #ccc; margin-bottom: 10px; }
     </style>
 </head>
 <body>
 
-<div class="contest-poster">
-    <div class="hero-section">
-        <div class="prize-circle">١٥٠</div>
-        <span class="money-icons">💸 📊 📐</span>
-        <h1>مسابقة "من ستربح الـ ١٥٠"</h1>
-        <p>فصل المساحة والحجم - ثاني متوسط</p>
+<div class="poster" id="posterArea">
+    <div class="header">
+        <img src="https://i.ibb.co/m5YF4Xm/saudi-money.png" alt="150 SAR" class="money-img">
+        <h1>💸 مسابقة من ستربح الـ ١٥٠ 💸</h1>
+        <p style="font-size: 1.2em;">فصل المساحة والحجم - الصف الثاني متوسط</p>
     </div>
 
-    <div class="main-content">
-        <div class="info-card">
-            <h3>🎯 أهداف المسابقة:</h3>
-            <ul>
-                <li>تنمية مهارات التفكير العليا في مادة الرياضيات.</li>
-                <li>توظيف الفهم القرائي لتحليل المسائل الهندسية.</li>
-                <li>بث روح التنافس العلمي الشريف بين الطالبات.</li>
-                <li>تحفيز الطالبات على إتقان قوانين المساحة والحجم.</li>
-            </ul>
+    <div class="content">
+        <div class="info-box">
+            <h3 style="color: var(--win-green);">🎯 أهداف المسابقة:</h3>
+            <p>تنمية التفكير الرياضي، ربط القوانين بالواقع، وبث روح التنافس.</p>
         </div>
-
-        <div class="info-card" style="background: #e3f2fd; border-right-color: var(--win-blue);">
-            <h3 style="color: var(--win-blue);">📝 شروط المسابقة:</h3>
-            <ul>
-                <li>المشاركة متاحة لجميع طالبات الصف الثاني متوسط.</li>
-                <li>الاعتماد على النفس في حل التحديات الرياضية.</li>
-                <li>الدقة في الحسابات الهندسية ووضوح خطوات الحل.</li>
-            </ul>
+        <div class="info-box" style="border-right-color: #1565c0;">
+            <h3 style="color: #1565c0;">📝 الشروط:</h3>
+            <p>المشاركة لجميع طالبات ثاني متوسط، والاعتماد على النفس في الحل.</p>
         </div>
     </div>
 
-    <div class="footer-signatures">
-        <div class="sig-group">
-            <span class="sig-label">معلمتا مادة الرياضيات:</span>
-            <div class="sig-name">أ/ فاطمة حسن الزبيدي</div>
-            <div class="sig-name">أ/ صالحة عيضة الرحماني</div>
+    <div class="footer">
+        <div class="sig">
+            <div class="sig-title">معلمتا المادة</div>
+            <div>أ/ فاطمة حسن الزبيدي</div>
+            <div>أ/ صالحة عيضة الرحماني</div>
         </div>
-        <div class="sig-group">
-            <span class="sig-label">مديرة المدرسة:</span>
-            <div class="sig-name">أ/ فادية سامي ديوان</div>
+        <div class="sig">
+            <div class="sig-title">مديرة المدرسة</div>
+            <div>أ/ فادية سامي ديوان</div>
         </div>
     </div>
 </div>
