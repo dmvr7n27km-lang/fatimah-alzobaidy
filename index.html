@@ -5,72 +5,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>مبدعة الفهم الرياضي - فاطمة الزبيدي</title>
     <style>
-        :root { --primary-pink: #e91e63; --soft-purple: #9c27b0; --bg-gradient: linear-gradient(135deg, #fff0f5 0%, #f3e5f5 100%); --blue-info: #e3f2fd; }
+        :root { --primary-pink: #e91e63; --soft-purple: #9c27b0; --bg-gradient: linear-gradient(135deg, #fff0f5 0%, #f3e5f5 100%); }
         body { background: var(--bg-gradient); font-family: 'Segoe UI', Tahoma, sans-serif; margin: 0; padding: 0; display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
 
-        /* الهيدر الرسمي */
-        .official-header { width: 100%; text-align: right; padding: 15px 20px; font-size: 13px; font-weight: bold; color: #4a235a; line-height: 1.6; box-sizing: border-box; }
-        .main-card { background: white; width: 90%; padding: 25px; border-radius: 25px; box-shadow: 0 10px 20px rgba(233,30,99,0.1); text-align: center; border: 1px solid #ffd1dc; margin-bottom: 20px; }
-        .teacher-info { color: var(--primary-pink); font-weight: bold; font-size: 16px; }
+        .reading-box { 
+            background: white; 
+            width: 94%; 
+            padding: 30px; 
+            border-radius: 25px; 
+            margin: 20px 0; 
+            border-right: 12px solid var(--primary-pink); 
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1); 
+            text-align: right; 
+            line-height: 2; 
+            font-size: 20px; 
+            color: #2c3e50; 
+            box-sizing: border-box; 
+        }
 
-        /* شريط الإحصائيات */
-        .stats-bar { display: flex; justify-content: space-around; background: white; width: 90%; padding: 15px 0; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.03); margin-bottom: 25px; }
-        .stat-num { display: block; font-size: 22px; font-weight: 900; color: #fb8c00; }
-        .stat-label { font-size: 12px; color: #666; font-weight: bold; }
-
-        /* الأزرار والدروس */
-        .lesson-btn { background: white; width: 90%; padding: 18px; margin-bottom: 15px; border-radius: 20px; border: 2px solid #ffc1e3; display: flex; justify-content: space-between; align-items: center; cursor: pointer; font-weight: bold; color: #5c3b8a; transition: 0.3s; }
-        .lesson-btn:hover { border-color: var(--primary-pink); background: #fff9fb; }
-
-        /* شاشة الاختبار */
-        .screen { width: 100%; display: none; flex-direction: column; align-items: center; padding-bottom: 40px; }
-        .active-screen { display: flex; }
-        .reading-box { background: white; width: 90%; padding: 20px; border-radius: 20px; margin: 15px 0; border-right: 8px solid var(--primary-pink); box-shadow: 0 4px 12px rgba(0,0,0,0.05); text-align: right; line-height: 1.8; box-sizing: border-box; }
-        
-        .q-card { width: 90%; background: white; padding: 20px; border-radius: 20px; margin-bottom: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); box-sizing: border-box; }
-        .option { background: #f8f9fa; border: 2px solid #eee; padding: 14px; margin: 10px 0; border-radius: 15px; display: flex; align-items: center; justify-content: space-between; cursor: pointer; font-weight: bold; }
-        .circle { width: 32px; height: 32px; border: 2px solid #444; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; }
+        .q-card { width: 94%; background: white; padding: 25px; border-radius: 25px; margin-bottom: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); box-sizing: border-box; }
+        .option { background: #fdfdfd; border: 2px solid #f0f0f0; padding: 18px; margin: 12px 0; border-radius: 18px; display: flex; align-items: center; justify-content: space-between; cursor: pointer; font-weight: bold; font-size: 18px; }
+        .circle { width: 38px; height: 38px; border: 2px solid #444; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
         
         .correct { background: #e8f5e9 !important; border-color: #4caf50 !important; color: #2e7d32; }
         .wrong { background: #ffebee !important; border-color: #f44336 !important; color: #c62828; }
 
-        /* نافذة الاسم */
-        #name-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 100; align-items: center; justify-content: center; }
-        .modal-content { background: white; padding: 30px; border-radius: 25px; text-align: center; width: 85%; }
+        .stats-bar { display: flex; justify-content: space-around; background: white; width: 94%; padding: 15px 0; border-radius: 25px; margin-bottom: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .stat-num { display: block; font-size: 24px; font-weight: 900; color: #fb8c00; }
 
-        /* الشرح والزر */
-        #explanation-box { display: none; background: var(--blue-info); border: 1px solid #2196f3; padding: 15px; border-radius: 15px; margin: 10px 0; width: 90%; font-size: 14px; color: #0d47a1; line-height: 1.6; }
-        .btn-next { background: #2196f3; color: white; border: none; padding: 15px 35px; border-radius: 30px; font-weight: bold; cursor: pointer; display: none; width: 80%; }
-        .btn-action { background: var(--primary-pink); color: white; border: none; padding: 12px 30px; border-radius: 25px; font-weight: bold; cursor: pointer; }
+        #explanation-box { display: none; background: #e3f2fd; border: 2px solid #2196f3; padding: 20px; border-radius: 20px; margin: 15px 0; width: 94%; font-size: 17px; color: #0d47a1; line-height: 1.7; box-sizing: border-box; }
+        .btn-next { background: #2196f3; color: white; border: none; padding: 18px 40px; border-radius: 35px; font-weight: bold; cursor: pointer; display: none; width: 85%; font-size: 18px; }
+
+        .official-header { width: 100%; text-align: right; padding: 15px; font-size: 13px; font-weight: bold; color: #4a235a; }
+        .main-card { background: white; width: 94%; padding: 25px; border-radius: 25px; text-align: center; border: 1px solid #ffd1dc; margin-bottom: 20px; }
     </style>
 </head>
 <body>
 
-    <div id="main-menu" class="active-screen screen">
+    <div id="main-menu" class="active-screen screen" style="display: flex; flex-direction: column; align-items: center; width: 100%;">
         <div class="official-header">المملكة العربية السعودية | وزارة التعليم | المتوسطة الأولى بالليث</div>
         <div class="main-card">
             <h1>🌸 مُبدعة الفهم الرياضي 🌸</h1>
-            <div class="teacher-info">المعلمة: فاطمة حسن الزبيدي</div>
+            <div style="color:var(--primary-pink); font-weight:bold;">المعلمة: فاطمة حسن الزبيدي</div>
         </div>
         <div class="stats-bar">
-            <div class="stat-item"><span class="stat-num" id="stars-display">0 ⭐</span><span class="stat-label">النجوم</span></div>
-            <div class="stat-item"><span class="stat-num" id="done-display">0</span><span class="stat-label">إنجاز</span></div>
-            <div class="stat-item"><span class="stat-num">5</span><span class="stat-label">دروس</span></div>
+            <div><span class="stat-num" id="stars-display">0 ⭐</span><span>النجوم</span></div>
+            <div><span class="stat-num" id="done-display">0</span><span>إنجاز</span></div>
         </div>
-        <div class="lesson-btn" onclick="askName('takhmeen')"><span>🎯 التخمين والتحقق</span> ⭐</div>
-        <div class="lesson-btn" onclick="askName('namat')"><span>🔍 البحث عن نمط</span> ⭐</div>
+        <button onclick="startLesson('takhmeen')" style="width:90%; padding:18px; background:white; border:2px solid #ffc1e3; border-radius:20px; font-size:18px; font-weight:bold; color:#5c3b8a; cursor:pointer; margin-bottom:12px;">🎯 درس التخمين والتحقق</button>
+        <button onclick="startLesson('namat')" style="width:90%; padding:18px; background:white; border:2px solid #ffc1e3; border-radius:20px; font-size:18px; font-weight:bold; color:#5c3b8a; cursor:pointer;">🔍 درس البحث عن نمط</button>
     </div>
 
-    <div id="name-modal">
-        <div class="modal-content">
-            <h3>أهلاً بكِ يا مبدعة! 🌟</h3>
-            <input type="text" id="student-name" style="width:90%; padding:10px; margin:15px 0; border-radius:10px;" placeholder="اكتبي اسمكِ الثلاثي">
-            <button class="btn-action" onclick="confirmStart()">دخول الدرس 🚀</button>
-        </div>
-    </div>
-
-    <div id="lesson-screen" class="screen">
-        <div id="student-tag" style="padding:10px; color:var(--primary-pink); font-weight:bold;"></div>
+    <div id="lesson-screen" class="screen" style="display: none; flex-direction: column; align-items: center; width: 100%;">
         <div class="reading-box" id="reading-text"></div>
         <div id="q-container" style="width:100%; display:flex; flex-direction:column; align-items:center;"></div>
         <div id="explanation-box"></div>
@@ -85,24 +71,21 @@
         document.getElementById('stars-display').innerText = stars + " ⭐";
         document.getElementById('done-display').innerText = completed;
 
-        function askName(id) { currentLesson = id; document.getElementById('name-modal').style.display = 'flex'; }
-
-        function confirmStart() {
-            let name = document.getElementById('student-name').value;
-            if(name.length < 3) return alert("الرجاء كتابة الاسم");
-            document.getElementById('name-modal').style.display = 'none';
-            document.getElementById('main-menu').classList.remove('active-screen');
-            document.getElementById('lesson-screen').classList.add('active-screen');
-            document.getElementById('student-tag').innerText = "المبدعة: " + name;
+        function startLesson(id) {
+            currentLesson = id;
+            document.getElementById('main-menu').style.display = 'none';
+            document.getElementById('lesson-screen').style.display = 'flex';
             loadLesson();
         }
 
         function loadLesson() {
             const rt = document.getElementById('reading-text');
             if(currentLesson === 'takhmeen') {
-                rt.innerHTML = `<b>📖 قصة سارة:</b> اشترت سارة كتابين بـ 45 ريالاً، الأول يزيد عن الثاني بـ 9 ريالات. ساعديها بالتخمين والتحقق.`;
+                rt.innerHTML = `<h3 style="color:var(--soft-purple); margin-top:0;">📖 قصة سارة والمكتبة:</h3> 
+                اشترت سارة كتابين بمبلغ <b>45 ريالاً</b>. إذا كان ثمن الكتاب الأول يزيد عن ثمن الكتاب الثاني بمقدار <b>9 ريالات</b>. قررت سارة استخدام استراتيجية <b>التخمين والتحقق</b> للوصول للحل الصحيح ومعرفة ثمن كل كتاب.`;
             } else {
-                rt.innerHTML = `<b>📖 قصة نورة:</b> قرأت نورة صفحات يومياً كالتالي: (2، 5، 9، 14). ساعديها في البحث عن نمط لمعرفة اليوم السادس.`;
+                rt.innerHTML = `<h3 style="color:var(--soft-purple); margin-top:0;">📖 قصة نورة والقراءة السريعة:</h3> 
+                تتدرب نورة على القراءة السريعة؛ فإذا قرأت في اليوم الأول <b>صفحتين</b>، وفي اليوم الثاني <b>5 صفحات</b>، وفي اليوم الثالث <b>9 صفحات</b>، وفي اليوم الرابع <b>14 صفحة</b>. إذا استمرت نورة في زيادة عدد الصفحات بنمط معين، فساعديها لمعرفة عدد الصفحات في اليوم السادس.`;
             }
             loadQuestion(1);
         }
@@ -114,22 +97,21 @@
             document.getElementById('btn-next').style.display = 'none';
 
             if(currentLesson === 'takhmeen') {
-                if(num === 1) renderQ("1️⃣ ما المعطيات في النص؟", "المجموع 45 والفرق 9", "ب", "المعطيات هي المعلومات الرقمية المعطاة للحل.");
-                else if(num === 2) renderQ("2️⃣ ما التخمين الصحيح للحل؟", "(27 ، 18)", "ج", "لأن 27+18=45 و 27-18=9.");
-                else if(num === 3) renderQ("3️⃣ كيف نتحقق من الحل؟", "بالجمع والطرح للتأكد", "أ", "التحقق يضمن أن تخميننا يطابق معطيات المسألة.");
+                if(num === 1) renderQ("1️⃣ ما المعطيات (الحقائق الرياضية) في النص؟", ["سارة تحب القراءة في الإجازة", "المجموع 45 والفرق بينهما 9 ريالات", "سعر الكتاب الأول 45 ريالاً", "المكتبة قريبة من منزل سارة"], 1, "المعطيات هي الأرقام التي سنبني عليها الحل، وهي هنا إجمالي المبلغ 45 والفرق 9.");
+                else if(num === 2) renderQ("2️⃣ ما التخمين الصحيح لثمن الكتابين (الأول، الثاني)؟", ["(25 ، 20) لأن المجموع 45", "(30 ، 15) لأن الفرق 15", "(27 ، 18) لأن مجموعهم 45 وفرقهم 9", "(28 ، 17) لأن الفرق بينهما 11"], 2, "الاختيار صحيح لأن 27 + 18 = 45 (المجموع) و 27 - 18 = 9 (الفرق).");
+                else if(num === 3) renderQ("3️⃣ كيف نتحقق من صحة الحل في هذه الاستراتيجية؟", ["نجمع ونطرح العددين للتأكد من المعطيات", "نسأل الصديقة عن رأيها", "نخمن أرقاماً جديدة عشوائية", "ننتظر تصحيح المعلمة"], 0, "التحقق يكون بجمع العددين (27+18=45) وطرحهما (27-18=9) لضمان مطابقة النص.");
             } else {
-                if(num === 1) renderQ("1️⃣ ما المعطيات في نص نورة؟", "عدد صفحات الأيام الأربعة الأولى", "ب", "المعطيات هي التسلسل (2، 5، 9، 14).");
-                else if(num === 2) renderQ("2️⃣ ما مقدار الزيادة في النمط؟", "زيادة متغيرة (+3، +4، +5...)", "ب", "نلاحظ أن مقدار الزيادة نفسه يزداد واحداً في كل خطوة.");
-                else if(num === 3) renderQ("3️⃣ كم صفحة ستقرأ في اليوم السادس؟", "27 صفحة", "ج", "بإكمال النمط: اليوم 5 هو 20، واليوم 6 هو 27.");
+                if(num === 1) renderQ("1️⃣ ما هي المعطيات (المعلومات) التي وردت في النص؟", ["نورة تحب قراءة القصص الخيالية", "عدد الصفحات التي قرأتها نورة في الأيام الأربعة الأولى", "اسم الكتاب الذي تقرأه نورة", "الوقت الذي استغرقته نورة في القراءة"], 1, "الفهم القرائي يبدأ بتحديد المعلومات الرقمية (2، 5، 9، 14) لنبني عليها الحل.");
+                else if(num === 2) renderQ("2️⃣ ما هو مقدار الزيادة في النمط بين الأيام؟", ["زيادة ثابتة بمقدار 3 صفحات", "زيادة متغيرة (+3 ثم +4 ثم +5...)", "نقص بمقدار صفحتين كل يوم", "ضرب عدد الصفحات في 2"], 1, "نلاحظ أن مقدار الزيادة نفسه يزداد واحداً في كل خطوة (من 2 لـ 5 زاد 3، ومن 5 لـ 9 زاد 4).");
+                else if(num === 3) renderQ("3️⃣ بناءً على النمط، كم صفحة ستكتمل قراءتها في اليوم السادس؟", ["20 صفحة", "25 صفحة", "27 صفحة", "30 صفحة"], 2, "النمط هو: اليوم الخامس (14+6=20)، واليوم السادس (20+7=27).");
             }
         }
 
-        function renderQ(title, correctTxt, correctLetter, exp) {
-            const letters = ['أ', 'ب', 'ج', 'د'];
+        function renderQ(title, options, correctIdx, exp) {
             let html = `<div class="q-card"><b>${title}</b>`;
-            letters.forEach(l => {
-                let isC = (l === correctLetter);
-                html += `<div class="option" onclick="check(this, ${isC}, '${exp}')">${isC ? correctTxt : 'خيار غير صحيح'} <div class="circle">${l}</div></div>`;
+            const letters = ['أ', 'ب', 'ج', 'د'];
+            options.forEach((opt, i) => {
+                html += `<div class="option" onclick="check(this, ${i === correctIdx}, '${exp}')"><span>${opt}</span> <div class="circle">${letters[i]}</div></div>`;
             });
             document.getElementById('q-container').innerHTML = html + `</div>`;
         }
@@ -140,7 +122,7 @@
                 stars += 3;
                 localStorage.setItem('stars', stars);
                 document.getElementById('stars-display').innerText = stars + " ⭐";
-                document.getElementById('explanation-box').innerHTML = "💡 <b>التغذية الراجعة:</b><br>" + exp;
+                document.getElementById('explanation-box').innerHTML = "💡 <b>لماذا هذه الإجابة؟</b><br>" + exp;
                 document.getElementById('explanation-box').style.display = 'block';
                 document.getElementById('btn-next').style.display = 'block';
                 document.querySelectorAll('.option').forEach(o => o.style.pointerEvents = 'none');
@@ -154,7 +136,7 @@
             if(currentQ < 3) loadQuestion(currentQ + 1);
             else {
                 completed++; localStorage.setItem('completed', completed);
-                alert("أحسنتِ! تم إنهاء الدرس بنجاح."); location.reload();
+                alert("مبارك يا مبدعة! تم إنهاء الدرس بنجاح."); location.reload();
             }
         }
     </script>
