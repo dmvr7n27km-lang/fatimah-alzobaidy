@@ -3,166 +3,131 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>إعلان مسابقة ملهمات الهندسة</title>
+    <title>مسابقة من ستربح الـ 150</title>
     <style>
         :root {
-            --primary-color: #4a148c; /* بنفسجي ملكي */
-            --secondary-color: #1976d2; /* أزرق رياضي */
-            --accent-color: #ffd600; /* ذهبي مشرق */
-            --text-dark: #2c3e50;
+            --win-green: #2e7d32; /* لون العملة */
+            --win-gold: #ffd700;
+            --win-blue: #1565c0;
         }
 
         body {
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f9;
+            font-family: 'Arial', sans-serif;
             margin: 0;
-            padding: 20px;
+            padding: 15px;
             display: flex;
             justify-content: center;
         }
 
-        .announcement-card {
+        .contest-poster {
             background: white;
             width: 100%;
-            max-width: 800px;
-            border-radius: 30px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            max-width: 550px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            border: 4px solid var(--win-green);
             overflow: hidden;
-            border: 8px solid white;
-            position: relative;
         }
 
-        .header-banner {
-            background: var(--primary-color);
+        .hero-section {
+            background: linear-gradient(45deg, var(--win-green), #66bb6a);
             color: white;
-            padding: 40px 20px;
+            padding: 30px 15px;
             text-align: center;
             position: relative;
         }
 
-        .header-banner h1 {
-            margin: 0;
+        .prize-circle {
+            width: 100px;
+            height: 100px;
+            background: var(--win-gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
             font-size: 2.2em;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-
-        .header-banner p {
-            font-size: 1.2em;
-            margin-top: 10px;
-            color: var(--accent-color);
             font-weight: bold;
-        }
-
-        .content-body {
-            padding: 40px;
-            color: var(--text-dark);
-            line-height: 1.8;
-        }
-
-        .section-title {
-            color: var(--secondary-color);
-            border-right: 5px solid var(--accent-color);
-            padding-right: 15px;
-            margin-top: 30px;
-            font-size: 1.4em;
-        }
-
-        .list-items {
-            list-style: none;
-            padding: 0;
-        }
-
-        .list-items li {
-            background: #f9f9f9;
-            margin: 10px 0;
-            padding: 15px;
-            border-radius: 10px;
-            border-right: 4px solid var(--secondary-color);
-        }
-
-        .footer-table {
-            width: 100%;
-            margin-top: 50px;
-            border-top: 2px dashed #eee;
-            padding-top: 20px;
-        }
-
-        .footer-table td {
-            vertical-align: top;
-            width: 50%;
-        }
-
-        .signature-box {
-            padding: 20px;
-        }
-
-        .name-label {
-            font-weight: bold;
-            color: var(--primary-color);
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        .name-value {
-            font-size: 1.1em;
             color: #333;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            border: 5px solid white;
         }
 
-        .math-icons {
-            position: absolute;
-            top: 10px;
-            right: 20px;
-            font-size: 3em;
-            opacity: 0.2;
-            color: white;
+        .hero-section h1 { margin: 5px 0; font-size: 1.8em; }
+        .hero-section p { margin: 0; font-weight: bold; opacity: 0.9; }
+
+        .main-content { padding: 25px; }
+
+        .info-card {
+            background: #f1f8e9;
+            border-right: 6px solid var(--win-green);
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
         }
+
+        .info-card h3 { color: var(--win-green); margin-top: 0; display: flex; align-items: center; gap: 8px; }
+
+        ul { padding-right: 20px; margin: 0; }
+        li { margin-bottom: 10px; color: #444; line-height: 1.6; }
+
+        .footer-signatures {
+            background: #eee;
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+            border-top: 2px solid #ddd;
+        }
+
+        .sig-group { text-align: center; width: 48%; }
+        .sig-label { font-weight: bold; color: var(--win-blue); display: block; margin-bottom: 8px; border-bottom: 1px solid #ccc; padding-bottom: 5px; }
+        .sig-name { font-size: 0.95em; color: #333; margin-bottom: 3px; }
+
+        .money-icons { font-size: 1.5em; margin-bottom: 10px; display: block; }
     </style>
 </head>
 <body>
 
-<div class="announcement-card">
-    <div class="header-banner">
-        <div class="math-icons">📐📏</div>
-        <h1>🌟 مسابقة ملهمات الهندسة 🌟</h1>
-        <p>فصل المساحة والحجم - الصف الثاني متوسط</p>
+<div class="contest-poster">
+    <div class="hero-section">
+        <div class="prize-circle">١٥٠</div>
+        <span class="money-icons">💸 📊 📐</span>
+        <h1>مسابقة "من ستربح الـ ١٥٠"</h1>
+        <p>فصل المساحة والحجم - ثاني متوسط</p>
     </div>
 
-    <div class="content-body">
-        <p style="text-align: center; font-size: 1.2em; font-weight: bold;">
-            تعلن أسرة الرياضيات عن بدء التحدي الهندسي الأكبر لاكتشاف مبدعات الحساب والقياس!
-        </p>
+    <div class="main-content">
+        <div class="info-card">
+            <h3>🎯 أهداف المسابقة:</h3>
+            <ul>
+                <li>تنمية مهارات التفكير العليا في مادة الرياضيات.</li>
+                <li>توظيف الفهم القرائي لتحليل المسائل الهندسية.</li>
+                <li>بث روح التنافس العلمي الشريف بين الطالبات.</li>
+                <li>تحفيز الطالبات على إتقان قوانين المساحة والحجم.</li>
+            </ul>
+        </div>
 
-        <h3 class="section-title">🎯 الهدف من المسابقة:</h3>
-        <ul class="list-items">
-            <li>تعزيز مهارات الفهم القرائي للمسائل الهندسية وتحليل معطياتها بدقة.</li>
-            <li>ربط المفاهيم الرياضية (المساحة والحجم) بتطبيقات واقعية وممتعة.</li>
-            <li>رفع روح التنافس الشريف وزيادة الثقة بالنفس لدى الطالبات.</li>
-        </ul>
+        <div class="info-card" style="background: #e3f2fd; border-right-color: var(--win-blue);">
+            <h3 style="color: var(--win-blue);">📝 شروط المسابقة:</h3>
+            <ul>
+                <li>المشاركة متاحة لجميع طالبات الصف الثاني متوسط.</li>
+                <li>الاعتماد على النفس في حل التحديات الرياضية.</li>
+                <li>الدقة في الحسابات الهندسية ووضوح خطوات الحل.</li>
+            </ul>
+        </div>
+    </div>
 
-        <h3 class="section-title">📝 شروط المسابقة:</h3>
-        <ul class="list-items">
-            <li>القراءة بتركيز: فهم نص المسألة وتحديد المطلوب قبل البدء.</li>
-            <li>الدقة والسرعة: إنجاز المهام في الوقت المحدد وبخطوات صحيحة.</li>
-            <li>الاستنتاج السليم: اختيار القوانين المناسبة لكل شكل هندسي.</li>
-        </ul>
-
-        <table class="footer-table">
-            <tr>
-                <td style="text-align: right;">
-                    <div class="signature-box">
-                        <span class="name-label">معلمتا مادة الرياضيات:</span>
-                        <div class="name-value">أ/ فاطمة حسن الزبيدي</div>
-                        <div class="name-value">أ/ صالحة عيضة الرحماني</div>
-                    </div>
-                </td>
-                <td style="text-align: left;">
-                    <div class="signature-box">
-                        <span class="name-label">مديرة المدرسة:</span>
-                        <div class="name-value">أ/ فادية سامي ديوان</div>
-                    </div>
-                </td>
-            </tr>
-        </table>
+    <div class="footer-signatures">
+        <div class="sig-group">
+            <span class="sig-label">معلمتا مادة الرياضيات:</span>
+            <div class="sig-name">أ/ فاطمة حسن الزبيدي</div>
+            <div class="sig-name">أ/ صالحة عيضة الرحماني</div>
+        </div>
+        <div class="sig-group">
+            <span class="sig-label">مديرة المدرسة:</span>
+            <div class="sig-name">أ/ فادية سامي ديوان</div>
+        </div>
     </div>
 </div>
 
