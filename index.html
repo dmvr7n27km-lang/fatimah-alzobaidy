@@ -19,62 +19,59 @@
             display: flex; flex-direction: column; align-items: center;
         }
 
-        /* الهيدر الرسمي */
         .official-header {
-            width: 100%; padding: 20px 30px; background: white;
-            text-align: right; color: #555; font-size: 14px;
-            font-weight: bold; line-height: 1.6; border-bottom: 2px solid var(--pink-border);
+            width: 100%; padding: 15px 25px; background: white;
+            text-align: right; color: #555; font-size: 13px;
+            font-weight: bold; line-height: 1.5; border-bottom: 2px solid var(--pink-border);
         }
 
-        /* إطار بيانات المبدعة */
         .teacher-info-card {
-            width: 90%; background: white; margin: 20px 0; padding: 20px;
+            width: 90%; background: white; margin: 15px 0; padding: 15px;
             border-radius: 20px; border: 2px solid var(--pink-border); text-align: center;
         }
 
-        .teacher-info-card h1 { color: var(--accent-pink); font-size: 24px; margin: 0 0 15px 0; }
-        .details-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; color: var(--mauve); font-weight: bold; font-size: 15px; }
+        .teacher-info-card h1 { color: var(--accent-pink); font-size: 22px; margin: 0 0 10px 0; }
+        .details-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; color: var(--mauve); font-weight: bold; font-size: 14px; }
 
-        /* شريط الإحصائيات - تم إضافة النجمة */
         .stats-bar { 
             display: flex; width: 90%; background: white; border-radius: 15px; 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 25px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 20px; 
         }
-        .stat-box { flex: 1; padding: 15px; text-align: center; border-left: 1px solid #f0f0f0; }
+        .stat-box { flex: 1; padding: 12px; text-align: center; border-left: 1px solid #f0f0f0; }
         .stat-box:last-child { border-left: none; }
-        .stat-box .num { display: block; font-size: 26px; font-weight: bold; color: var(--mauve); }
+        .stat-box .num { display: block; font-size: 24px; font-weight: bold; color: var(--mauve); }
         .stat-box .num.stars { color: #fb8c00; }
-        .stat-box .text { font-size: 13px; color: #888; font-weight: bold; }
+        .stat-box .text { font-size: 12px; color: #888; font-weight: bold; }
 
-        /* قائمة الدروس - الأيقونة يمين */
         .lesson-item { 
-            width: 90%; background: white; margin-bottom: 15px; padding: 15px;
+            width: 90%; background: white; margin-bottom: 12px; padding: 12px;
             border-radius: 20px; display: flex; align-items: center;
             border-right: 8px solid var(--mauve); gap: 15px; cursor: pointer;
+            box-sizing: border-box;
         }
-        .icon-box { width: 55px; height: 55px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 28px; }
+        .icon-box { width: 50px; height: 50px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0; }
         .lesson-text { text-align: right; }
 
-        /* شاشة الأسئلة - أ ب ج د يمين */
         .screen { display: none; width: 100%; flex-direction: column; align-items: center; }
         .active-screen { display: flex; }
 
         .reading-area { 
-            background: white; width: 88%; padding: 25px; border-radius: 20px; 
-            margin: 20px 0; border-right: 10px solid var(--accent-pink); 
-            line-height: 1.8; font-size: 18px; text-align: justify;
+            background: white; width: 88%; padding: 20px; border-radius: 20px; 
+            margin: 15px 0; border-right: 10px solid var(--accent-pink); 
+            line-height: 1.7; font-size: 17px; text-align: justify;
         }
 
         .option { 
-            background: white; width: 90%; padding: 18px; margin: 8px 0; 
+            background: white; width: 90%; padding: 15px; margin: 6px 0; 
             border-radius: 15px; border: 2px solid #f0f0f0; 
-            display: flex; align-items: center; gap: 15px; font-weight: bold; cursor: pointer;
+            display: flex; align-items: center; gap: 12px; font-weight: bold; cursor: pointer;
+            box-sizing: border-box; text-align: right;
         }
 
         .char-circle {
-            width: 32px; height: 32px; border: 2px solid #ddd; 
+            width: 30px; height: 30px; border: 2px solid #ddd; 
             border-radius: 50%; display: flex; align-items: center; 
-            justify-content: center; font-size: 14px; color: var(--mauve);
+            justify-content: center; font-size: 13px; color: var(--mauve);
             flex-shrink: 0;
         }
 
@@ -83,7 +80,21 @@
 
         .feedback-box { 
             display: none; width: 88%; background: #e3f2fd; border: 1px solid #2196f3; 
-            padding: 15px; border-radius: 12px; margin-top: 15px; color: #0d47a1;
+            padding: 12px; border-radius: 12px; margin-top: 10px; color: #0d47a1; font-size: 14px;
+        }
+
+        /* تنسيق شاشة التعزيز والنتائج */
+        .result-card {
+            background: white; width: 85%; padding: 30px; border-radius: 25px;
+            text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.1); margin-top: 50px;
+        }
+        .result-icon { font-size: 60px; margin-bottom: 10px; }
+        .result-title { font-size: 24px; font-weight: bold; color: #333; margin-bottom: 10px; }
+        .result-score { font-size: 18px; color: #666; margin-bottom: 20px; }
+        .back-btn {
+            background: linear-gradient(to left, #26a69a, #4db6ac);
+            color: white; padding: 15px 40px; border-radius: 15px;
+            border: none; font-weight: bold; cursor: pointer; font-size: 16px;
         }
 
         .next-btn { 
@@ -97,10 +108,7 @@
 
     <div id="main-menu" class="screen active-screen">
         <div class="official-header">
-            المملكة العربية السعودية<br>
-            وزارة التعليم<br>
-            إدارة التعليم بمنطقة مكة المكرمة<br>
-            المدرسة: المتوسطة الأولى بالليث
+            المملكة العربية السعودية | وزارة التعليم | المتوسطة الأولى بالليث
         </div>
 
         <div class="teacher-info-card">
@@ -113,25 +121,16 @@
         </div>
 
         <div class="stats-bar">
-            <div class="stat-box">
-                <span class="num">2</span>
-                <span class="text">دروس متاحة</span>
-            </div>
-            <div class="stat-box">
-                <span id="done-count" class="num">0</span>
-                <span class="text">تم إنجازها</span>
-            </div>
-            <div class="stat-box">
-                <span id="stars-count" class="num stars">0</span>
-                <span class="text">النجوم ⭐</span>
-            </div>
+            <div class="stat-box"><span class="num">2</span><span class="text">دروس متاحة</span></div>
+            <div class="stat-box"><span id="done-count" class="num">0</span><span class="text">تم إنجازها</span></div>
+            <div class="stat-box"><span id="stars-count" class="num stars">0</span><span class="text">النجوم ⭐</span></div>
         </div>
 
         <div class="lesson-item" onclick="startLesson('takhmeen')">
             <div class="icon-box" style="background: #e8f5e9;">🎯</div>
             <div class="lesson-text">
                 <span class="title">استراتيجية التخمين والتحقق</span>
-                <span style="font-size:12px; color:#999;">ابدئي الآن ⬅️</span>
+                <span style="font-size:11px; color:#999;">3 أسئلة | ابدئي الآن ⬅️</span>
             </div>
         </div>
 
@@ -139,7 +138,7 @@
             <div class="icon-box" style="background: #e3f2fd;">🔍</div>
             <div class="lesson-text">
                 <span class="title">استراتيجية البحث عن نمط</span>
-                <span style="font-size:12px; color:#999;">ابدئي الآن ⬅️</span>
+                <span style="font-size:11px; color:#999;">3 أسئلة | ابدئي الآن ⬅️</span>
             </div>
         </div>
     </div>
@@ -151,8 +150,18 @@
         <button id="next-btn" class="next-btn" onclick="nextQuestion()">السؤال التالي ⬅️</button>
     </div>
 
+    <div id="result-screen" class="screen">
+        <div class="result-card">
+            <div class="result-icon" id="res-icon">💪</div>
+            <div class="result-title" id="res-msg">أحسنتِ المحاولة!</div>
+            <div class="result-score" id="res-score">حصلتِ على 0 من 3</div>
+            <div style="margin-bottom: 25px; font-size: 25px;">⭐ ⭐ ⭐</div>
+            <button class="back-btn" onclick="backToHome()">العودة للدروس</button>
+        </div>
+    </div>
+
     <script>
-        let stars = 0; let done = 0; let currentL = ''; let currentQ = 1;
+        let stars = 0; let done = 0; let currentL = ''; let currentQ = 1; let correctAnswersCount = 0;
         const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 
         function playSnd(win) {
@@ -164,8 +173,9 @@
         }
 
         function startLesson(id) {
-            currentL = id;
+            currentL = id; correctAnswersCount = 0;
             document.getElementById('main-menu').classList.remove('active-screen');
+            document.getElementById('result-screen').classList.remove('active-screen');
             document.getElementById('lesson-screen').classList.add('active-screen');
             loadLessonContent();
         }
@@ -173,9 +183,9 @@
         function loadLessonContent() {
             const area = document.getElementById('reading-content');
             if(currentL === 'takhmeen') {
-                area.innerHTML = `<b>📖 قصة سارة والمكتبة:</b> اشترت سارة كتابين بمبلغ <b>45 ريالاً</b>. إذا كان ثمن الكتاب الأول يزيد عن ثمن الكتاب الثاني بمقدار <b>9 ريالات</b>. ساعدي سارة في الوصول للحل الصحيح باستخدام استراتيجية <b>التخمين والتحقق</b>.`;
+                area.innerHTML = `<b>📖 قصة سارة والمكتبة:</b> اشترت سارة كتابين بمبلغ <b>45 ريالاً</b>. إذا كان ثمن الكتاب الأول يزيد عن ثمن الثاني بمقدار <b>9 ريالات</b>. ساعديها بالتخمين والتحقق.`;
             } else {
-                area.innerHTML = `<b>📖 قصة نورة والقراءة:</b> قرأت نورة في اليوم الأول <b>صفحتين</b>، وفي اليوم الثاني <b>5</b>، وفي الثالث <b>9</b>، وفي الرابع <b>14</b>. ساعديها في <b>البحث عن نمط</b> لمعرفة عدد صفحات اليوم السادس.`;
+                area.innerHTML = `<b>📖 قصة نورة والقراءة:</b> قرأت نورة في اليوم الأول <b>2 صفحة</b>، وفي الثاني <b>5</b>، وفي الثالث <b>9</b>، وفي الرابع <b>14</b>. ساعديها في البحث عن نمط لليوم السادس.`;
             }
             loadQuestion(1);
         }
@@ -185,18 +195,18 @@
             document.getElementById('next-btn').style.display = 'none';
             document.getElementById('feedback-box').style.display = 'none';
             if(currentL === 'takhmeen') {
-                if(num === 1) renderQ("1️⃣ ما المعطيات الواردة في النص؟", ["حب سارة للمكتبات", "مجموع الثمن 45 والفرق 9", "سعر الكتاب 45", "موقع المكتبة"], 1, "💡 ممتازة! هذه هي الأرقام التي سنستخدمها.");
+                if(num === 1) renderQ("1️⃣ ما المعطيات الواردة في النص؟", ["حب القراءة", "المجموع 45 والفرق 9", "سعر الكتاب الواحد 45", "موقع المكتبة"], 1, "💡 ممتازة! هذه هي الأرقام التي سنستخدمها.");
                 else if(num === 2) renderQ("2️⃣ ما التخمين الصحيح؟", ["(20 ، 25)", "(15 ، 30)", "(27 ، 18)", "(28 ، 17)"], 2, "💡 رائعة! 27+18=45 والفرق بينهما 9.");
                 else if(num === 3) renderQ("3️⃣ كيف نتحقق من الحل؟", ["بالجمع والطرح", "بالسؤال", "بالتخمين مجدداً", "بالانتظار"], 0, "💡 أحسنتِ! التحقق هو الخطوة الأخيرة.");
             } else {
                 if(num === 1) renderQ("1️⃣ ما المعطيات الأساسية؟", ["الاسم", "عدد الصفحات اليومية", "الوقت", "المكان"], 1, "💡 صحيح! النمط يظهر من عدد الصفحات.");
                 else if(num === 2) renderQ("2️⃣ ما مقدار الزيادة؟", ["ثابتة", "متغيرة (+3، +4...)", "نقصان", "ضرب"], 1, "💡 ذكية! تزيد نورة صفحة إضافية كل يوم.");
-                else if(num === 3) renderQ("3️⃣ عدد صفحات اليوم 6؟", ["20 صفحة", "25 صفحة", "27 صفحة", "30 صفحة"], 2, "💡 مبدعة! اليوم 5 (20) واليوم 6 (27).");
+                else if(num === 3) renderQ("3️⃣ عدد صفحات اليوم السادس؟", ["20 صفحة", "25 صفحة", "27 صفحة", "30 صفحة"], 2, "💡 مبدعة! اليوم 5 (20) واليوم 6 (27).");
             }
         }
 
         function renderQ(title, opts, correctIdx, feedback) {
-            let html = `<p style="font-weight:bold; color:var(--mauve); text-align:right; font-size:18px; width:90%;">${title}</p>`;
+            let html = `<p style="font-weight:bold; color:var(--mauve); text-align:right; font-size:17px; width:90%;">${title}</p>`;
             opts.forEach((opt, i) => {
                 html += `<div class="option" onclick="checkAnswer(this, ${i === correctIdx}, '${feedback}')">
                             <div class="char-circle">${['أ','ب','ج','د'][i]}</div>
@@ -209,7 +219,8 @@
         function checkAnswer(el, isCorrect, feedbackText) {
             if(isCorrect) {
                 playSnd(true); el.classList.add('correct');
-                stars += 3; document.getElementById('stars-count').innerText = stars;
+                stars += 3; correctAnswersCount++;
+                document.getElementById('stars-count').innerText = stars;
                 const fb = document.getElementById('feedback-box');
                 fb.innerHTML = feedbackText; fb.style.display = 'block';
                 document.getElementById('next-btn').style.display = 'block';
@@ -222,12 +233,27 @@
 
         function nextQuestion() {
             if(currentQ < 3) loadQuestion(currentQ + 1);
-            else {
-                done++; document.getElementById('done-count').innerText = done;
-                alert("أحسنتِ يا مبدعة! 🌸");
-                document.getElementById('lesson-screen').classList.remove('active-screen');
-                document.getElementById('main-menu').classList.add('active-screen');
+            else showResults();
+        }
+
+        function showResults() {
+            done++; document.getElementById('done-count').innerText = done;
+            document.getElementById('lesson-screen').classList.remove('active-screen');
+            document.getElementById('result-screen').classList.add('active-screen');
+            
+            document.getElementById('res-score').innerText = `حصلتِ على ${correctAnswersCount} من 3`;
+            if(correctAnswersCount === 3) {
+                document.getElementById('res-icon').innerText = "🏆";
+                document.getElementById('res-msg').innerText = "ممتازة يا بطلة!";
+            } else {
+                document.getElementById('res-icon').innerText = "💪";
+                document.getElementById('res-msg').innerText = "أحسنتِ المحاولة!";
             }
+        }
+
+        function backToHome() {
+            document.getElementById('result-screen').classList.remove('active-screen');
+            document.getElementById('main-menu').classList.add('active-screen');
         }
     </script>
 </body>
