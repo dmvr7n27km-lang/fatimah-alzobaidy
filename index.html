@@ -19,11 +19,14 @@
             display: flex; flex-direction: column; align-items: center;
         }
 
-        /* الهيدر الرسمي بدون الاسم الأحمر */
+        /* تحديد الوردي النحيف للهيدر العلوي */
         .official-header {
-            width: 100%; padding: 20px 40px; background: white;
+            width: 95%; padding: 15px 25px; background: white;
             text-align: right; color: #111; font-size: 14px; 
-            font-weight: bold; line-height: 1.6; border-bottom: 2px solid var(--pink-border);
+            font-weight: bold; line-height: 1.6; 
+            border: 2px solid var(--pink-border); /* الإطار الوردي المطلوب */
+            border-radius: 15px;
+            margin-top: 10px;
             box-sizing: border-box;
         }
 
@@ -32,8 +35,8 @@
             border-radius: 25px; border: 2px solid var(--pink-border); text-align: center;
         }
 
-        .teacher-info-card h1 { color: var(--accent-pink); font-size: 26px; margin: 0 0 15px 0; }
-        .details-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; color: var(--mauve); font-weight: bold; font-size: 16px; }
+        .teacher-info-card h1 { color: var(--accent-pink); font-size: 28px; margin: 0 0 15px 0; }
+        .details-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; color: var(--mauve); font-weight: bold; font-size: 18px; }
 
         .stats-bar { 
             display: flex; width: 90%; background: white; border-radius: 20px; 
@@ -41,45 +44,44 @@
         }
         .stat-box { flex: 1; padding: 15px; text-align: center; border-left: 1px solid #f0f0f0; }
         .stat-box:last-child { border-left: none; }
-        .stat-box .num { display: block; font-size: 28px; font-weight: bold; color: var(--mauve); }
-        .stat-box .text { font-size: 14px; color: #555; font-weight: bold; }
+        .stat-box .num { display: block; font-size: 30px; font-weight: bold; color: var(--mauve); }
+        .stat-box .text { font-size: 15px; color: #555; font-weight: bold; }
 
         .select-lesson-title {
             width: 90%; text-align: right; color: var(--mauve);
-            font-size: 18px; font-weight: bold; margin: 15px 0;
+            font-size: 20px; font-weight: bold; margin: 15px 0;
             padding-right: 15px; border-right: 5px solid var(--accent-pink);
         }
 
-        /* تعديل إطار الدرس (تحديد موف) */
         .lesson-item { 
-            width: 90%; background: white; margin-bottom: 12px; padding: 12px 18px;
+            width: 90%; background: white; margin-bottom: 15px; padding: 15px 20px;
             border-radius: 20px; display: flex; align-items: center; justify-content: space-between;
-            border: 2px solid var(--mauve); /* التحديد الموف المطلوب */
-            box-sizing: border-box; transition: 0.3s;
-            cursor: pointer;
+            border: 2px solid var(--mauve); /* تحديد موف للدروس */
+            box-sizing: border-box; transition: 0.3s; cursor: pointer;
         }
-        .lesson-item:hover { background: #f3e5f5; transform: scale(1.01); }
+        .lesson-item:hover { background: #fdfbff; transform: scale(1.02); }
 
-        /* إعادة تصغير الأيقونة */
         .icon-circle {
-            width: 50px; height: 50px; border-radius: 50%;
+            width: 55px; height: 55px; border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
-            font-size: 24px; border: 2px solid var(--pink-border);
+            font-size: 26px; border: 2px solid var(--pink-border);
             background: #fff; flex-shrink: 0;
         }
         
-        .lesson-text { font-size: 18px; color: #333; font-weight: bold; text-align: right; flex-grow: 1; padding-right: 15px; }
+        .lesson-text { font-size: 20px; color: #333; font-weight: bold; text-align: right; flex-grow: 1; padding-right: 15px; }
 
         .screen { display: none; width: 100%; flex-direction: column; align-items: center; }
         .active-screen { display: flex; }
 
-        /* باقي التنسيقات البرمجية */
-        .reading-area { background: white; width: 90%; padding: 30px; border-radius: 25px; margin: 20px 0; border-right: 12px solid var(--accent-pink); line-height: 1.8; font-size: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); box-sizing: border-box; }
-        .option { background: white; width: 90%; padding: 18px; margin: 8px 0; border-radius: 18px; border: 2px solid #eee; display: flex; align-items: center; gap: 15px; font-weight: bold; cursor: pointer; }
-        .char-circle { width: 35px; height: 35px; border: 2px solid #ccc; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--mauve); }
-        .correct { background: #e8f5e9 !important; border-color: #4caf50 !important; color: #2e7d32; }
-        .wrong { background: #ffebee !important; border-color: #f44336 !important; color: #c62828; }
-        .next-btn { background: var(--accent-pink); color: white; padding: 18px 70px; border-radius: 40px; border: none; font-weight: bold; margin: 30px 0; cursor: pointer; display: none; font-size: 18px; }
+        .reading-area { background: white; width: 90%; padding: 35px; border-radius: 25px; margin: 20px 0; border-right: 12px solid var(--accent-pink); line-height: 1.8; font-size: 22px; text-align: justify; box-shadow: 0 4px 12px rgba(0,0,0,0.05); box-sizing: border-box; }
+        
+        .option { background: white; width: 90%; padding: 20px; margin: 10px 0; border-radius: 20px; border: 2px solid #eee; display: flex; align-items: center; gap: 15px; font-weight: bold; font-size: 19px; cursor: pointer; transition: 0.2s; }
+        .char-circle { width: 40px; height: 40px; border: 2px solid var(--mauve); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--mauve); font-size: 18px; flex-shrink: 0; }
+        
+        .correct { background: #e8f5e9 !important; border-color: #4caf50 !important; }
+        .wrong { background: #ffebee !important; border-color: #f44336 !important; }
+        
+        .next-btn { background: var(--accent-pink); color: white; padding: 20px 80px; border-radius: 50px; border: none; font-weight: bold; margin: 30px 0; cursor: pointer; display: none; font-size: 20px; }
     </style>
 </head>
 <body>
@@ -113,22 +115,18 @@
             <div class="lesson-text">١. استراتيجية التخمين والتحقق</div>
             <div class="icon-circle">🎯</div>
         </div>
-
         <div class="lesson-item" onclick="startLesson('namat')">
             <div class="lesson-text">٢. استراتيجية البحث عن نمط</div>
             <div class="icon-circle">🔍</div>
         </div>
-
         <div class="lesson-item" onclick="startLesson('aksian')">
             <div class="lesson-text">٣. استراتيجية الحل عكسياً</div>
             <div class="icon-circle">🔄</div>
         </div>
-
         <div class="lesson-item" onclick="startLesson('abast')">
             <div class="lesson-text">٤. استراتيجية حل مسألة أبسط</div>
             <div class="icon-circle">🧩</div>
         </div>
-
         <div class="lesson-item" onclick="startLesson('jadwal')">
             <div class="lesson-text">٥. استراتيجية إنشاء جدول</div>
             <div class="icon-circle">📊</div>
@@ -143,39 +141,59 @@
 
     <script>
         let stars = 0; let done = 0; let currentL = ''; let currentQ = 1;
+        
         function startLesson(id) {
             currentL = id; currentQ = 1;
             document.getElementById('main-menu').classList.remove('active-screen');
             document.getElementById('lesson-screen').classList.add('active-screen');
             loadLesson();
         }
+
         function loadLesson() {
             const area = document.getElementById('reading-content');
-            if(currentL === 'takhmeen') area.innerHTML = "📖 <b>التخمين والتحقق:</b> اشترت سارة كتابين بمبلغ ٤٥ ريالاً، أحدهما يزيد عن الآخر بـ ٩ ريالات. فما ثمنهما؟";
-            else if(currentL === 'namat') area.innerHTML = "📖 <b>البحث عن نمط:</b> تتدرب نورة وقرأت (٢، ٥، ٩، ١٤) صفحة، كم تقرأ في اليوم السادس؟";
-            else area.innerHTML = "📖 استراتيجية ممتعة، لنبدأ التحدي!";
+            const data = {
+                takhmeen: "📖 <b>التخمين والتحقق:</b> اشترت سارة كتابين بمبلغ ٤٥ ريالاً، أحدهما يزيد عن الآخر بـ ٩ ريالات. فما ثمنهما؟",
+                namat: "📖 <b>البحث عن نمط:</b> تتدرب نورة وقرأت (٢، ٥، ٩، ١٤) صفحة، كم تقرأ في اليوم السادس؟",
+                aksian: "📖 <b>الحل عكسياً:</b> عدد ضُرب في ٣ ثم أُضيف إليه ٥ فأصبح ٢٦. ما هو العدد؟",
+                abast: "📖 <b>مسألة أبسط:</b> ما هو مجموع الأعداد من ١ إلى ١٠٠؟",
+                jadwal: "📖 <b>إنشاء جدول:</b> يوفر خالد مبالغ متزايدة، كم سيجمع في ٥ أيام؟"
+            };
+            area.innerHTML = data[currentL] || "استراتيجية ممتعة!";
             showQuestion();
         }
+
         function showQuestion() {
             document.getElementById('next-btn').style.display = 'none';
             const area = document.getElementById('options-area');
-            let html = `<p style="font-weight:bold; color:var(--mauve); width:90%; margin:20px 0; font-size:20px;">س${currentQ}: ما هي أول خطوة للحل؟</p>`;
-            let opts = ["فهم المسألة وتحديد المعطيات", "التخمين العشوائي", "البدء بالجمع فوراً"];
-            opts.forEach((o, i) => {
-                html += `<div class="option" onclick="checkAnswer(this, ${i === 0})">
-                            <div class="char-circle">${['أ','ب','ج'][i]}</div>
+            let qData = getQuestionData(currentL, currentQ);
+            
+            let html = `<p style="font-weight:bold; color:var(--mauve); width:90%; margin:20px 0; font-size:22px;">س${currentQ}: ${qData.q}</p>`;
+            qData.opts.forEach((o, i) => {
+                html += `<div class="option" onclick="checkAnswer(this, ${i === qData.cor})">
+                            <div class="char-circle">${['أ','ب','ج','د'][i]}</div>
                             <span>${o}</span>
                          </div>`;
             });
             area.innerHTML = html;
         }
+
+        function getQuestionData(l, q) {
+            // استرجاع البيانات الكاملة مع الخيارات الأربعة (أ، ب، ج، د)
+            if(l === 'takhmeen') {
+                return q === 1 ? {q: "ما هي المعطيات الأساسية؟", opts: ["المجموع ٤٥ والفرق ٩", "اسم سارة", "نوع الكتب", "مكان الشراء"], cor: 0} : {q: "ما هو التخمين الصحيح؟", opts: ["٢٠ و ٢٥", "٢٧ و ١٨", "٣٠ و ١٥", "٤٠ و ٥"], cor: 1};
+            }
+            return {q: "ما هي أول خطوة صحيحة للحل؟", opts: ["الفهم (المعطيات)", "التخمين", "الحل مباشرة", "التحقق"], cor: 0};
+        }
+
         function checkAnswer(el, isCorrect) {
             if(isCorrect) {
                 el.classList.add('correct'); stars += 3;
                 document.getElementById('stars-count').innerText = stars;
                 document.getElementById('next-btn').style.display = 'block';
+                document.querySelectorAll('.option').forEach(o => o.style.pointerEvents = 'none');
             } else { el.classList.add('wrong'); }
         }
+
         function nextQuestion() {
             if(currentQ < 2) { currentQ++; showQuestion(); }
             else { 
