@@ -19,10 +19,17 @@
             display: flex; flex-direction: column; align-items: center;
         }
 
+        /* تصغير خط الهيدر العلوي */
         .official-header {
-            width: 100%; padding: 15px 25px; background: white;
-            text-align: right; color: #555; font-size: 13px;
-            font-weight: bold; line-height: 1.5; border-bottom: 2px solid var(--pink-border);
+            width: 100%; 
+            padding: 10px 25px; 
+            background: white;
+            text-align: right; 
+            color: #777; 
+            font-size: 11px; /* خط أصغر وأنعم */
+            font-weight: normal; 
+            line-height: 1.4; 
+            border-bottom: 1px solid var(--pink-border);
         }
 
         .teacher-info-card {
@@ -40,67 +47,55 @@
         .stat-box { flex: 1; padding: 12px; text-align: center; border-left: 1px solid #f0f0f0; }
         .stat-box:last-child { border-left: none; }
         .stat-box .num { display: block; font-size: 24px; font-weight: bold; color: var(--mauve); }
-        .stat-box .num.stars { color: #fb8c00; }
         .stat-box .text { font-size: 12px; color: #888; font-weight: bold; }
 
         .lesson-item { 
-            width: 90%; background: white; margin-bottom: 12px; padding: 12px;
+            width: 90%; background: white; margin-bottom: 12px; padding: 15px;
             border-radius: 20px; display: flex; align-items: center;
             border-right: 8px solid var(--mauve); gap: 15px; cursor: pointer;
-            box-sizing: border-box;
         }
-        .icon-box { width: 50px; height: 50px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0; }
-        .lesson-text { text-align: right; }
-
+        .icon-box { width: 50px; height: 50px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; }
+        
         .screen { display: none; width: 100%; flex-direction: column; align-items: center; }
         .active-screen { display: flex; }
 
         .reading-area { 
             background: white; width: 88%; padding: 20px; border-radius: 20px; 
             margin: 15px 0; border-right: 10px solid var(--accent-pink); 
-            line-height: 1.7; font-size: 17px; text-align: justify;
+            line-height: 1.7; font-size: 17px; text-align: right;
         }
 
         .option { 
             background: white; width: 90%; padding: 15px; margin: 6px 0; 
             border-radius: 15px; border: 2px solid #f0f0f0; 
             display: flex; align-items: center; gap: 12px; font-weight: bold; cursor: pointer;
-            box-sizing: border-box; text-align: right;
+            transition: 0.2s;
         }
 
         .char-circle {
-            width: 30px; height: 30px; border: 2px solid #ddd; 
+            width: 32px; height: 32px; border: 2px solid #ddd; 
             border-radius: 50%; display: flex; align-items: center; 
-            justify-content: center; font-size: 13px; color: var(--mauve);
+            justify-content: center; font-size: 14px; color: var(--mauve);
             flex-shrink: 0;
         }
 
         .correct { background: #e8f5e9 !important; border-color: #4caf50 !important; color: #2e7d32; }
         .wrong { background: #ffebee !important; border-color: #f44336 !important; color: #c62828; }
 
-        .feedback-box { 
-            display: none; width: 88%; background: #e3f2fd; border: 1px solid #2196f3; 
-            padding: 12px; border-radius: 12px; margin-top: 10px; color: #0d47a1; font-size: 14px;
-        }
-
-        /* تنسيق شاشة التعزيز والنتائج */
-        .result-card {
-            background: white; width: 85%; padding: 30px; border-radius: 25px;
-            text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.1); margin-top: 50px;
-        }
-        .result-icon { font-size: 60px; margin-bottom: 10px; }
-        .result-title { font-size: 24px; font-weight: bold; color: #333; margin-bottom: 10px; }
-        .result-score { font-size: 18px; color: #666; margin-bottom: 20px; }
-        .back-btn {
-            background: linear-gradient(to left, #26a69a, #4db6ac);
-            color: white; padding: 15px 40px; border-radius: 15px;
-            border: none; font-weight: bold; cursor: pointer; font-size: 16px;
-        }
-
         .next-btn { 
             background: var(--accent-pink); color: white; padding: 15px 60px; 
             border-radius: 35px; border: none; font-weight: bold; margin-top: 20px; 
             cursor: pointer; display: none; margin-bottom: 40px;
+        }
+
+        .result-card {
+            background: white; width: 85%; padding: 30px; border-radius: 25px;
+            text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.1); margin-top: 50px;
+        }
+        .back-btn {
+            background: linear-gradient(to left, #26a69a, #4db6ac);
+            color: white; padding: 12px 35px; border-radius: 12px;
+            border: none; font-weight: bold; cursor: pointer; margin-top: 15px;
         }
     </style>
 </head>
@@ -108,9 +103,12 @@
 
     <div id="main-menu" class="screen active-screen">
         <div class="official-header">
-            المملكة العربية السعودية | وزارة التعليم | المتوسطة الأولى بالليث
+            المملكة العربية السعودية<br>
+            وزارة التعليم<br>
+            إدارة التعليم بمنطقة مكة المكرمة<br>
+            المتوسطة الأولى بالليث
         </div>
-
+        
         <div class="teacher-info-card">
             <h1>🌸 مبدعة الفهم الرياضي 🌸</h1>
             <div class="details-grid">
@@ -123,137 +121,122 @@
         <div class="stats-bar">
             <div class="stat-box"><span class="num">2</span><span class="text">دروس متاحة</span></div>
             <div class="stat-box"><span id="done-count" class="num">0</span><span class="text">تم إنجازها</span></div>
-            <div class="stat-box"><span id="stars-count" class="num stars">0</span><span class="text">النجوم ⭐</span></div>
+            <div class="stat-box"><span id="stars-count" class="num" style="color:#fb8c00;">0</span><span class="text">النجوم ⭐</span></div>
         </div>
 
         <div class="lesson-item" onclick="startLesson('takhmeen')">
             <div class="icon-box" style="background: #e8f5e9;">🎯</div>
-            <div class="lesson-text">
-                <span class="title">استراتيجية التخمين والتحقق</span>
-                <span style="font-size:11px; color:#999;">3 أسئلة | ابدئي الآن ⬅️</span>
-            </div>
+            <div class="lesson-text"><b>استراتيجية التخمين والتحقق</b></div>
         </div>
 
         <div class="lesson-item" onclick="startLesson('namat')">
             <div class="icon-box" style="background: #e3f2fd;">🔍</div>
-            <div class="lesson-text">
-                <span class="title">استراتيجية البحث عن نمط</span>
-                <span style="font-size:11px; color:#999;">3 أسئلة | ابدئي الآن ⬅️</span>
-            </div>
+            <div class="lesson-text"><b>استراتيجية البحث عن نمط</b></div>
         </div>
     </div>
 
     <div id="lesson-screen" class="screen">
         <div class="reading-area" id="reading-content"></div>
         <div id="options-area" style="width:100%; display:flex; flex-direction:column; align-items:center;"></div>
-        <div id="feedback-box" class="feedback-box"></div>
         <button id="next-btn" class="next-btn" onclick="nextQuestion()">السؤال التالي ⬅️</button>
     </div>
 
     <div id="result-screen" class="screen">
         <div class="result-card">
-            <div class="result-icon" id="res-icon">💪</div>
-            <div class="result-title" id="res-msg">أحسنتِ المحاولة!</div>
-            <div class="result-score" id="res-score">حصلتِ على 0 من 3</div>
-            <div style="margin-bottom: 25px; font-size: 25px;">⭐ ⭐ ⭐</div>
-            <button class="back-btn" onclick="backToHome()">العودة للدروس</button>
+            <div id="res-icon" style="font-size:60px;">🏆</div>
+            <h2 id="res-msg">ممتازة!</h2>
+            <p id="res-score" style="font-size:18px; color:#666;"></p>
+            <button class="back-btn" onclick="location.reload()">العودة للرئيسية</button>
         </div>
     </div>
 
     <script>
-        let stars = 0; let done = 0; let currentL = ''; let currentQ = 1; let correctAnswersCount = 0;
+        let stars = 0; let done = 0; let currentL = ''; let currentQ = 1; let score = 0;
+        
+        // نظام صوت محسن يعمل على جميع المتصفحات
         const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-
-        function playSnd(win) {
-            const osc = audioCtx.createOscillator(); const g = audioCtx.createGain();
-            osc.connect(g); g.connect(audioCtx.destination);
-            osc.frequency.setValueAtTime(win ? 550 : 180, audioCtx.currentTime);
-            g.gain.setValueAtTime(0.1, audioCtx.currentTime);
-            osc.start(); osc.stop(audioCtx.currentTime + 0.3);
+        function playSfx(type) {
+            if (audioCtx.state === 'suspended') audioCtx.resume();
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+            
+            if(type === 'win') {
+                osc.frequency.setValueAtTime(520, audioCtx.currentTime);
+                osc.frequency.exponentialRampToValueAtTime(1000, audioCtx.currentTime + 0.1);
+                gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
+            } else {
+                osc.frequency.setValueAtTime(150, audioCtx.currentTime);
+                gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
+            }
+            osc.start(); osc.stop(audioCtx.currentTime + 0.2);
         }
 
         function startLesson(id) {
-            currentL = id; correctAnswersCount = 0;
+            currentL = id; currentQ = 1; score = 0;
             document.getElementById('main-menu').classList.remove('active-screen');
-            document.getElementById('result-screen').classList.remove('active-screen');
             document.getElementById('lesson-screen').classList.add('active-screen');
-            loadLessonContent();
+            loadLesson();
         }
 
-        function loadLessonContent() {
+        function loadLesson() {
             const area = document.getElementById('reading-content');
             if(currentL === 'takhmeen') {
-                area.innerHTML = `<b>📖 قصة سارة والمكتبة:</b> اشترت سارة كتابين بمبلغ <b>45 ريالاً</b>. إذا كان ثمن الكتاب الأول يزيد عن ثمن الثاني بمقدار <b>9 ريالات</b>. ساعديها بالتخمين والتحقق.`;
+                area.innerHTML = `<b>📖 قصة سارة:</b> اشترت سارة كتابين بـ 45 ريالاً، الفرق بينهما 9 ريالات. ساعديها في التخمين والتحقق.`;
             } else {
-                area.innerHTML = `<b>📖 قصة نورة والقراءة:</b> قرأت نورة في اليوم الأول <b>2 صفحة</b>، وفي الثاني <b>5</b>، وفي الثالث <b>9</b>، وفي الرابع <b>14</b>. ساعديها في البحث عن نمط لليوم السادس.`;
+                area.innerHTML = `<b>📖 قصة نورة والقراءة:</b> 2، 5، 9، 14... ابحثي عن النمط لمعرفة عدد صفحات اليوم السادس.`;
             }
-            loadQuestion(1);
+            showQuestion();
         }
 
-        function loadQuestion(num) {
-            currentQ = num;
+        function showQuestion() {
             document.getElementById('next-btn').style.display = 'none';
-            document.getElementById('feedback-box').style.display = 'none';
-            if(currentL === 'takhmeen') {
-                if(num === 1) renderQ("1️⃣ ما المعطيات الواردة في النص؟", ["حب القراءة", "المجموع 45 والفرق 9", "سعر الكتاب الواحد 45", "موقع المكتبة"], 1, "💡 ممتازة! هذه هي الأرقام التي سنستخدمها.");
-                else if(num === 2) renderQ("2️⃣ ما التخمين الصحيح؟", ["(20 ، 25)", "(15 ، 30)", "(27 ، 18)", "(28 ، 17)"], 2, "💡 رائعة! 27+18=45 والفرق بينهما 9.");
-                else if(num === 3) renderQ("3️⃣ كيف نتحقق من الحل؟", ["بالجمع والطرح", "بالسؤال", "بالتخمين مجدداً", "بالانتظار"], 0, "💡 أحسنتِ! التحقق هو الخطوة الأخيرة.");
-            } else {
-                if(num === 1) renderQ("1️⃣ ما المعطيات الأساسية؟", ["الاسم", "عدد الصفحات اليومية", "الوقت", "المكان"], 1, "💡 صحيح! النمط يظهر من عدد الصفحات.");
-                else if(num === 2) renderQ("2️⃣ ما مقدار الزيادة؟", ["ثابتة", "متغيرة (+3، +4...)", "نقصان", "ضرب"], 1, "💡 ذكية! تزيد نورة صفحة إضافية كل يوم.");
-                else if(num === 3) renderQ("3️⃣ عدد صفحات اليوم السادس؟", ["20 صفحة", "25 صفحة", "27 صفحة", "30 صفحة"], 2, "💡 مبدعة! اليوم 5 (20) واليوم 6 (27).");
-            }
-        }
+            const area = document.getElementById('options-area');
+            let qText = ""; let opts = []; let correct = 0;
 
-        function renderQ(title, opts, correctIdx, feedback) {
-            let html = `<p style="font-weight:bold; color:var(--mauve); text-align:right; font-size:17px; width:90%;">${title}</p>`;
-            opts.forEach((opt, i) => {
-                html += `<div class="option" onclick="checkAnswer(this, ${i === correctIdx}, '${feedback}')">
+            if(currentL === 'namat') {
+                if(currentQ === 1) { qText = "ما المعطيات الأساسية؟"; opts = ["الاسم", "عدد الصفحات", "الوقت", "المكان"]; correct = 1; }
+                else if(currentQ === 2) { qText = "ما مقدار الزيادة؟"; opts = ["ثابتة", "متغيرة", "نقصان", "ضرب"]; correct = 1; }
+                else { qText = "عدد صفحات اليوم السادس؟"; opts = ["20", "25", "27", "30"]; correct = 2; }
+            } else {
+                if(currentQ === 1) { qText = "ما المعطيات؟"; opts = ["القراءة", "المجموع 45 والفرق 9", "السعر 45", "الموقع"]; correct = 1; }
+                else if(currentQ === 2) { qText = "التخمين الصحيح؟"; opts = ["20,25", "15,30", "27,18", "28,17"]; correct = 2; }
+                else { qText = "كيف نتحقق من الحل؟"; opts = ["بالجمع والطرح", "بالسؤال", "بالتكرار", "بالانتظار"]; correct = 0; }
+            }
+
+            let html = `<p style="font-weight:bold; color:var(--mauve); width:90%; margin:20px 0;">${currentQ}️⃣ ${qText}</p>`;
+            opts.forEach((o, i) => {
+                html += `<div class="option" onclick="checkAnswer(this, ${i === correct})">
                             <div class="char-circle">${['أ','ب','ج','د'][i]}</div>
-                            <span>${opt}</span>
+                            <span>${o}</span>
                          </div>`;
             });
-            document.getElementById('options-area').innerHTML = html;
+            area.innerHTML = html;
         }
 
-        function checkAnswer(el, isCorrect, feedbackText) {
+        function checkAnswer(el, isCorrect) {
             if(isCorrect) {
-                playSnd(true); el.classList.add('correct');
-                stars += 3; correctAnswersCount++;
+                playSfx('win');
+                el.classList.add('correct');
+                score++; stars += 3;
                 document.getElementById('stars-count').innerText = stars;
-                const fb = document.getElementById('feedback-box');
-                fb.innerHTML = feedbackText; fb.style.display = 'block';
                 document.getElementById('next-btn').style.display = 'block';
-                document.querySelectorAll('.option').forEach(b => b.style.pointerEvents = 'none');
+                document.querySelectorAll('.option').forEach(opt => opt.style.pointerEvents = 'none');
             } else {
-                playSnd(false); el.classList.add('wrong');
-                setTimeout(() => el.classList.remove('wrong'), 800);
+                playSfx('lose');
+                el.classList.add('wrong');
+                setTimeout(() => el.classList.remove('wrong'), 500);
             }
         }
 
         function nextQuestion() {
-            if(currentQ < 3) loadQuestion(currentQ + 1);
-            else showResults();
-        }
-
-        function showResults() {
-            done++; document.getElementById('done-count').innerText = done;
-            document.getElementById('lesson-screen').classList.remove('active-screen');
-            document.getElementById('result-screen').classList.add('active-screen');
-            
-            document.getElementById('res-score').innerText = `حصلتِ على ${correctAnswersCount} من 3`;
-            if(correctAnswersCount === 3) {
-                document.getElementById('res-icon').innerText = "🏆";
-                document.getElementById('res-msg').innerText = "ممتازة يا بطلة!";
-            } else {
-                document.getElementById('res-icon').innerText = "💪";
-                document.getElementById('res-msg').innerText = "أحسنتِ المحاولة!";
+            if(currentQ < 3) { currentQ++; showQuestion(); }
+            else { 
+                document.getElementById('lesson-screen').classList.remove('active-screen');
+                document.getElementById('result-screen').classList.add('active-screen');
+                document.getElementById('res-score').innerText = `حصلتِ على ${score} من 3 إجابات صحيحة`;
             }
-        }
-
-        function backToHome() {
-            document.getElementById('result-screen').classList.remove('active-screen');
-            document.getElementById('main-menu').classList.add('active-screen');
         }
     </script>
 </body>
