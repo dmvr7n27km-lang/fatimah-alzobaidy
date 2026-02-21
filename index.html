@@ -8,22 +8,17 @@
         body {
             background: linear-gradient(135deg, #FFF0F5 0%, #E6E6FA 100%); 
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            color: #70416D;
             margin: 0;
+            padding: 0;
             display: flex;
             flex-direction: column;
             align-items: center;
             min-height: 100vh;
         }
-        .logo-container {
-            margin-top: 20px;
-            width: 100%;
-            text-align: center;
-        }
         .moe-logo {
-            width: 120px; /* حجم الشعار */
+            width: 150px;
+            margin-top: 20px;
             height: auto;
-            filter: drop-shadow(0px 2px 5px rgba(0,0,0,0.1));
         }
         .header {
             background: rgba(255, 255, 255, 0.9);
@@ -46,7 +41,16 @@
             border-radius: 20px;
             border: 1px solid #FADADD;
         }
-        .stat-item { color: #DA70D6; font-weight: bold; }
+        .stat-item { 
+            flex: 1; 
+            text-align: center; 
+            font-weight: bold; 
+            color: #000000; /* الأرقام بالأسود */
+        }
+        .stat-label {
+            font-size: 11px; 
+            color: #000000; /* الكلمات بالأسود */
+        }
         .lesson-btn {
             background: white;
             color: #9370DB;
@@ -64,20 +68,29 @@
 </head>
 <body>
 
-    <div class="logo-container">
-        <img src="https://upload.wikimedia.org/wikipedia/ar/archive/2/20/20211124115124%21Saudi_Ministry_of_Education_logo.svg" alt="شعار وزارة التعليم" class="moe-logo">
-    </div>
+    <img src="https://upload.wikimedia.org/wikipedia/ar/2/20/Saudi_Ministry_of_Education_logo.svg" 
+         alt="شعار وزارة التعليم" class="moe-logo">
 
     <div class="header">
         <h1>🌸 مُبدعة الفهم الرياضي 🌸</h1>
-        <p style="margin: 5px 0; color: #9370DB;">المعلمة: فاطمة حسن الزبيدي</p>
+        <p style="margin: 8px 0; color: #7D3C98; font-weight: bold; font-size: 18px;">مادة الرياضيات - الصف الثاني متوسط</p>
+        <p style="margin: 5px 0; color: #9370DB; font-weight: 500;">المعلمة: فاطمة حسن الزبيدي</p>
         <small style="color: #DB7093;">المتوسطة الأولى بالليث</small>
     </div>
 
     <div class="stats-bar">
-        <div class="stat-item">⭐ 0 <br> <span style="font-size: 11px; color: #C0C0C0;">نجوم</span></div>
-        <div class="stat-item">0 <br> <span style="font-size: 11px; color: #C0C0C0;">إنجاز</span></div>
-        <div class="stat-item">5 <br> <span style="font-size: 11px; color: #C0C0C0;">دروس</span></div>
+        <div class="stat-item">
+            <span style="font-size: 18px;">5</span><br>
+            <span class="stat-label">دروس</span>
+        </div>
+        <div class="stat-item">
+            <span style="font-size: 18px;">0</span><br>
+            <span class="stat-label">إنجاز</span>
+        </div>
+        <div class="stat-item">
+            <span style="font-size: 18px;">⭐ 0</span><br>
+            <span class="stat-label">نجوم</span>
+        </div>
     </div>
 
     <button class="lesson-btn">🎀 حل مسألة أبسط</button>
