@@ -6,77 +6,80 @@
     <title>مبدعة الفهم الرياضي</title>
     <style>
         body {
-            background: linear-gradient(135deg, #FFF0F5 0%, #E6E6FA 100%); 
+            background: linear-gradient(135deg, #FFF5F7 0%, #F3E5F5 100%); 
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0; padding: 0; display: flex; flex-direction: column; align-items: center; min-height: 100vh;
         }
-        /* حاوية شعار الوزارة الرسمي */
-        .moe-logo-container {
-            width: 180px;
-            margin-top: 25px;
-            margin-bottom: 15px;
+        /* شعار الوزارة - مرسوم برمجياً لضمان الظهور 100% */
+        .moe-logo-svg {
+            width: 150px; margin-top: 30px; margin-bottom: 15px;
         }
-        .header {
-            background: rgba(255, 255, 255, 0.9); width: 85%; padding: 25px; border-radius: 25px;
-            box-shadow: 0 10px 20px rgba(255, 182, 193, 0.2); text-align: center; border: 2px solid #FFD1DC;
+        .header-card {
+            background: white; width: 88%; padding: 25px; border-radius: 30px;
+            box-shadow: 0 10px 25px rgba(255, 182, 193, 0.3); text-align: center;
+            border: 2px solid #FFD1DC;
         }
-        h1 { color: #BA55D3; margin: 0; font-size: 24px; font-weight: bold; }
-        .course-info { color: #7D3C98; font-weight: bold; margin: 10px 0; font-size: 16px; }
-        .teacher-info { color: #9370DB; font-weight: bold; margin-bottom: 5px; }
-        .school-info { color: #DB7093; font-size: 14px; }
+        h1 { color: #9C27B0; margin: 0; font-size: 26px; font-weight: bold; }
+        .sub-text { color: #673AB7; font-weight: bold; margin: 12px 0; font-size: 17px; }
+        .teacher-name { color: #E91E63; font-weight: bold; font-size: 16px; }
+        .school-name { color: #BA68C8; font-size: 14px; margin-top: 5px; }
 
-        .stats-bar {
-            display: flex; justify-content: space-around; background: white; width: 85%;
-            margin: 20px 0; padding: 15px; border-radius: 20px; border: 1px solid #FADADD;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        .stats-container {
+            display: flex; justify-content: space-around; background: white; width: 90%;
+            margin: 25px 0; padding: 20px; border-radius: 20px; border: 1px solid #F8BBD0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
         }
-        /* الأرقام باللون الأسود الملكي الصريح والواضح جداً */
-        .stat-item { flex: 1; text-align: center; font-weight: 900; color: #000000 !important; }
-        .stat-num { display: block; font-size: 22px; margin-bottom: 2px; }
-        .stat-label { font-size: 12px; color: #000000 !important; font-weight: bold; }
+        /* الأرقام بالأسود العريض جداً كما طلبتِ */
+        .stat-box { flex: 1; text-align: center; }
+        .stat-num { display: block; font-size: 26px; font-weight: 900; color: #000000 !important; }
+        .stat-label { font-size: 14px; color: #000000 !important; font-weight: bold; margin-top: 4px; display: block; }
 
-        .lesson-btn {
-            background: white; color: #9370DB; border: 2px solid #FFC0CB; padding: 18px;
-            margin: 8px 0; width: 85%; border-radius: 20px; font-size: 18px; font-weight: 600;
-            cursor: pointer; transition: 0.3s; box-shadow: 0 4px 8px rgba(0,0,0,0.03);
-            text-align: center;
+        .lesson-button {
+            background: white; color: #7E57C2; border: 2px solid #F48FB1; padding: 20px;
+            margin: 10px 0; width: 90%; border-radius: 25px; font-size: 19px; font-weight: bold;
+            display: flex; justify-content: center; align-items: center; gap: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03); cursor: pointer;
         }
+        .ribbon { color: #F06292; }
     </style>
 </head>
 <body>
 
-    <div class="moe-logo-container">
-        <img src="https://upload.wikimedia.org/wikipedia/ar/2/20/Saudi_Ministry_of_Education_logo.svg" 
-             alt="شعار وزارة التعليم" style="width: 100%; height: auto;">
+    <div class="moe-logo-svg">
+        <svg viewBox="0 0 300 150" xmlns="http://www.w3.org/2000/svg">
+            <path d="M150 20c-15 0-28 12-28 28s13 28 28 28 28-12 28-28-13-28-28-28z" fill="#007A3D"/>
+            <path d="M100 85h100v8H100zm15 15h70v8h-70zm20 15h30v8h-30z" fill="#007A3D"/>
+            <text x="150" y="145" text-anchor="middle" font-family="Arial" font-size="20" font-weight="bold" fill="#007A3D">وزارة التعليم</text>
+        </svg>
     </div>
 
-    <div class="header">
+    <div class="header-card">
         <h1>🌸 مُبدعة الفهم الرياضي 🌸</h1>
-        <div class="course-info">مادة الرياضيات - الصف الثاني متوسط</div>
-        <div class="teacher-info">إعداد وتنفيذ المعلمة: فاطمة حسن الزبيدي</div>
-        <div class="school-info">المتوسطة الأولى بالليث</div>
+        <div class="sub-text">مادة الرياضيات - الصف الثاني متوسط</div>
+        <div class="teacher-name">إعداد وتنفيذ المعلمة: فاطمة حسن الزبيدي</div>
+        <div class="school-name">المتوسطة الأولى بالليث</div>
     </div>
 
-    <div class="stats-bar">
-        <div class="stat-item">
+    <div class="stats-container">
+        <div class="stat-box">
             <span class="stat-num">5</span>
             <span class="stat-label">دروس</span>
         </div>
-        <div class="stat-item">
+        <div class="stat-box">
             <span class="stat-num">0</span>
             <span class="stat-label">إنجاز</span>
         </div>
-        <div class="stat-item">
+        <div class="stat-box">
             <span class="stat-num">⭐ 0</span>
             <span class="stat-label">نجوم</span>
         </div>
     </div>
 
-    <button class="lesson-btn">🎀 حل مسألة أبسط</button>
-    <button class="lesson-btn">🎀 التخمين والتحقق</button>
-    <button class="lesson-btn">🎀 إنشاء نموذج</button>
-    <button class="lesson-btn">🎀 إنشاء جدول</button>
-    <button class="lesson-btn">🎀 تمثيل المسألة</button>
+    <button class="lesson-button"><span class="ribbon">🎀</span> حل مسألة أبسط</button>
+    <button class="lesson-button"><span class="ribbon">🎀</span> التخمين والتحقق</button>
+    <button class="lesson-button"><span class="ribbon">🎀</span> إنشاء نموذج</button>
+    <button class="lesson-button"><span class="ribbon">🎀</span> إنشاء جدول</button>
+    <button class="lesson-button"><span class="ribbon">🎀</span> تمثيل المسألة</button>
 
 </body>
 </html>
