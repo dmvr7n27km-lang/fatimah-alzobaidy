@@ -16,14 +16,13 @@
             min-height: 100vh;
         }
         .logo-box {
-            width: 140px;
+            width: 160px;
             margin-top: 25px;
             margin-bottom: 10px;
         }
         .moe-logo {
             width: 100%;
             height: auto;
-            filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.1));
         }
         .header {
             background: rgba(255, 255, 255, 0.9);
@@ -45,16 +44,16 @@
             border-radius: 20px;
             border: 1px solid #FADADD;
         }
-        /* اللون الأسود الصريح للأرقام والكلمات */
+        /* اللون الأسود القوي للأرقام والكلمات */
         .stat-item { 
             flex: 1; 
             text-align: center; 
             font-weight: 900; 
-            color: #000000; 
+            color: #000000 !important; 
         }
         .stat-label {
             font-size: 11px; 
-            color: #000000; 
+            color: #000000 !important; 
             font-weight: bold;
         }
         .lesson-btn {
@@ -75,7 +74,9 @@
 <body>
 
     <div class="logo-box">
-        <img src="https://upload.wikimedia.org/wikipedia/ar/2/20/Saudi_Ministry_of_Education_logo.svg" alt="شعار وزارة التعليم" class="moe-logo">
+        <img src="https://upload.wikimedia.org/wikipedia/ar/2/20/Saudi_Ministry_of_Education_logo.svg" 
+             alt="شعار وزارة التعليم" 
+             class="moe-logo">
     </div>
 
     <div class="header">
