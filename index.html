@@ -19,38 +19,25 @@
             display: flex; flex-direction: column; align-items: center;
         }
 
-        /* الهيدر الرسمي المحدث */
+        /* الهيدر الرسمي */
         .official-header {
-            width: 100%;
-            padding: 20px 30px;
-            background: white;
-            text-align: right;
-            color: #555;
-            font-size: 14px;
-            font-weight: bold;
-            line-height: 1.6;
-            box-sizing: border-box;
-            border-bottom: 2px solid var(--pink-border);
+            width: 100%; padding: 20px 30px; background: white;
+            text-align: right; color: #555; font-size: 14px;
+            font-weight: bold; line-height: 1.6; border-bottom: 2px solid var(--pink-border);
         }
 
         /* إطار بيانات المبدعة */
         .teacher-info-card {
-            width: 90%;
-            background: white;
-            margin: 20px 0;
-            padding: 20px;
-            border-radius: 20px;
-            border: 2px solid var(--pink-border);
-            text-align: center;
+            width: 90%; background: white; margin: 20px 0; padding: 20px;
+            border-radius: 20px; border: 2px solid var(--pink-border); text-align: center;
         }
 
         .teacher-info-card h1 { color: var(--accent-pink); font-size: 24px; margin: 0 0 15px 0; }
         .details-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; color: var(--mauve); font-weight: bold; font-size: 15px; }
 
-        /* شريط الإحصائيات (تصميم حليمة الشهري) */
+        /* شريط الإحصائيات - تم إضافة النجمة */
         .stats-bar { 
-            display: flex; width: 90%; background: white; 
-            border-radius: 15px; overflow: hidden; 
+            display: flex; width: 90%; background: white; border-radius: 15px; 
             box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 25px; 
         }
         .stat-box { flex: 1; padding: 15px; text-align: center; border-left: 1px solid #f0f0f0; }
@@ -59,27 +46,16 @@
         .stat-box .num.stars { color: #fb8c00; }
         .stat-box .text { font-size: 13px; color: #888; font-weight: bold; }
 
-        /* قائمة الدروس - الأيقونة في اليمين */
+        /* قائمة الدروس - الأيقونة يمين */
         .lesson-item { 
-            width: 90%; background: white; margin-bottom: 15px; 
-            padding: 15px; border-radius: 20px; display: flex; 
-            align-items: center; box-shadow: 0 2px 8px rgba(0,0,0,0.04); 
-            cursor: pointer; border-right: 8px solid var(--mauve); gap: 15px;
-            box-sizing: border-box;
+            width: 90%; background: white; margin-bottom: 15px; padding: 15px;
+            border-radius: 20px; display: flex; align-items: center;
+            border-right: 8px solid var(--mauve); gap: 15px; cursor: pointer;
         }
-        
-        /* مربع الأيقونة الملون على اليمين */
-        .icon-box { 
-            width: 55px; height: 55px; border-radius: 12px; 
-            display: flex; align-items: center; justify-content: center; 
-            font-size: 28px; flex-shrink: 0;
-        }
+        .icon-box { width: 55px; height: 55px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 28px; }
+        .lesson-text { text-align: right; }
 
-        .lesson-text { text-align: right; flex-grow: 1; }
-        .lesson-text .title { display: block; font-size: 17px; font-weight: bold; color: #333; }
-        .lesson-text .sub { font-size: 12px; color: #999; margin-top: 4px; }
-
-        /* شاشة الدرس */
+        /* شاشة الأسئلة - أ ب ج د يمين */
         .screen { display: none; width: 100%; flex-direction: column; align-items: center; }
         .active-screen { display: flex; }
 
@@ -91,21 +67,29 @@
 
         .option { 
             background: white; width: 90%; padding: 18px; margin: 8px 0; 
-            border-radius: 15px; border: 2px solid #f0f0f0; display: flex; 
-            justify-content: space-between; align-items: center; font-weight: bold; cursor: pointer;
+            border-radius: 15px; border: 2px solid #f0f0f0; 
+            display: flex; align-items: center; gap: 15px; font-weight: bold; cursor: pointer;
         }
+
+        .char-circle {
+            width: 32px; height: 32px; border: 2px solid #ddd; 
+            border-radius: 50%; display: flex; align-items: center; 
+            justify-content: center; font-size: 14px; color: var(--mauve);
+            flex-shrink: 0;
+        }
+
         .correct { background: #e8f5e9 !important; border-color: #4caf50 !important; color: #2e7d32; }
         .wrong { background: #ffebee !important; border-color: #f44336 !important; color: #c62828; }
 
         .feedback-box { 
             display: none; width: 88%; background: #e3f2fd; border: 1px solid #2196f3; 
-            padding: 15px; border-radius: 12px; margin-top: 15px; color: #0d47a1; font-weight: 500;
+            padding: 15px; border-radius: 12px; margin-top: 15px; color: #0d47a1;
         }
 
         .next-btn { 
             background: var(--accent-pink); color: white; padding: 15px 60px; 
             border-radius: 35px; border: none; font-weight: bold; margin-top: 20px; 
-            cursor: pointer; display: none; font-size: 16px; margin-bottom: 40px;
+            cursor: pointer; display: none; margin-bottom: 40px;
         }
     </style>
 </head>
@@ -129,16 +113,25 @@
         </div>
 
         <div class="stats-bar">
-            <div class="stat-box"><span class="num">2</span><span class="text">دروس متاحة</span></div>
-            <div class="stat-box"><span id="done-count" class="num">0</span><span class="text">تم إنجازها</span></div>
-            <div class="stat-box"><span id="stars-count" class="num stars">0</span><span class="text">نجوم</span></div>
+            <div class="stat-box">
+                <span class="num">2</span>
+                <span class="text">دروس متاحة</span>
+            </div>
+            <div class="stat-box">
+                <span id="done-count" class="num">0</span>
+                <span class="text">تم إنجازها</span>
+            </div>
+            <div class="stat-box">
+                <span id="stars-count" class="num stars">0</span>
+                <span class="text">النجوم ⭐</span>
+            </div>
         </div>
 
         <div class="lesson-item" onclick="startLesson('takhmeen')">
             <div class="icon-box" style="background: #e8f5e9;">🎯</div>
             <div class="lesson-text">
                 <span class="title">استراتيجية التخمين والتحقق</span>
-                <span class="sub">3 أسئلة | ابدئي الآن ⬅️</span>
+                <span style="font-size:12px; color:#999;">ابدئي الآن ⬅️</span>
             </div>
         </div>
 
@@ -146,7 +139,7 @@
             <div class="icon-box" style="background: #e3f2fd;">🔍</div>
             <div class="lesson-text">
                 <span class="title">استراتيجية البحث عن نمط</span>
-                <span class="sub">3 أسئلة | ابدئي الآن ⬅️</span>
+                <span style="font-size:12px; color:#999;">ابدئي الآن ⬅️</span>
             </div>
         </div>
     </div>
@@ -180,9 +173,9 @@
         function loadLessonContent() {
             const area = document.getElementById('reading-content');
             if(currentL === 'takhmeen') {
-                area.innerHTML = `<b>📖 قصة سارة والمكتبة:</b> اشترت سارة كتابين بمبلغ <b>45 ريالاً</b>. إذا كان ثمن الكتاب الأول يزيد عن ثمن الكتاب الثاني بمقدار <b>9 ريالات</b>. ساعدي سارة في الوصول للحل الصحيح باستخدام استراتيجية <b>التخمين والتحقق</b> لمعرفة ثمن كل كتاب من الكتب التي اشترتها.`;
+                area.innerHTML = `<b>📖 قصة سارة والمكتبة:</b> اشترت سارة كتابين بمبلغ <b>45 ريالاً</b>. إذا كان ثمن الكتاب الأول يزيد عن ثمن الكتاب الثاني بمقدار <b>9 ريالات</b>. ساعدي سارة في الوصول للحل الصحيح باستخدام استراتيجية <b>التخمين والتحقق</b>.`;
             } else {
-                area.innerHTML = `<b>📖 قصة نورة والقراءة:</b> تتدرب نورة على القراءة السريعة؛ فإذا قرأت في اليوم الأول <b>صفحتين</b>، وفي اليوم الثاني <b>5 صفحات</b>، وفي اليوم الثالث <b>9 صفحات</b>، وفي اليوم الرابع <b>14 صفحة</b>. ساعديها في <b>البحث عن نمط</b> لمعرفة عدد صفحات اليوم السادس.`;
+                area.innerHTML = `<b>📖 قصة نورة والقراءة:</b> قرأت نورة في اليوم الأول <b>صفحتين</b>، وفي اليوم الثاني <b>5</b>، وفي الثالث <b>9</b>، وفي الرابع <b>14</b>. ساعديها في <b>البحث عن نمط</b> لمعرفة عدد صفحات اليوم السادس.`;
             }
             loadQuestion(1);
         }
@@ -191,24 +184,23 @@
             currentQ = num;
             document.getElementById('next-btn').style.display = 'none';
             document.getElementById('feedback-box').style.display = 'none';
-            
             if(currentL === 'takhmeen') {
-                if(num === 1) renderQ("1️⃣ ما المعطيات (الحقائق) الواردة في النص؟", ["سارة تحب القراءة", "المجموع 45 والفرق 9", "سعر الكتاب 45", "المكتبة قريبة"], 1, "💡 ممتازة! هذه هي الأرقام الأساسية التي سنبني عليها تخميننا.");
-                else if(num === 2) renderQ("2️⃣ ما التخمين الصحيح لثمن الكتابين؟", ["(20 ، 25)", "(15 ، 30)", "(27 ، 18)", "(28 ، 17)"], 2, "💡 رائعة! لأن مجموع 27+18=45 والفرق بينهما 9 ريالات.");
-                else if(num === 3) renderQ("3️⃣ كيف نتحقق من صحة الحل؟", ["بالجمع والطرح", "بالسؤال", "بالتخمين مجدداً", "بالانتظار"], 0, "💡 أحسنتِ! التحقق هو وسيلتنا للتأكد من أن تخميننا يطابق معطيات المسألة.");
+                if(num === 1) renderQ("1️⃣ ما المعطيات الواردة في النص؟", ["حب سارة للمكتبات", "مجموع الثمن 45 والفرق 9", "سعر الكتاب 45", "موقع المكتبة"], 1, "💡 ممتازة! هذه هي الأرقام التي سنستخدمها.");
+                else if(num === 2) renderQ("2️⃣ ما التخمين الصحيح؟", ["(20 ، 25)", "(15 ، 30)", "(27 ، 18)", "(28 ، 17)"], 2, "💡 رائعة! 27+18=45 والفرق بينهما 9.");
+                else if(num === 3) renderQ("3️⃣ كيف نتحقق من الحل؟", ["بالجمع والطرح", "بالسؤال", "بالتخمين مجدداً", "بالانتظار"], 0, "💡 أحسنتِ! التحقق هو الخطوة الأخيرة.");
             } else {
-                if(num === 1) renderQ("1️⃣ ما المعطيات الأساسية؟", ["الاسم", "عدد الصفحات اليومية", "الوقت", "المكان"], 1, "💡 صحيح! النمط يظهر من خلال تتبع تسلسل الصفحات المقروءة.");
-                else if(num === 2) renderQ("2️⃣ ما مقدار الزيادة في النمط؟", ["زيادة ثابتة (+3)", "زيادة متغيرة (+3، +4...)", "نقصان", "ضرب"], 1, "💡 ذكية! في كل يوم تزيد نورة صفحة إضافية عن زيادة اليوم السابق.");
-                else if(num === 3) renderQ("3️⃣ عدد صفحات اليوم السادس؟", ["20 صفحة", "25 صفحة", "27 صفحة", "30 صفحة"], 2, "💡 مبدعة! اليوم الخامس 20 واليوم السادس هو 20+7=27.");
+                if(num === 1) renderQ("1️⃣ ما المعطيات الأساسية؟", ["الاسم", "عدد الصفحات اليومية", "الوقت", "المكان"], 1, "💡 صحيح! النمط يظهر من عدد الصفحات.");
+                else if(num === 2) renderQ("2️⃣ ما مقدار الزيادة؟", ["ثابتة", "متغيرة (+3، +4...)", "نقصان", "ضرب"], 1, "💡 ذكية! تزيد نورة صفحة إضافية كل يوم.");
+                else if(num === 3) renderQ("3️⃣ عدد صفحات اليوم 6؟", ["20 صفحة", "25 صفحة", "27 صفحة", "30 صفحة"], 2, "💡 مبدعة! اليوم 5 (20) واليوم 6 (27).");
             }
         }
 
         function renderQ(title, opts, correctIdx, feedback) {
-            let html = `<p style="font-weight:bold; color:var(--mauve); text-align:right; font-size:18px;">${title}</p>`;
+            let html = `<p style="font-weight:bold; color:var(--mauve); text-align:right; font-size:18px; width:90%;">${title}</p>`;
             opts.forEach((opt, i) => {
                 html += `<div class="option" onclick="checkAnswer(this, ${i === correctIdx}, '${feedback}')">
+                            <div class="char-circle">${['أ','ب','ج','د'][i]}</div>
                             <span>${opt}</span>
-                            <div style="width:28px; height:28px; border:1px solid #ccc; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:13px;">${['أ','ب','ج','د'][i]}</div>
                          </div>`;
             });
             document.getElementById('options-area').innerHTML = html;
@@ -232,7 +224,7 @@
             if(currentQ < 3) loadQuestion(currentQ + 1);
             else {
                 done++; document.getElementById('done-count').innerText = done;
-                alert("أحسنتِ يا مبدعة! تم إنهاء المهمة بنجاح 🌸");
+                alert("أحسنتِ يا مبدعة! 🌸");
                 document.getElementById('lesson-screen').classList.remove('active-screen');
                 document.getElementById('main-menu').classList.add('active-screen');
             }
