@@ -5,64 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>نظام التوثيق الرقمي - فاطمة حسن الزبيدي</title>
     <style>
-        :root { --primary-color: #0d9488; --secondary-color: #f0fdfa; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f7f6; margin: 0; padding: 20px; color: #333; }
-        .container { max-width: 900px; margin: auto; background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.1); border: 1px solid #e2e8f0; }
-        .header { background: var(--primary-color); color: white; padding: 30px; text-align: center; }
-        .header h1 { margin: 0; font-size: 24px; }
-        .header p { margin: 10px 0 0; opacity: 0.9; }
+        :root { --primary-color: #0d9488; --bg-color: #f4f7f6; }
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; background-color: var(--bg-color); padding: 20px; color: #333; }
+        .container { max-width: 850px; margin: auto; background: white; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.05); overflow: hidden; }
+        .header { background: var(--primary-color); color: white; padding: 25px; text-align: center; }
         .content { padding: 30px; }
         .form-group { margin-bottom: 20px; }
         label { display: block; font-weight: bold; margin-bottom: 8px; color: var(--primary-color); }
-        input, textarea, select { width: 100%; padding: 12px; border: 1px solid #cbd5e1; border-radius: 8px; box-sizing: border-box; font-size: 16px; background-color: #fafafa; }
-        .btn-save { background: var(--primary-color); color: white; border: none; padding: 15px 30px; border-radius: 10px; cursor: pointer; font-size: 18px; width: 100%; transition: 0.3s; font-weight: bold; }
-        .btn-save:hover { background: #0b7a6f; transform: translateY(-2px); }
-        .footer { background: #f8fafc; text-align: center; padding: 20px; border-top: 1px solid #e2e8f0; font-size: 14px; }
-        .footer strong { color: var(--primary-color); }
-        @media print { .btn-save { display: none; } .container { box-shadow: none; border: none; } }
+        input, textarea { width: 100%; padding: 12px; border: 1px solid #cbd5e1; border-radius: 8px; box-sizing: border-box; font-size: 16px; }
+        .btn-print { background: var(--primary-color); color: white; border: none; padding: 15px; border-radius: 10px; cursor: pointer; font-size: 18px; width: 100%; font-weight: bold; margin-top: 10px; }
+        .btn-print:hover { background: #0b7a6f; }
+        .footer { background: #f8fafc; text-align: center; padding: 15px; border-top: 1px solid #eee; font-size: 14px; }
+        @media print { .btn-print { display: none; } body { padding: 0; background: white; } .container { box-shadow: none; border: none; } }
     </style>
 </head>
 <body>
 
 <div class="container">
     <div class="header">
-        <h1>نظام التوثيق الرقمي للبرامج التعليمية</h1>
-        <p>نموذج احترافي لتنظيم التقارير والفعاليات</p>
+        <h1>نظام التوثيق الرقمي للبرامج</h1>
+        <p>إعداد وتصميم الأستاذة: فاطمة حسن الزبيدي</p>
     </div>
 
     <div class="content">
         <div class="form-group">
-            <label>اسم البرنامج / الفعالية:</label>
-            <input type="text" placeholder="أدخل اسم البرنامج هنا...">
-        </div>
-
-        <div class="form-group" style="display: flex; gap: 15px;">
-            <div style="flex: 1;">
-                <label>التاريخ:</label>
-                <input type="date">
-            </div>
-            <div style="flex: 1;">
-                <label>الفئة المستهدفة:</label>
-                <input type="text" placeholder="مثلاً: الطالبات">
-            </div>
+            <label>عنوان البرنامج أو الفعالية:</label>
+            <input type="text" placeholder="اكتبي العنوان هنا...">
         </div>
 
         <div class="form-group">
-            <label>أهداف البرنامج:</label>
-            <textarea rows="4" placeholder="اكتبي الأهداف المحققة..."></textarea>
+            <label>تاريخ التنفيذ:</label>
+            <input type="date">
         </div>
 
         <div class="form-group">
-            <label>التوصيات والمقترحات:</label>
-            <textarea rows="3" placeholder="أبرز التوصيات للتطوير مستقبلاً..."></textarea>
+            <label>ملخص التنفيذ والمخرجات:</label>
+            <textarea rows="5" placeholder="اكتبي تفاصيل البرنامج..."></textarea>
         </div>
 
-        <button class="btn-save" onclick="window.print()">طباعة التقرير أو حفظه كـ PDF</button>
+        <button class="btn-print" onclick="window.print()">طباعة التقرير (PDF)</button>
     </div>
 
     <div class="footer">
-        <p>جميع الحقوق محفوظة © 2026</p>
-        <p>تم التصميم والتطوير بواسطة: <strong>فاطمة حسن الزبيدي</strong></p>
+        جميع الحقوق محفوظة © 2026 | <strong>تصميم وتنفيذ: فاطمة حسن الزبيدي</strong>
     </div>
 </div>
 
