@@ -1,1 +1,59 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مسابقة المساحة والحجوم - أ/ فاطمة الزبيدي</title>
+    <style>
+        :root { --blue: #1976d2; --gold: #ffd700; --bg: #f0f4f8; }
+        body { background-color: var(--bg); font-family: 'Segoe UI', sans-serif; text-align: center; margin: 0; padding: 20px; }
+        .header { background: white; padding: 20px; border-radius: 15px; border-bottom: 5px solid var(--blue); margin-bottom: 20px; }
+        .question-box { background: white; padding: 25px; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); margin-bottom: 20px; text-align: right; }
+        .option { background: #fff; border: 2px solid #ddd; padding: 15px; margin: 10px 0; border-radius: 10px; cursor: pointer; font-weight: bold; transition: 0.3s; }
+        .option:hover { border-color: var(--blue); background: #e3f2fd; }
+        .correct { background: #c8e6c9 !important; border-color: #4caf50 !important; }
+        .wrong { background: #ffcdd2 !important; border-color: #f44336 !important; }
+        .btn { background: var(--blue); color: white; border: none; padding: 10px 30px; border-radius: 20px; font-weight: bold; cursor: pointer; display: none; margin: 20px auto; }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h2 style="color: var(--blue);">📐 مسابقة المساحة والحجوم 📐</h2>
+        <p>الصف: الثاني متوسط | المتوسطة الأولى بالليث</p>
+    </div>
+
+    <div id="quiz-container">
+        <div class="question-box">
+            <h3 id="story-title">📖 اقرأ بتركيز:</h3>
+            <p id="story-text">يريد نجار صنع صندوق خشبي على شكل <b>منشور مستطيل</b> طوله ٥ سم، وعرضه ٣ سم، وارتفاعه ٢ سم. يرغب النجار في معرفة كمية الخشب المطلوبة لتغطية <b>السطح الخارجي</b> للصندوق بالكامل.</p>
+            <hr>
+            <p id="question-text">ما هو المفهوم الرياضي الذي يجب على النجار حسابه في هذه المسألة؟</p>
+            <div id="options">
+                <div class="option" onclick="check(this, false)">حجم المنشور</div>
+                <div class="option" onclick="check(this, true)">المساحة الكلية لسطح المنشور</div>
+                <div class="option" onclick="check(this, false)">المساحة الجانبية فقط</div>
+                <div class="option" onclick="check(this, false)">محيط القاعدة</div>
+            </div>
+        </div>
+        <button id="nextBtn" class="btn" onclick="nextLevel()">التحدي التالي ⬅️</button>
+    </div>
+
+    <script>
+        function check(el, isCorrect) {
+            if(isCorrect) {
+                el.classList.add('correct');
+                document.getElementById('nextBtn').style.display = 'block';
+                alert("ممتازة! الفهم القرائي الصحيح للمطلوب هو نصف الحل.");
+            } else {
+                el.classList.add('wrong');
+                alert("حاولي مرة أخرى.. ركزي في جملة (تغطية السطح الخارجي)");
+            }
+        }
+        function nextLevel() {
+            alert("سيتم إضافة مستويات الحجوم في التحديث القادم!");
+        }
+    </script>
+</body>
+</html>
 
