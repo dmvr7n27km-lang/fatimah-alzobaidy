@@ -5,63 +5,65 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>مبدعة الفهم الرياضي</title>
     <style>
-        :root {
-            --primary-bg: linear-gradient(180deg, #4facfe 0%, #00f2fe 100%);
-            --card-bg: rgba(255, 255, 255, 0.15);
-            --text-color: #ffffff;
-        }
         body {
             background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0; padding: 0; display: flex; flex-direction: column; align-items: center; min-height: 100vh;
-            color: var(--text-color);
+            color: #ffffff;
         }
         .top-logos {
-            width: 90%; display: flex; justify-content: space-between; align-items: center; margin-top: 20px;
+            width: 90%; display: flex; justify-content: space-between; align-items: center; margin-top: 25px;
         }
-        .logo-img { width: 80px; height: auto; filter: brightness(0) invert(1); } /* تحويل الشعارات للون الأبيض لتناسب الخلفية */
+        /* كود لضمان ظهور الشعارات باللون الأبيض */
+        .logo-box { width: 85px; height: auto; }
+        .logo-box img { width: 100%; filter: brightness(0) invert(1); }
         
         .class-badge {
-            background: rgba(255, 255, 255, 0.2); padding: 5px 15px; border-radius: 20px;
-            font-size: 14px; margin-top: 20px; border: 1px solid rgba(255,255,255,0.3);
+            background: rgba(255, 255, 255, 0.2); padding: 6px 18px; border-radius: 25px;
+            font-size: 14px; margin-top: 25px; border: 1px solid rgba(255,255,255,0.3);
         }
         
-        .main-title { font-size: 32px; font-weight: bold; margin: 15px 0 5px 0; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
-        .sub-title { font-size: 18px; opacity: 0.9; margin-bottom: 30px; }
+        .main-title { font-size: 32px; font-weight: bold; margin: 15px 0 5px 0; }
+        .sub-title { font-size: 17px; opacity: 0.9; margin-bottom: 25px; }
         
         .info-card {
-            background: var(--card-bg); width: 85%; padding: 20px; border-radius: 20px;
+            background: rgba(255, 255, 255, 0.12); width: 88%; padding: 22px; border-radius: 20px;
             backdrop-filter: blur(10px); text-align: center; border: 1px solid rgba(255,255,255,0.2);
             margin-bottom: 25px;
         }
-        .teacher-name { font-size: 18px; font-weight: bold; }
-        .school-name { font-size: 14px; opacity: 0.8; margin-top: 5px; }
+        .teacher-name { font-size: 19px; font-weight: bold; }
+        .school-name { font-size: 15px; opacity: 0.8; margin-top: 6px; }
 
         .stats-container {
-            display: flex; background: white; width: 90%; border-radius: 15px;
-            padding: 15px 0; margin-bottom: 30px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            display: flex; background: #ffffff; width: 92%; border-radius: 18px;
+            padding: 18px 0; margin-bottom: 30px; box-shadow: 0 12px 25px rgba(0,0,0,0.2);
         }
-        .stat-box { flex: 1; text-align: center; color: #333; border-left: 1px solid #eee; }
+        .stat-box { flex: 1; text-align: center; border-left: 1px solid #eeeeee; }
         .stat-box:last-child { border-left: none; }
-        .stat-num { display: block; font-size: 22px; font-weight: 900; color: #000; }
-        .stat-label { font-size: 12px; color: #666; font-weight: bold; }
+        /* تأكيد اللون الأسود للأرقام */
+        .stat-num { display: block; font-size: 24px; font-weight: 900; color: #000000 !important; }
+        .stat-label { font-size: 13px; color: #444444 !important; font-weight: bold; }
 
-        .lessons-title { width: 85%; text-align: right; font-size: 20px; margin-bottom: 15px; font-weight: bold; }
+        .lessons-header { width: 88%; text-align: right; font-size: 22px; margin-bottom: 18px; font-weight: bold; }
         
-        .lesson-button {
-            width: 90%; background: white; color: #1e3c72; padding: 18px; border-radius: 15px;
-            margin-bottom: 12px; border: none; font-size: 18px; font-weight: bold;
+        .lesson-btn {
+            width: 92%; background: #ffffff; color: #1e3c72; padding: 20px; border-radius: 18px;
+            margin-bottom: 15px; border: none; font-size: 19px; font-weight: bold;
             display: flex; justify-content: space-between; align-items: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1); cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1); cursor: pointer;
         }
-        .lesson-button::after { content: '←'; font-size: 20px; color: #2a5298; }
+        .arrow { font-size: 22px; color: #2a5298; }
     </style>
 </head>
 <body>
 
     <div class="top-logos">
-        <img src="https://upload.wikimedia.org/wikipedia/ar/2/20/Saudi_Ministry_of_Education_logo.svg" class="logo-img" alt="وزارة التعليم">
-        <img src="https://vision2030.gov.sa/media/rc0bc1v5/moe.svg" class="logo-img" alt="رؤية 2030">
+        <div class="logo-box">
+            <img src="https://upload.wikimedia.org/wikipedia/ar/2/20/Saudi_Ministry_of_Education_logo.svg" alt="وزارة التعليم">
+        </div>
+        <div class="logo-box">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/0/0d/Saudi_Vision_2030_logo.svg" alt="رؤية 2030">
+        </div>
     </div>
 
     <div class="class-badge">📖 مادة الرياضيات - الصف الثاني متوسط</div>
@@ -84,18 +86,18 @@
             <span class="stat-label">تم إنجازها</span>
         </div>
         <div class="stat-box">
-            <span class="stat-num" style="color: #f1c40f;">★ 0</span>
+            <span class="stat-num" style="color: #f1c40f !important;">★ 0</span>
             <span class="stat-label">نجوم</span>
         </div>
     </div>
 
-    <div class="lessons-title">اختر الدرس:</div>
+    <div class="lessons-header">اختر الدرس:</div>
 
-    <button class="lesson-button">حل مسألة أبسط</button>
-    <button class="lesson-button">التخمين والتحقق</button>
-    <button class="lesson-button">إنشاء نموذج</button>
-    <button class="lesson-button">إنشاء جدول</button>
-    <button class="lesson-button">تمثيل المسألة</button>
+    <button class="lesson-btn"><span>حل مسألة أبسط</span> <span class="arrow">←</span></button>
+    <button class="lesson-btn"><span>التخمين والتحقق</span> <span class="arrow">←</span></button>
+    <button class="lesson-btn"><span>إنشاء نموذج</span> <span class="arrow">←</span></button>
+    <button class="lesson-btn"><span>إنشاء جدول</span> <span class="arrow">←</span></button>
+    <button class="lesson-btn"><span>تمثيل المسألة</span> <span class="arrow">←</span></button>
 
 </body>
 </html>
