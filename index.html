@@ -6,46 +6,37 @@
     <title>مبدعة الفهم الرياضي - فاطمة الزبيدي</title>
     <style>
         body {
-            background: linear-gradient(135deg, #FFF0F5 0%, #E6E6FA 100%) !important; 
+            background: linear-gradient(135deg, #FFF0F5 0%, #E6E6FA 100%);
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0; padding: 0; display: flex; flex-direction: column; align-items: center; min-height: 100vh;
+            margin: 0; padding: 20px; display: flex; flex-direction: column; align-items: center; min-height: 100vh;
         }
-        /* الجزء النصي الرسمي المطلوب */
-        .official-header {
-            width: 90%;
-            text-align: right;
-            margin-top: 25px;
-            color: #4A235A;
-            font-size: 15px;
-            line-height: 1.8;
-            font-weight: bold;
-        }
-        .header-card {
-            background: white; width: 88%; padding: 25px; border-radius: 30px;
-            box-shadow: 0 10px 25px rgba(255, 182, 193, 0.3); text-align: center;
-            border: 2px solid #FFD1DC; margin-top: 25px;
-        }
-        h1 { color: #9C27B0; margin: 0; font-size: 26px; font-weight: bold; }
-        .sub-text { color: #673AB7; font-weight: bold; margin: 12px 0; font-size: 17px; }
-        .teacher-name { color: #E91E63; font-weight: bold; font-size: 18px; }
+        .official-header { width: 100%; text-align: right; color: #4A235A; font-size: 14px; font-weight: bold; line-height: 1.6; margin-bottom: 20px; }
+        .header-card { background: white; width: 90%; padding: 20px; border-radius: 25px; box-shadow: 0 10px 20px rgba(255,182,193,0.2); text-align: center; border: 2px solid #FFD1DC; margin-bottom: 20px; }
+        
+        .stats-bar { display: flex; justify-content: space-around; background: white; width: 90%; padding: 15px; border-radius: 20px; border: 1px solid #FADADD; margin-bottom: 20px; }
+        .stat-num { display: block; font-size: 24px; font-weight: 900; color: #000000 !important; }
+        .stat-label { font-size: 13px; color: #000000 !important; font-weight: bold; }
 
-        .stats-container {
-            display: flex; justify-content: space-around; background: white; width: 90%;
-            margin: 25px 0; padding: 20px; border-radius: 20px; border: 1px solid #F8BBD0;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-        }
-        /* الأرقام بالأسود الملكي العريض جداً */
-        .stat-box { flex: 1; text-align: center; }
-        .stat-num { display: block; font-size: 28px; font-weight: 900; color: #000000 !important; }
-        .stat-label { font-size: 15px; color: #000000 !important; font-weight: bold; margin-top: 4px; display: block; }
+        .reading-container { background: white; width: 90%; padding: 25px; border-radius: 20px; border-right: 8px solid #E91E63; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 25px; line-height: 1.8; }
+        .reading-title { color: #9C27B0; font-size: 20px; margin-bottom: 10px; font-weight: bold; }
 
-        .lesson-button {
-            background: white; color: #7E57C2; border: 2px solid #F48FB1; padding: 20px;
-            margin: 10px 0; width: 90%; border-radius: 25px; font-size: 19px; font-weight: bold;
-            display: flex; justify-content: center; align-items: center; gap: 10px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.03); cursor: pointer;
-        }
-        .ribbon { color: #F06292; }
+        .question-card { background: white; width: 90%; padding: 20px; border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border: 1px solid #EEE; margin-bottom: 20px; display: none; }
+        .question-text { font-size: 18px; font-weight: bold; color: #4A235A; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
+        .q-num { background: #9C27B0; color: white; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; }
+
+        .option-btn { background: #F8F9FA; border: 2px solid #E9ECEF; padding: 15px; margin: 8px 0; width: 100%; border-radius: 15px; font-size: 16px; font-weight: bold; cursor: pointer; text-align: right; transition: 0.3s; color: #333; }
+        
+        .correct-choice { background: #E8F5E9 !important; border-color: #4CAF50 !important; color: #2E7D32 !important; }
+        .wrong-choice { background: #FFEBEE !important; border-color: #F44336 !important; color: #C62828 !important; }
+        
+        .feedback { margin-top: 15px; padding: 12px; border-radius: 10px; font-weight: bold; display: none; text-align: center; }
+        .feedback.show { display: block; }
+        .feedback.success { background: #DCEDC8; color: #33691E; border: 1px solid #8BC34A; }
+        .feedback.error { background: #FFCDD2; color: #B71C1C; border: 1px solid #F44336; }
+
+        .next-btn { background: #9C27B0; color: white; border: none; padding: 12px 25px; border-radius: 20px; margin-top: 15px; cursor: pointer; display: none; font-weight: bold; width: 100%; }
+        .hidden { display: none; }
+        .btn-start { background: #E91E63; color: white; border: none; padding: 15px 40px; border-radius: 30px; font-size: 18px; font-weight: bold; cursor: pointer; box-shadow: 0 5px 15px rgba(233, 30, 99, 0.3); }
     </style>
 </head>
 <body>
@@ -57,32 +48,125 @@
         المدرسة: المتوسطة الأولى بالليث
     </div>
 
-    <div class="header-card">
-        <h1>🌸 مُبدعة الفهم الرياضي 🌸</h1>
-        <div class="sub-text">مادة الرياضيات - الصف الثاني متوسط</div>
-        <div class="teacher-name">إعداد وتنفيذ المعلمة: فاطمة حسن الزبيدي</div>
+    <div id="main-menu">
+        <div class="header-card">
+            <h1 style="color:#9C27B0;">🌸 مُبدعة الفهم الرياضي 🌸</h1>
+            <p style="color:#E91E63; font-weight:bold;">إعداد وتنفيذ المعلمة: فاطمة حسن الزبيدي</p>
+        </div>
+        <div class="stats-bar">
+            <div class="stat-item"><span class="stat-num">5</span><span class="stat-label">دروس</span></div>
+            <div class="stat-item"><span class="stat-num" id="main-stars">⭐ 0</span><span class="stat-label">نجوم</span></div>
+        </div>
+        <button class="btn-start" onclick="startLesson()">🎀 ابدأ درس: حل مسألة أبسط</button>
     </div>
 
-    <div class="stats-container">
-        <div class="stat-box">
-            <span class="stat-num">5</span>
-            <span class="stat-label">دروس</span>
+    <div id="lesson-screen" class="hidden">
+        <div class="reading-container">
+            <div class="reading-title">📖 اقرئي النص التالي بتمعن:</div>
+            <p>يخطط مجموعة من الطلاب لعمل ممر شرفي من الورود الملونة في فناء المدرسة. إذا وضعوا في الصف الأول <b>3 وردات</b>، وفي الصف الثاني <b>5 وردات</b>، وفي الصف الثالث <b>7 وردات</b>. لاحظ الطلاب وجود <b>نمط محدد</b> لزيادة عدد الورود في كل صف. أراد الطلاب معرفة عدد الورود في الصف رقم <b>10</b>، فاقترح أحدهم استخدام استراتيجية <b>'حل مسألة أبسط'</b> عبر اكتشاف العلاقة بين رقم الصف وعدد الورود.</p>
         </div>
-        <div class="stat-box">
-            <span class="stat-num">0</span>
-            <span class="stat-label">إنجاز</span>
+
+        <div id="q1" class="question-card" style="display: block;">
+            <div class="question-text"><span class="q-num">1</span> ما المعطيات الأساسية التي وردت في النص؟</div>
+            <button class="option-btn" onclick="processAnswer(this, false, 'لأسف! المعطيات هي الأرقام والحقائق المذكورة للحل.', 'q1')">أ) لون الورود ومكان الممر الشرفي.</button>
+            <button class="option-btn" onclick="processAnswer(this, true, 'رائعة! المعطيات هي أعداد الورود في الصفوف الثلاثة الأولى.', 'q1')">ب) تتابع عدد الورود في الصفوف الثلاثة الأولى (3، 5، 7).</button>
+            <div id="feedback-q1" class="feedback"></div>
+            <button id="next-q1" class="next-btn" onclick="goToNext('q1', 'q2')">السؤال التالي ⬅️</button>
         </div>
-        <div class="stat-box">
-            <span class="stat-num" style="color: #000000 !important;">⭐ 0</span>
-            <span class="stat-label">نجوم</span>
+
+        <div id="q2" class="question-card">
+            <div class="question-text"><span class="q-num">2</span> لماذا تعتبر استراتيجية "حل مسألة أبسط" هي المفتاح هنا؟</div>
+            <button class="option-btn" onclick="processAnswer(this, false, 'الرسم اليدوي يأخذ وقتاً طويلاً، التبسيط يساعدنا على اكتشاف قانون أسرع.', 'q2')">أ) لأنها تساعد في رسم كل وردة على حدة.</button>
+            <button class="option-btn" onclick="processAnswer(this, true, 'أحسنتِ! التبسيط يسهل اكتشاف القاعدة الرياضية وتطبيقها على أي صف.', 'q2')">ب) لأنها تسمح باكتشاف القاعدة الرياضية وتطبيقها بسهولة.</button>
+            <div id="feedback-q2" class="feedback"></div>
+            <button id="next-q2" class="next-btn" onclick="goToNext('q2', 'q3')">السؤال التالي ⬅️</button>
+        </div>
+
+        <div id="q3" class="question-card">
+            <div class="question-text"><span class="q-num">3</span> (تحدي): كم عدد الورود في "الصف العاشر"؟</div>
+            <button class="option-btn" onclick="processAnswer(this, false, 'راجعي النمط: نضرب رقم الصف في 2 ونضيف 1. جربي مرة أخرى!', 'q3')">أ) 13 وردة.</button>
+            <button class="option-btn" onclick="processAnswer(this, true, 'مذهلة! القاعدة (الصف × 2 + 1). إذاً الصف العاشر: 10 × 2 + 1 = 21.', 'q3')">ب) 21 وردة.</button>
+            <div id="feedback-q3" class="feedback"></div>
+            <button id="next-q3" class="next-btn" onclick="goToNext('q3', 'finish')">إنهاء الدرس 🏁</button>
+        </div>
+
+        <div id="result-box" class="hidden header-card">
+            <h2 style="color:#4CAF50;">🎉 مبارك يا مبدعة الرياضيات!</h2>
+            <p id="final-score">لقد أتممتِ الدرس بنجاح!</p>
+            <button class="btn-start" onclick="location.reload()">العودة للرئيسية</button>
         </div>
     </div>
 
-    <button class="lesson-button"><span class="ribbon">🎀</span> حل مسألة أبسط</button>
-    <button class="lesson-button"><span class="ribbon">🎀</span> التخمين والتحقق</button>
-    <button class="lesson-button"><span class="ribbon">🎀</span> إنشاء نموذج</button>
-    <button class="lesson-button"><span class="ribbon">🎀</span> إنشاء جدول</button>
-    <button class="lesson-button"><span class="ribbon">🎀</span> تمثيل المسألة</button>
+    <script>
+        let stars = 0;
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 
+        // دالة توليد صوت التصفيق (نجاح)
+        function playSuccessSound() {
+            const oscillator = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            oscillator.type = 'triangle';
+            oscillator.frequency.setValueAtTime(523.25, audioCtx.currentTime); // نغمة C5
+            oscillator.frequency.exponentialRampToValueAtTime(880, audioCtx.currentTime + 0.1);
+            gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.5);
+            oscillator.connect(gain);
+            gain.connect(audioCtx.destination);
+            oscillator.start();
+            oscillator.stop(audioCtx.currentTime + 0.5);
+        }
+
+        // دالة توليد صوت حزين (خطأ)
+        function playErrorSound() {
+            const oscillator = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            oscillator.type = 'sawtooth';
+            oscillator.frequency.setValueAtTime(220, audioCtx.currentTime); // نغمة منخفضة
+            oscillator.frequency.linearRampToValueAtTime(110, audioCtx.currentTime + 0.4);
+            gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
+            gain.gain.linearRampToValueAtTime(0.01, audioCtx.currentTime + 0.4);
+            oscillator.connect(gain);
+            gain.connect(audioCtx.destination);
+            oscillator.start();
+            oscillator.stop(audioCtx.currentTime + 0.4);
+        }
+
+        function startLesson() {
+            document.getElementById('main-menu').classList.add('hidden');
+            document.getElementById('lesson-screen').classList.remove('hidden');
+        }
+
+        function processAnswer(btn, isCorrect, explanation, qId) {
+            const feedback = document.getElementById('feedback-' + qId);
+            const nextBtn = document.getElementById('next-' + qId);
+            const btns = document.getElementById(qId).querySelectorAll('.option-btn');
+
+            if (isCorrect) {
+                playSuccessSound();
+                btn.classList.add('correct-choice');
+                feedback.innerText = "✅ " + explanation;
+                feedback.className = "feedback show success";
+                nextBtn.style.display = 'block';
+                stars++;
+                btns.forEach(b => b.disabled = true);
+            } else {
+                playErrorSound();
+                btn.classList.add('wrong-choice');
+                feedback.innerText = "❌ " + explanation;
+                feedback.className = "feedback show error";
+                setTimeout(() => { btn.classList.remove('wrong-choice'); }, 1000);
+            }
+        }
+
+        function goToNext(current, next) {
+            document.getElementById(current).style.display = 'none';
+            if (next === 'finish') {
+                document.getElementById('result-box').classList.remove('hidden');
+                document.getElementById('main-stars').innerText = "⭐ " + stars;
+            } else {
+                document.getElementById(next).style.display = 'block';
+            }
+        }
+    </script>
 </body>
 </html>
