@@ -19,13 +19,13 @@
             display: flex; flex-direction: column; align-items: center;
         }
 
-        /* تعديل الهيدر: خط غامق ومسافة عن اليمين */
+        /* الهيدر: خط غامق ومسافة واضحة */
         .official-header {
             width: 100%; 
-            padding: 20px 40px; /* مسافة أكبر من اليمين واليسار */
+            padding: 20px 40px;
             background: white;
             text-align: right; 
-            color: #222; /* لون أسود غامق وواضح */
+            color: #111; /* لون غامق جداً */
             font-size: 14px; 
             font-weight: bold; 
             line-height: 1.6; 
@@ -36,7 +36,6 @@
         .teacher-info-card {
             width: 90%; background: white; margin: 20px 0; padding: 25px;
             border-radius: 25px; border: 2px solid var(--pink-border); text-align: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
         }
 
         .teacher-info-card h1 { color: var(--accent-pink); font-size: 26px; margin: 0 0 15px 0; }
@@ -62,7 +61,6 @@
         .screen { display: none; width: 100%; flex-direction: column; align-items: center; }
         .active-screen { display: flex; }
 
-        /* تكبير النص القرائي وعدم الاختصار */
         .reading-area { 
             background: white; width: 88%; padding: 30px; border-radius: 25px; 
             margin: 20px 0; border-right: 12px solid var(--accent-pink); 
@@ -87,6 +85,13 @@
 
         .correct { background: #e8f5e9 !important; border-color: #4caf50 !important; color: #2e7d32; }
         .wrong { background: #ffebee !important; border-color: #f44336 !important; color: #c62828; }
+
+        /* صندوق التغذية الراجعة */
+        .feedback-box {
+            display: none; width: 88%; background: #e3f2fd; border: 2px solid #2196f3;
+            padding: 15px; border-radius: 15px; margin-top: 10px; color: #0d47a1;
+            font-weight: bold; font-size: 16px; text-align: right; line-height: 1.6;
+        }
 
         .next-btn { 
             background: var(--accent-pink); color: white; padding: 18px 70px; 
@@ -139,6 +144,7 @@
     <div id="lesson-screen" class="screen">
         <div class="reading-area" id="reading-content"></div>
         <div id="options-area" style="width:100%; display:flex; flex-direction:column; align-items:center;"></div>
+        <div id="feedback-area" class="feedback-box"></div>
         <button id="next-btn" class="next-btn" onclick="nextQuestion()">السؤال التالي ⬅️</button>
     </div>
 
@@ -185,22 +191,53 @@
 
         function showQuestion() {
             document.getElementById('next-btn').style.display = 'none';
+            document.getElementById('feedback-area').style.display = 'none';
             const area = document.getElementById('options-area');
-            let qText = ""; let opts = []; let correct = 0;
+            let qText = ""; let opts = []; let correct = 0; let feed = "";
 
             if(currentL === 'namat') {
-                if(currentQ === 1) { qText = "ما المعطيات الأساسية في النص؟"; opts = ["اسم الطالبة نورة", "عدد الصفحات التي تقرأها يومياً", "وقت القراءة المفضل", "مكان القراءة"]; correct = 1; }
-                else if(currentQ === 2) { qText = "ما هو نمط الزيادة في عدد الصفحات؟"; opts = ["زيادة ثابتة (٢) كل يوم", "زيادة متغيرة (+٣، +٤، +٥...)", "نقصان في عدد الصفحات", "ضرب في رقم ثابت"]; correct = 1; }
-                else { qText = "كم عدد صفحات اليوم السادس بناءً على النمط؟"; opts = ["٢٠ صفحة", "٢٥ صفحة", "٢٧ صفحة", "٣٠ صفحة"]; correct = 2; }
+                if(currentQ === 1) { 
+                    qText = "ما المعطيات الأساسية في النص؟"; 
+                    opts = ["اسم الطالبة نورة", "عدد الصفحات التي تقرأها يومياً", "وقت القراءة المفضل", "مكان القراءة"]; 
+                    correct = 1;
+                    feed = "💡 إجابة صحيحة! المعطيات هي المعلومات الرقمية التي تساعدنا في اكتشاف النمط.";
+                }
+                else if(currentQ === 2) { 
+                    qText = "ما هو نمط الزيادة في عدد الصفحات؟"; 
+                    opts = ["زيادة ثابتة (٢) كل يوم", "زيادة متغيرة (+٣، +٤، +٥...)", "نقصان في عدد الصفحات", "ضرب في رقم ثابت"]; 
+                    correct = 1;
+                    feed = "💡 رائعة! الزيادة ليست ثابتة، بل تزيد بمقدار واحد عن زيادة اليوم السابق.";
+                }
+                else { 
+                    qText = "كم عدد صفحات اليوم السادس بناءً على النمط؟"; 
+                    opts = ["٢٠ صفحة", "٢٥ صفحة", "٢٧ صفحة", "٣٠ صفحة"]; 
+                    correct = 2;
+                    feed = "💡 مبدعة! اليوم الخامس قرأت ٢٠ صفحة، وبإضافة ٧ صفحات للنمط يصبح اليوم السادس ٢٧ صفحة.";
+                }
             } else {
-                if(currentQ === 1) { qText = "ما هي المعطيات الرياضية في القصة؟"; opts = ["حب سارة للمكتبات", "المجموع ٤٥ والفرق بينهما ٩", "سعر الكتاب الواحد ٤٥ ريال", "موقع المكتبة في المدينة"]; correct = 1; }
-                else if(currentQ === 2) { qText = "أي التخمينات التالية يعتبر صحيحاً؟"; opts = ["(٢٠ ، ٢٥)", "(١٥ ، ٣٠)", "(٢٧ ، ١٨)", "(٢٨ ، ١٧)"]; correct = 2; }
-                else { qText = "كيف نتحقق من صحة التخمين النهائي؟"; opts = ["بجمع السعرين وطرحهما للتأكد من المعطيات", "بالسؤال عن الأسعار في المكتبة", "بتكرار التخمين بشكل عشوائي", "بالانتظار حتى اليوم التالي"]; correct = 0; }
+                if(currentQ === 1) { 
+                    qText = "ما هي المعطيات الرياضية في القصة؟"; 
+                    opts = ["حب سارة للمكتبات", "المجموع ٤٥ والفرق بينهما ٩", "سعر الكتاب الواحد ٤٥ ريال", "موقع المكتبة في المدينة"]; 
+                    correct = 1;
+                    feed = "💡 ممتاز! تحديد المجموع والفرق هو مفتاح الحل في التخمين والتحقق.";
+                }
+                else if(currentQ === 2) { 
+                    qText = "أي التخمينات التالية يعتبر صحيحاً؟"; 
+                    opts = ["(٢٠ ، ٢٥)", "(١٥ ، ٣٠)", "(٢٧ ، ١٨)", "(٢٨ ، ١٧)"]; 
+                    correct = 2;
+                    feed = "💡 عبقرية! لأن ٢٧ + ١٨ = ٤٥، والفرق بين ٢٧ و ١٨ هو فعلاً ٩ ريالات.";
+                }
+                else { 
+                    qText = "كيف نتحقق من صحة التخمين النهائي؟"; 
+                    opts = ["بجمع السعرين وطرحهما للتأكد من المعطيات", "بالسؤال عن الأسعار في المكتبة", "بتكرار التخمين بشكل عشوائي", "بالانتظار حتى اليوم التالي"]; 
+                    correct = 0;
+                    feed = "💡 أحسنتِ! التحقق يعني مطابقة نتائج التخمين مع المعطيات الأصلية للمسألة.";
+                }
             }
 
             let html = `<p style="font-weight:bold; color:var(--mauve); width:90%; margin:20px 0; font-size:20px;">${currentQ}️⃣ ${qText}</p>`;
             opts.forEach((o, i) => {
-                html += `<div class="option" onclick="checkAnswer(this, ${i === correct})">
+                html += `<div class="option" onclick="checkAnswer(this, ${i === correct}, '${feed}')">
                             <div class="char-circle">${['أ','ب','ج','د'][i]}</div>
                             <span>${o}</span>
                          </div>`;
@@ -208,15 +245,21 @@
             area.innerHTML = html;
         }
 
-        function checkAnswer(el, isCorrect) {
-            playSfx(isCorrect);
+        function checkAnswer(el, isCorrect, feedbackText) {
             if(isCorrect) {
+                playSfx(true);
                 el.classList.add('correct');
                 score++; stars += 3;
                 document.getElementById('stars-count').innerText = stars;
+                
+                const fBox = document.getElementById('feedback-area');
+                fBox.innerText = feedbackText;
+                fBox.style.display = 'block';
+                
                 document.getElementById('next-btn').style.display = 'block';
                 document.querySelectorAll('.option').forEach(opt => opt.style.pointerEvents = 'none');
             } else {
+                playSfx(false);
                 el.classList.add('wrong');
                 setTimeout(() => el.classList.remove('wrong'), 500);
             }
