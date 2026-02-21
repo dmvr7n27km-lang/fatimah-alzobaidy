@@ -5,83 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>مبدعة الرياضيات: فاطمة الزبيدي</title>
     <style>
-        :root {
-            --mauve: #7b1fa2;
-            --pink-border: #fce4ec;
-            --accent-pink: #e91e63;
-            --bg-gray: #f8f9fb;
+        :root { --mauve: #7b1fa2; --pink-border: #fce4ec; --accent-pink: #e91e63; --bg-gray: #f8f9fb; }
+        body { background-color: var(--bg-gray); font-family: 'Segoe UI', Tahoma, sans-serif; margin: 0; display: flex; flex-direction: column; align-items: center; }
+        
+        /* ضبط الهيدر ليكون متناسقاً وموسطاً */
+        .official-header { 
+            width: 90%; 
+            padding: 15px; 
+            background: white; 
+            border: 2px solid var(--pink-border); 
+            border-radius: 15px; 
+            margin-top: 15px; 
+            box-sizing: border-box; 
+            font-weight: bold; 
+            font-size: 15px; 
+            line-height: 1.8; 
+            text-align: center; /* توسيط النص لضبط الشكل */
+            color: #333;
         }
-
-        body {
-            background-color: var(--bg-gray);
-            font-family: 'Segoe UI', Tahoma, sans-serif;
-            margin: 0; padding: 0;
-            display: flex; flex-direction: column; align-items: center;
-        }
-
-        /* الهيدر بإطار وردي رقيق */
-        .official-header {
-            width: 95%; padding: 15px; background: white;
-            text-align: right; color: #111; font-size: 14px; 
-            font-weight: bold; line-height: 1.6; 
-            border: 1.5px solid var(--pink-border);
-            border-radius: 15px; margin-top: 10px; box-sizing: border-box;
-        }
-
-        .teacher-info-card {
-            width: 90%; background: white; margin: 15px 0; padding: 20px;
-            border-radius: 25px; border: 2px solid var(--pink-border); text-align: center;
-        }
-
+        
+        .teacher-info-card { width: 90%; background: white; margin: 15px 0; padding: 20px; border-radius: 25px; border: 2px solid var(--pink-border); text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.02); }
         .teacher-info-card h1 { color: var(--accent-pink); font-size: 24px; margin: 0 0 10px 0; }
         .details-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; color: var(--mauve); font-weight: bold; font-size: 16px; }
 
-        .stats-bar { 
-            display: flex; width: 90%; background: white; border-radius: 15px; 
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05); margin-bottom: 20px; 
-        }
+        .stats-bar { display: flex; width: 90%; background: white; border-radius: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); margin-bottom: 20px; }
         .stat-box { flex: 1; padding: 12px; text-align: center; border-left: 1px solid #f0f0f0; }
         .stat-box:last-child { border-left: none; }
-        .stat-box .num { display: block; font-size: 24px; font-weight: bold; color: var(--mauve); }
-        .stat-box .text { font-size: 13px; color: #555; }
+        .stat-box .num { display: block; font-size: 26px; font-weight: bold; color: var(--mauve); }
+        .stat-box .text { font-size: 13px; color: #555; font-weight: bold; }
 
-        .select-lesson-title {
-            width: 90%; text-align: right; color: var(--mauve);
-            font-size: 18px; font-weight: bold; margin: 10px 0;
-            padding-right: 10px; border-right: 4px solid var(--accent-pink);
-        }
-
-        /* تنسيق الدروس: الأيقونة على اليمين وإطار موف */
-        .lesson-item { 
-            width: 90%; background: white; margin-bottom: 12px; padding: 12px 15px;
-            border-radius: 18px; display: flex; align-items: center;
-            border: 2px solid var(--mauve);
-            box-sizing: border-box; cursor: pointer; transition: 0.3s;
-        }
-        .lesson-item:hover { background: #fdfbff; transform: scale(1.01); }
-
-        .icon-circle {
-            width: 45px; height: 45px; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 22px; border: 1.5px solid var(--pink-border);
-            background: #fff; flex-shrink: 0; margin-left: 15px; /* مسافة لليمين */
-        }
+        .select-lesson-title { width: 90%; text-align: right; color: var(--mauve); font-size: 18px; font-weight: bold; margin: 10px 0; padding-right: 10px; border-right: 4px solid var(--accent-pink); }
         
+        .lesson-item { width: 90%; background: white; margin-bottom: 12px; padding: 12px 15px; border-radius: 20px; display: flex; align-items: center; border: 2.5px solid var(--mauve); cursor: pointer; transition: 0.3s; box-sizing: border-box; }
+        .icon-circle { width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 22px; border: 2px solid var(--pink-border); background: #fff; margin-left: 15px; flex-shrink: 0; }
         .lesson-text { font-size: 17px; color: #333; font-weight: bold; text-align: right; }
 
         .screen { display: none; width: 100%; flex-direction: column; align-items: center; }
         .active-screen { display: flex; }
-
-        .reading-area { background: white; width: 90%; padding: 25px; border-radius: 20px; margin: 15px 0; border-right: 10px solid var(--accent-pink); line-height: 1.7; font-size: 19px; box-shadow: 0 3px 10px rgba(0,0,0,0.05); box-sizing: border-box; }
-        
-        .option { background: white; width: 90%; padding: 15px; margin: 8px 0; border-radius: 15px; border: 2px solid #eee; display: flex; align-items: center; gap: 12px; font-weight: bold; font-size: 17px; cursor: pointer; }
+        .reading-area { background: white; width: 90%; padding: 25px; border-radius: 20px; margin: 15px 0; border-right: 10px solid var(--accent-pink); font-size: 19px; line-height: 1.8; box-shadow: 0 3px 10px rgba(0,0,0,0.05); box-sizing: border-box; text-align: justify; }
+        .option { background: white; width: 90%; padding: 16px; margin: 8px 0; border-radius: 15px; border: 2px solid #eee; display: flex; align-items: center; gap: 12px; font-weight: bold; font-size: 17px; cursor: pointer; box-sizing: border-box; }
         .char-circle { width: 35px; height: 35px; border: 2px solid var(--mauve); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--mauve); flex-shrink: 0; }
-        
         .correct { background: #e8f5e9 !important; border-color: #4caf50 !important; color: #2e7d32; }
-        .wrong { background: #ffebee !important; border-color: #f44336 !important; color: #c62828; }
-        
-        .feedback-box { display: none; width: 90%; background: #e3f2fd; border: 2px solid #2196f3; padding: 15px; border-radius: 12px; margin-top: 10px; color: #0d47a1; font-weight: bold; text-align: right; font-size: 16px; }
-        
+        .wrong { background: #ffebee !important; border-color: #f44336 !important; }
+        .feedback-box { display: none; width: 90%; background: #e3f2fd; border: 2px solid #2196f3; padding: 15px; border-radius: 12px; margin-top: 10px; color: #0d47a1; font-weight: bold; text-align: right; }
         .next-btn { background: var(--accent-pink); color: white; padding: 15px 60px; border-radius: 40px; border: none; font-weight: bold; margin: 20px 0; cursor: pointer; display: none; font-size: 18px; }
     </style>
 </head>
@@ -90,26 +56,27 @@
     <div id="main-menu" class="screen active-screen">
         <div class="official-header">
             المملكة العربية السعودية - وزارة التعليم<br>
-            إدارة التعليم بمكة المكرمة - المتوسطة الأولى بالليث
+            إدارة التعليم بمكة المكرمة<br>
+            المتوسطة الأولى بالليث
         </div>
         
         <div class="teacher-info-card">
             <h1>🌸 مبدعة الفهم الرياضي 🌸</h1>
             <div class="details-grid">
                 <span>المادة: رياضيات</span>
-                <span>الصف: الثاني متوسط</span>
-                <span style="grid-column: span 2;">إعداد: أ. فاطمة حسن الزبيدي</span>
+                <span>الصف: ثاني متوسط</span>
+                <span style="grid-column: span 2;">إعداد وتنفيذ: أ. فاطمة حسن الزبيدي</span>
             </div>
         </div>
 
         <div class="stats-bar">
             <div class="stat-box"><span class="num">5</span><span class="text">دروس</span></div>
-            <div class="stat-box"><span id="done-count" class="num">0</span><span class="text">تم إنجازها</span></div>
-            <div class="stat-box"><span id="stars-count" class="num" style="color:#fb8c00;">0</span><span class="text">نجوم ⭐</span></div>
+            <div class="stat-box"><span id="done-count-display" class="num">0</span><span class="text">تم إنجازها</span></div>
+            <div class="stat-box"><span id="stars-count-display" class="num" style="color:#fb8c00;">0</span><span class="text">نجوم ⭐</span></div>
         </div>
 
         <div class="select-lesson-title">اختاري الاستراتيجية للبدء:</div>
-
+        
         <div class="lesson-item" onclick="startLesson('takhmeen')">
             <div class="icon-circle">🎯</div>
             <div class="lesson-text">١. استراتيجية التخمين والتحقق</div>
@@ -136,44 +103,50 @@
         <div class="reading-area" id="reading-content"></div>
         <div id="options-area" style="width:100%; display:flex; flex-direction:column; align-items:center;"></div>
         <div id="feedback-area" class="feedback-box"></div>
-        <button id="next-btn" class="next-btn" onclick="nextQuestion()">السؤال التالي ⬅️</button>
+        <button id="next-btn" class="next-btn" onclick="nextQuestion()">انتقلي للمستوى التالي ⬅️</button>
     </div>
 
     <script>
-        let stars = 0; let done = 0; let currentL = ''; let currentQ = 1;
+        // البرمجة لضمان عمل العدادات والأسئلة المتدرجة
+        let stars = 0; let done = 0; let currentL = ''; let currentQIdx = 0;
         const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 
-        // دالة التصفيق والنجاح
-        function playSuccessSfx() {
+        const lessons = {
+            takhmeen: {
+                story: "<b>فهم المسألة:</b> اشترت سارة كتابين بـ ٤٥ ريالاً، أحدهما يزيد عن الآخر بـ ٩ ريالات.",
+                questions: [
+                    { q: "(تفكير عميق) ما هي المعطيات الرياضية الأساسية في النص؟", opts: ["المجموع ٤٥ والفرق ٩", "سعر الكتاب ٤٥", "اسم سارة", "عدد الصفحات"], cor: 0, feed: "رائعة! استخراج المعطيات هو أول خطوة للفهم." },
+                    { q: "(تفكير متوسط) إذا خمننا أن الكتاب الأرخص ١٨ ريالاً، فكم سيكون سعر الأغلى؟", opts: ["٢٧ ريالاً", "٩ ريالات", "٤٥ ريالاً", "٣٠ ريالاً"], cor: 0, feed: "صحيح! (١٨ + ٩ = ٢٧)." },
+                    { q: "(تفكير سهل) هل مجموع (١٨ + ٢٧) يساوي ٤٥؟", opts: ["نعم", "لا", "ربما", "غير ذلك"], cor: 0, feed: "ممتازة! إذن التخمين صحيح." }
+                ]
+            },
+            namat: {
+                story: "<b>فهم المسألة:</b> قرأت نورة (٢، ٥، ٩، ١٤) صفحة في ٤ أيام متتالية.",
+                questions: [
+                    { q: "(تفكير عميق) حللي الزيادة بين الأيام، ماذا تلاحظين؟", opts: ["الزيادة تزيد بمقدار ١ كل يوم", "الزيادة ثابتة", "نقصان بمقدار ٢", "ضرب في ٣"], cor: 0, feed: "تحليل ذكي! النمط هو زيادة الزيادة." },
+                    { q: "(تفكير متوسط) ما هو مقدار الزيادة المتوقع في اليوم الخامس؟", opts: ["٦ صفحات", "٥ صفحات", "٤ صفحات", "٧ صفحات"], cor: 0, feed: "أحسنتِ! الزيادة السابقة كانت ٥، إذن التالية ٦." },
+                    { q: "(تفكير سهل) كم صفحة ستقرأ نورة في اليوم الخامس؟", opts: ["٢٠ صفحة", "١٩ صفحة", "٢٥ صفحة", "١٥ صفحة"], cor: 0, feed: "عبقرية! (١٤ + ٦ = ٢٠)." }
+                ]
+            }
+        };
+
+        function playClap() {
             if (audioCtx.state === 'suspended') audioCtx.resume();
-            const notes = [523.25, 659.25, 783.99, 1046.50]; // نغمات تصاعدية توحي بالنجاح
-            notes.forEach((freq, i) => {
-                const osc = audioCtx.createOscillator();
-                const gain = audioCtx.createGain();
-                osc.connect(gain); gain.connect(audioCtx.destination);
-                osc.frequency.setValueAtTime(freq, audioCtx.currentTime + i * 0.1);
-                gain.gain.setValueAtTime(0.1, audioCtx.currentTime + i * 0.1);
-                gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + i * 0.1 + 0.3);
-                osc.start(audioCtx.currentTime + i * 0.1);
-                osc.stop(audioCtx.currentTime + i * 0.1 + 0.3);
+            [523, 659, 783].forEach((f, i) => {
+                const o = audioCtx.createOscillator(); const g = audioCtx.createGain();
+                o.connect(g); g.connect(audioCtx.destination);
+                o.frequency.setValueAtTime(f, audioCtx.currentTime + i * 0.1);
+                g.gain.setValueAtTime(0.1, audioCtx.currentTime);
+                o.start(audioCtx.currentTime + i * 0.1); o.stop(audioCtx.currentTime + i * 0.1 + 0.2);
             });
         }
 
         function startLesson(id) {
-            currentL = id; currentQ = 1;
+            if(!lessons[id]) { alert("سيتم إضافة أسئلة هذا الدرس قريباً!"); return; }
+            currentL = id; currentQIdx = 0;
             document.getElementById('main-menu').classList.remove('active-screen');
             document.getElementById('lesson-screen').classList.add('active-screen');
-            loadLesson();
-        }
-
-        function loadLesson() {
-            const area = document.getElementById('reading-content');
-            const data = {
-                takhmeen: "📖 <b>التخمين والتحقق:</b> اشترت سارة كتابين بـ ٤٥ ريالاً، أحدهما يزيد عن الآخر بـ ٩ ريالات. فما ثمنهما؟",
-                namat: "📖 <b>البحث عن نمط:</b> الأرقام هي (٢، ٥، ٩، ١٤). ما هو الرقم التالي في النمط؟",
-                aksian: "📖 <b>الحل عكسياً:</b> عدد ضُرب في ٣ ثم أُضيف إليه ٥ فأصبح ٢٦. ما هو العدد؟"
-            };
-            area.innerHTML = data[currentL] || "استراتيجية حل المسألة الرياضية";
+            document.getElementById('reading-content').innerHTML = lessons[id].story;
             showQuestion();
         }
 
@@ -181,33 +154,24 @@
             document.getElementById('next-btn').style.display = 'none';
             document.getElementById('feedback-area').style.display = 'none';
             const area = document.getElementById('options-area');
-            let qData = {
-                q: "ما هي أول خطوة صحيحة للحل؟",
-                opts: ["الفهم وتحديد المعطيات", "التخمين العشوائي", "البدء بالحل فوراً", "الانتظار"],
-                cor: 0,
-                feed: "ممتازة! دائماً نبدأ بفهم المسألة أولاً 🌟"
-            };
-            
-            let html = `<p style="font-weight:bold; color:var(--mauve); width:90%; margin:15px 0; font-size:18px;">س${currentQ}: ${qData.q}</p>`;
+            const qData = lessons[currentL].questions[currentQIdx];
+            let html = `<p style="font-weight:bold; color:var(--mauve); width:90%; margin:15px 0; font-size:18px;">س${currentQIdx+1}: ${qData.q}</p>`;
             qData.opts.forEach((o, i) => {
                 html += `<div class="option" onclick="checkAnswer(this, ${i === qData.cor}, '${qData.feed}')">
-                            <div class="char-circle">${['أ','ب','ج','د'][i]}</div>
-                            <span>${o}</span>
+                            <div class="char-circle">${['أ','ب','ج','د'][i]}</div><span>${o}</span>
                          </div>`;
             });
             area.innerHTML = html;
         }
 
-        function checkAnswer(el, isCorrect, feedback) {
-            if(isCorrect) {
-                el.classList.add('correct');
-                playSuccessSfx(); // تشغيل صوت النجاح (بديل التصفيق)
-                stars += 3;
-                document.getElementById('stars-count').innerText = stars;
-                const fBox = document.getElementById('feedback-area');
-                fBox.innerText = feedback; fBox.style.display = 'block';
+        function checkAnswer(el, isCor, feed) {
+            if (isCor) {
+                el.classList.add('correct'); playClap();
+                stars += 3; document.getElementById('stars-count-display').innerText = stars;
+                document.getElementById('feedback-area').innerText = feed;
+                document.getElementById('feedback-area').style.display = 'block';
                 document.getElementById('next-btn').style.display = 'block';
-                document.querySelectorAll('.option').forEach(o => o.style.pointerEvents = 'none');
+                document.querySelectorAll('.option').forEach(opt => opt.style.pointerEvents = 'none');
             } else {
                 el.classList.add('wrong');
                 setTimeout(() => el.classList.remove('wrong'), 500);
@@ -215,9 +179,11 @@
         }
 
         function nextQuestion() {
-            if(currentQ < 2) { currentQ++; showQuestion(); }
-            else { 
-                done++; document.getElementById('done-count').innerText = done;
+            if (currentQIdx < lessons[currentL].questions.length - 1) {
+                currentQIdx++; showQuestion();
+            } else {
+                done++; document.getElementById('done-count-display').innerText = done;
+                alert("تم إنجاز الاستراتيجية بنجاح! 🌟");
                 document.getElementById('lesson-screen').classList.remove('active-screen');
                 document.getElementById('main-menu').classList.add('active-screen');
             }
