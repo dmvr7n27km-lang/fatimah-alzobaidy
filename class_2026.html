@@ -1,1 +1,102 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منصة طالبات الإبداع</title>
+    <style>
+        :root { --main-color: #6c5ce7; --bg-color: #f9f9fb; }
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; background-color: var(--bg-color); margin: 0; padding: 20px; direction: rtl; }
+        .app-container { max-width: 450px; margin: auto; background: white; padding: 25px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
+        h1 { text-align: center; color: var(--main-color); font-size: 22px; }
+        
+        /* واجهة الدخول */
+        .login-box { text-align: center; margin-top: 20px; }
+        input { width: 100%; padding: 12px; margin: 15px 0; border: 2px solid #eee; border-radius: 10px; font-size: 16px; box-sizing: border-box; }
+        .btn-main { width: 100%; padding: 12px; background: var(--main-color); color: white; border: none; border-radius: 10px; cursor: pointer; font-size: 16px; font-weight: bold; }
 
+        /* عرض البيانات */
+        #student-view { display: none; }
+        .header-info { background: #f0eeff; padding: 15px; border-radius: 12px; margin-bottom: 20px; text-align: center; }
+        .lesson-card { background: white; border: 1px solid #f0f0f0; padding: 15px; border-radius: 15px; margin-bottom: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
+        .lesson-title { font-weight: bold; color: #333; display: block; margin-bottom: 10px; border-right: 4px solid var(--main-color); padding-right: 10px; }
+        .data-row { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 14px; }
+        .label { color: #777; }
+        .value { font-weight: 600; color: #2d3436; }
+        .status-done { color: #00b894; }
+        .quiz-link { color: var(--main-color); text-decoration: none; font-weight: bold; background: #eeecff; padding: 2px 8px; border-radius: 5px; }
+    </style>
+</head>
+<body>
+
+<div class="app-container">
+    <div id="login-view" class="login-box">
+        <h1>مرحباً بكِ يا بطلة 🌟</h1>
+        <p style="color: #666;">أدخلي الكود الخاص بكِ لمتابعة مهامك</p>
+        <input type="text" id="studentCode" placeholder="مثلاً: 2021">
+        <button class="btn-main" onclick="login()">دخول المنصة</button>
+    </div>
+
+    <div id="student-view">
+        <div class="header-info">
+            <h2 id="name-display" style="margin:0; color: #4834d4;"></h2>
+        </div>
+        
+        <div id="lessons-list">
+            </div>
+
+        <button onclick="location.reload()" style="background:none; border:none; color:#aaa; cursor:pointer; width:100%; margin-top:10px;">تسجيل خروج</button>
+    </div>
+</div>
+
+<script>
+    // --- قاعدة بيانات الطالبات والدروس ---
+    const database = {
+        "101": {
+            name: "فاطمة الزبيدي",
+            lessons: [
+                { title: "الدرس الأول: التوحيد", task: "مكتمل ✅", task_grade: "10/10", quiz_grade: "5/5", quiz_url: "#" },
+                { title: "الدرس الثاني: الفقه", task: "قيد المراجعة ⏳", task_grade: "--", quiz_grade: "لم يختبر", quiz_url: "#" }
+            ]
+        },
+        "102": {
+            name: "سارة حسن",
+            lessons: [
+                { title: "الدرس الأول: التوحيد", task: "مكتمل ✅", task_grade: "9/10", quiz_grade: "4/5", quiz_url: "#" }
+            ]
+        }
+    };
+
+    function login() {
+        const code = document.getElementById('studentCode').value;
+        const student = database[code];
+
+        if (student) {
+            document.getElementById('login-view').style.display = 'none';
+            document.getElementById('student-view').style.display = 'block';
+            document.getElementById('name-display').innerText = "الطالبة: " + student.name;
+
+            let content = "";
+            student.lessons.forEach(item => {
+                content += `
+                <div class="lesson-card">
+                    <span class="lesson-title">${item.title}</span>
+                    <div class="data-row">
+                        <span class="label">المهمة/الواجب:</span>
+                        <span class="value status-done">${item.task} (${item.task_grade})</span>
+                    </div>
+                    <div class="data-row">
+                        <span class="label">الاختبار القصير:</span>
+                        <span class="value">${item.quiz_grade} | <a href="${item.quiz_url}" class="quiz-link">رابط الاختبار</a></span>
+                    </div>
+                </div>`;
+            });
+            document.getElementById('lessons-list').innerHTML = content;
+        } else {
+            alert("عذراً.. الكود غير صحيح!");
+        }
+    }
+</script>
+
+</body>
+</html>
