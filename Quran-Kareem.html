@@ -3,67 +3,148 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>صدقة جارية - عبدالله آل عيسى ووالديه رحمهم الله</title>
+    <title>صدقة جارية - عبدالله آل عيسى ووالديه</title>
     <style>
-        :root { --dark-green: #064e3b; --emerald: #065f46; --gold: #d4af37; --bg-pattern: #053b2d; }
+        @import url('https://fonts.googleapis.com/css2?family=Amiri:wght@700&family=Tajawal:wght@400;700&display=swap');
+
         body {
-            background-color: var(--dark-green);
-            background-image: url('https://www.transparenttextures.com/patterns/islamic-art.png'); /* زخرفة مائية */
-            color: white; font-family: 'Amiri', serif; margin: 0; padding-bottom: 120px;
+            background-color: #000c17;
+            color: white;
+            font-family: 'Tajawal', sans-serif;
+            margin: 0;
+            padding-bottom: 140px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
-        .header { padding: 40px 20px; text-align: center; border-bottom: 4px solid var(--gold); }
-        h1 { color: var(--gold); font-size: 26px; margin: 10px 0; }
-        .sheikh-img { width: 130px; height: 130px; border-radius: 50%; border: 3px solid var(--gold); margin-bottom: 15px; }
-        .playlist { max-width: 600px; margin: 25px auto; padding: 0 15px; }
-        .surah-item {
-            display: flex; justify-content: space-between; padding: 16px; margin-bottom: 8px;
-            background: rgba(255, 255, 255, 0.05); border-radius: 10px; cursor: pointer;
-            border: 1px solid rgba(212, 175, 55, 0.2); transition: 0.3s; font-size: 19px;
+
+        .header {
+            background: linear-gradient(to bottom, #003366, #000c17);
+            width: 100%;
+            padding: 30px 20px;
+            text-align: center;
+            border-bottom: 2px solid #00b4d8;
+            box-sizing: border-box;
         }
-        .surah-item:hover { background: var(--gold); color: black; transform: scale(1.02); }
-        .surah-item.active { background: var(--emerald); color: white; border-color: var(--gold); }
-        .charity-footer {
-            position: fixed; bottom: 0; width: 100%; background: #01110e;
-            padding: 10px 0; text-align: center; border-top: 2px solid var(--gold);
+
+        h1 { font-family: 'Amiri', serif; color: #00b4d8; margin: 10px 0; font-size: 22px; }
+
+        .player-container {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background: #001b33;
+            border-top: 4px solid #ffcc00;
+            padding: 15px 20px;
+            box-sizing: border-box;
+            z-index: 9999;
+            box-shadow: 0 -5px 25px rgba(0,0,0,0.8);
+            text-align: center;
         }
-        .charity-text { font-size: 16px; color: var(--gold); } /* بخط صغير شوي */
-        audio { width: 90%; max-width: 600px; }
+
+        #trackName {
+            color: #ffcc00;
+            font-size: 15px;
+            margin-bottom: 10px;
+            font-weight: bold;
+            display: block;
+        }
+
+        audio { width: 100%; height: 45px; border-radius: 8px; }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            width: 90%;
+            max-width: 500px;
+            margin-top: 20px;
+            padding-bottom: 20px;
+        }
+
+        .surah-card {
+            background: #002d5a;
+            padding: 18px 10px;
+            border-radius: 12px;
+            border: 1px solid rgba(0, 180, 216, 0.4);
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.2s;
+            text-align: center;
+            -webkit-tap-highlight-color: transparent;
+            font-size: 15px;
+        }
+
+        .surah-card:active {
+            background: #ffcc00;
+            color: #001b33;
+        }
+
+        .playing {
+            background: #00b4d8 !important;
+            color: #001b33 !important;
+        }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Amiri&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <div class="header">
-        <img src="https://upload.wikimedia.org/wikipedia/ar/2/22/Mohamed_Ayoub.jpg" class="sheikh-img">
-        <h1>القرآن الكريم | جزء عم كامل بصوت محمد أيوب</h1>
+        <p style="margin:0; opacity:0.8; font-size: 12px;">صدقة جارية عن</p>
+        <h1>عبدالله آل عيسى ووالديه رحمهم الله</h1>
+        <p style="margin:0; font-size:13px; color: #aaa;">بصوت الشيخ محمد أيوب - جزء عم</p>
     </div>
 
-    <div class="playlist">
-        <div class="surah-item" onclick="playAudio(0, this)"><span>78. سورة النبأ</span> <small>00:00</small></div>
-        <div class="surah-item" onclick="playAudio(290, this)"><span>79. سورة النازعات</span> <small>04:50</small></div>
-        <div class="surah-item" onclick="playAudio(556, this)"><span>80. سورة عبس</span> <small>09:16</small></div>
-        <div class="surah-item" onclick="playAudio(804, this)"><span>81. سورة التكوير</span> <small>13:24</small></div>
-        <div class="surah-item" onclick="playAudio(948, this)"><span>82. سورة الانفطار</span> <small>15:48</small></div>
-    </div>
+    <div class="grid" id="grid"></div>
 
-    <div class="charity-footer">
-        <span class="charity-text">صدقة جارية عن عبدالله آل عيسى ووالديه رحمهم الله</span>
-    </div>
-
-    <div class="player-bar">
-        <audio id="audioPlayer" controls controlsList="nodownload">
-            <source src="https://server16.mp3quran.net/ayoub/114.mp3" type="audio/mpeg">
-        </audio>
+    <div class="player-container">
+        <span id="trackName">اختر سورة لبدء الاستماع</span>
+        <audio id="audioPlayer" controls playsinline preload="none"></audio>
+        <p style="font-size: 11px; margin-top: 5px; color: #00b4d8;">إذا لم يبدأ الصوت، اضغطي على زر (▶) هنا</p>
     </div>
 
     <script>
-        function playAudio(seconds, element) {
-            var player = document.getElementById('audioPlayer');
-            document.querySelectorAll('.surah-item').forEach(item => item.classList.remove('active'));
-            element.classList.add('active');
-            player.currentTime = seconds;
-            player.play().catch(e => { alert("نعتذر، واجهنا مشكلة في التشغيل."); });
-        }
+        const surahs = [
+            { id: "078", name: "النبأ" }, { id: "079", name: "النازعات" }, { id: "080", name: "عبس" },
+            { id: "081", name: "التكوير" }, { id: "082", name: "الانفطار" }, { id: "083", name: "المطففين" },
+            { id: "084", name: "الانشقاق" }, { id: "085", name: "البروج" }, { id: "086", name: "الطارق" },
+            { id: "087", name: "الأعلى" }, { id: "088", name: "الغاشية" }, { id: "089", name: "الفجر" },
+            { id: "090", name: "البلد" }, { id: "091", name: "الشمس" }, { id: "092", name: "الليل" },
+            { id: "093", name: "الضحى" }, { id: "094", name: "الشرح" }, { id: "095", name: "التين" },
+            { id: "096", name: "العلق" }, { id: "097", name: "القدر" }, { id: "098", name: "البينة" },
+            { id: "099", name: "الزلزلة" }, { id: "100", name: "العاديات" }, { id: "101", name: "القارعة" },
+            { id: "102", name: "التكاثر" }, { id: "103", name: "العصر" }, { id: "104", name: "الهمزة" },
+            { id: "105", name: "الفيل" }, { id: "106", name: "قريش" }, { id: "107", name: "الماعون" },
+            { id: "108", name: "الكوثر" }, { id: "109", name: "الكافرون" }, { id: "110", name: "النصر" },
+            { id: "111", name: "المسد" }, { id: "112", name: "الإخلاص" }, { id: "113", name: "الفلق" },
+            { id: "114", name: "الناس" }
+        ];
+
+        const audio = document.getElementById('audioPlayer');
+        const trackName = document.getElementById('trackName');
+        const grid = document.getElementById('grid');
+
+        surahs.forEach(s => {
+            const card = document.createElement('div');
+            card.className = 'surah-card';
+            card.innerText = "سورة " + s.name;
+            
+            card.onclick = function() {
+                document.querySelectorAll('.surah-card').forEach(c => c.classList.remove('playing'));
+                card.classList.add('playing');
+
+                // روابط من سيرفر الأرشيف لضمان الاستمرارية
+                const url = `https://archive.org/download/muhammad_ayyuub_muhammad_ayyuub_juz_30/${s.id}.mp3`;
+                
+                trackName.innerText = "جاري تشغيل: سورة " + s.name;
+                audio.src = url;
+                audio.load();
+                audio.play().catch(() => {
+                    trackName.innerText = "اضغطي زر التشغيل ▶ لسماع " + s.name;
+                });
+            };
+            grid.appendChild(card);
+        });
     </script>
 </body>
 </html>
+
