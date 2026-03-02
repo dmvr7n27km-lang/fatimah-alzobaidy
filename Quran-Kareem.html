@@ -3,72 +3,109 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quran Kareem - محمد أيوب</title>
+    <title>صدقة جارية - عبدالله آل عيسى ووالديه رحمهما الله</title>
     <style>
-        :root { --main-color: #f5f1e6; --accent-color: #8b6b4e; --text-color: #333; }
+        :root { --dark-green: #064e3b; --emerald: #065f46; --gold: #d4af37; --soft-bg: #f8faf9; }
         body {
-            background-color: var(--main-color);
-            background-image: url('https://p-holding.net/wp-content/uploads/2021/04/Medina-scaled.jpg'); /* رابط خلفية مائية للمدينة */
-            background-blend-mode: overlay;
-            background-size: cover; background-attachment: fixed;
-            color: var(--text-color); font-family: 'Amiri', serif; margin: 0; padding-bottom: 120px;
+            background-color: var(--soft-bg);
+            background-image: url('https://www.transparenttextures.com/patterns/islamic-art.png');
+            color: var(--dark-green); font-family: 'Amiri', serif; margin: 0; padding-bottom: 140px;
         }
-        .header { padding: 60px 20px; text-align: center; }
-        .sheikh-photo-placeholder { display: none; } /* تم إزالة الصورة */
-        h1 { color: var(--accent-color); font-size: 32px; font-weight: normal; margin-bottom: 10px; }
-        .playlist { max-width: 500px; margin: auto; padding: 10px; }
+        .header { 
+            padding: 45px 20px; text-align: center; background: white; 
+            border-bottom: 5px solid var(--gold); box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+        .charity-label { color: var(--gold); font-size: 24px; font-weight: bold; display: block; margin-bottom: 5px; }
+        .names { color: var(--emerald); font-size: 28px; font-weight: bold; display: block; margin-bottom: 20px; }
+        .sheikh-box { margin-bottom: 15px; }
+        .sheikh-img { width: 120px; height: 120px; border-radius: 50%; border: 3px solid var(--gold); padding: 5px; background: white; }
+        h1 { margin: 10px 0; font-size: 22px; color: #444; }
+        
+        .playlist { max-width: 650px; margin: 30px auto; padding: 0 20px; }
         .surah-card {
-            background: rgba(255, 255, 255, 0.4); backdrop-filter: blur(10px);
-            margin: 12px 0; padding: 20px; border-radius: 15px;
             display: flex; justify-content: space-between; align-items: center;
-            cursor: pointer; transition: 0.4s; border: 1px solid rgba(139, 107, 78, 0.1);
+            padding: 18px 25px; margin-bottom: 12px; background: white; 
+            border-radius: 15px; cursor: pointer; border: 1px solid #e2e8f0;
+            transition: all 0.3s ease; font-size: 20px;
         }
-        .surah-card:hover { background: rgba(139, 107, 78, 0.2); transform: translateY(-3px); }
-        .surah-card.active { border: 2px solid var(--accent-color); background: rgba(139, 107, 78, 0.1); }
-        .player-fixed {
-            position: fixed; bottom: 0; width: 100%; background: #fff;
-            padding: 25px; border-top: 1px solid rgba(139, 107, 78, 0.2); text-align: center;
-            box-shadow: 0 -5px 15px rgba(0,0,0,0.05);
+        .surah-card:hover { background: var(--emerald); color: white; transform: translateY(-2px); }
+        .surah-card.active { background: var(--dark-green); color: white; border-color: var(--gold); box-shadow: 0 5px 15px rgba(6, 78, 59, 0.3); }
+        
+        .player-footer {
+            position: fixed; bottom: 0; width: 100%; background: white;
+            padding: 25px 10px; border-top: 4px solid var(--gold); text-align: center;
+            box-shadow: 0 -5px 20px rgba(0,0,0,0.1);
         }
-        audio { width: 90%; max-width: 600px; }
+        audio { width: 90%; max-width: 600px; height: 45px; }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Amiri&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <div class="header">
-        <h1>Quran Kareem</h1>
-        <p style="color: #666;">جزء عم بصوت الشيخ محمد أيوب (رحمه الله)</p>
+        <span class="charity-label">صدقة جارية عن</span>
+        <span class="names">عبدالله آل عيسى ووالديه رحمهم الله</span>
+        <div class="sheikh-box">
+            <img src="https://upload.wikimedia.org/wikipedia/ar/2/22/Mohamed_Ayoub.jpg" class="sheikh-img">
+        </div>
+        <h1>القرآن الكريم | جزء عم كامل بصوت الشيخ محمد أيوب</h1>
     </div>
 
     <div class="playlist">
-        <div class="surah-card" onclick="play(0, this)"><span>1. سورة النبأ</span> <small>00:00</small></div>
-        <div class="surah-card" onclick="play(289, this)"><span>2. سورة النازعات</span> <small>04:49</small></div>
-        <div class="surah-card" onclick="play(556, this)"><span>3. سورة عبس</span> <small>09:16</small></div>
-        <div class="surah-card" onclick="play(803, this)"><span>4. سورة التكوير</span> <small>13:23</small></div>
-        <div class="surah-card" onclick="play(947, this)"><span>5. سورة الانفطار</span> <small>15:47</small></div>
+        <div class="surah-card" onclick="play(0, this)"><span>78. سورة النبأ</span> <i class="icon-play"></i></div>
+        <div class="surah-card" onclick="play(290, this)"><span>79. سورة النازعات</span></div>
+        <div class="surah-card" onclick="play(556, this)"><span>80. سورة عبس</span></div>
+        <div class="surah-card" onclick="play(804, this)"><span>81. سورة التكوير</span></div>
+        <div class="surah-card" onclick="play(948, this)"><span>82. سورة الانفطار</span></div>
+        <div class="surah-card" onclick="play(1069, this)"><span>83. سورة المطففين</span></div>
+        <div class="surah-card" onclick="play(1348, this)"><span>84. سورة الانشقاق</span></div>
+        <div class="surah-card" onclick="play(1504, this)"><span>85. سورة البروج</span></div>
+        <div class="surah-card" onclick="play(1693, this)"><span>86. سورة الطارق</span></div>
+        <div class="surah-card" onclick="play(1796, this)"><span>87. سورة الأعلى</span></div>
+        <div class="surah-card" onclick="play(1912, this)"><span>88. سورة الغاشية</span></div>
+        <div class="surah-card" onclick="play(2045, this)"><span>89. سورة الفجر</span></div>
+        <div class="surah-card" onclick="play(2265, this)"><span>90. سورة البلد</span></div>
+        <div class="surah-card" onclick="play(2385, this)"><span>91. سورة الشمس</span></div>
+        <div class="surah-card" onclick="play(2477, this)"><span>92. سورة الليل</span></div>
+        <div class="surah-card" onclick="play(2586, this)"><span>93. سورة الضحى</span></div>
+        <div class="surah-card" onclick="play(2644, this)"><span>94. سورة الشرح</span></div>
+        <div class="surah-card" onclick="play(2683, this)"><span>95. سورة التين</span></div>
+        <div class="surah-card" onclick="play(2745, this)"><span>96. سورة العلق</span></div>
+        <div class="surah-card" onclick="play(2847, this)"><span>97. سورة القدر</span></div>
+        <div class="surah-card" onclick="play(2902, this)"><span>98. سورة البينة</span></div>
+        <div class="surah-card" onclick="play(3034, this)"><span>99. سورة الزلزلة</span></div>
+        <div class="surah-card" onclick="play(3096, this)"><span>100. سورة العاديات</span></div>
+        <div class="surah-card" onclick="play(3169, this)"><span>101. سورة القارعة</span></div>
+        <div class="surah-card" onclick="play(3225, this)"><span>102. سورة التكاثر</span></div>
+        <div class="surah-card" onclick="play(3283, this)"><span>103. سورة العصر</span></div>
+        <div class="surah-card" onclick="play(3312, this)"><span>104. سورة الهمزة</span></div>
+        <div class="surah-card" onclick="play(3370, this)"><span>105. سورة الفيل</span></div>
+        <div class="surah-card" onclick="play(3418, this)"><span>106. سورة قريش</span></div>
+        <div class="surah-card" onclick="play(3463, this)"><span>107. سورة الماعون</span></div>
+        <div class="surah-card" onclick="play(3518, this)"><span>108. سورة الكوثر</span></div>
+        <div class="surah-card" onclick="play(3546, this)"><span>109. سورة الكافرون</span></div>
+        <div class="surah-card" onclick="play(3619, this)"><span>110. سورة النصر</span></div>
+        <div class="surah-card" onclick="play(3661, this)"><span>111. سورة المسد</span></div>
+        <div class="surah-card" onclick="play(3716, this)"><span>112. سورة الإخلاص</span></div>
+        <div class="surah-card" onclick="play(3744, this)"><span>113. سورة الفلق</span></div>
+        <div class="surah-card" onclick="play(3786, this)"><span>114. سورة الناس</span></div>
     </div>
 
-    <div class="player-fixed">
-        <audio id="quranAudio" controls>
-            <source src="https://download.quranicaudio.com/quran/muhammad_ayyuub/complete/078.mp3" type="audio/mpeg">
+    <div class="player-footer">
+        <audio id="audioPlayer" controls controlsList="nodownload">
+            <source src="https://server16.mp3quran.net/ayoub/114.mp3" type="audio/mpeg">
         </audio>
     </div>
 
     <script>
         function play(seconds, element) {
-            const audio = document.getElementById('quranAudio');
-            
-            // إزالة حالة "نشط" من السورة السابقة
-            document.querySelectorAll('.surah-card').forEach(card => card.classList.remove('active'));
-            
-            // إضافة حالة "نشط" للسورة الحالية
+            var player = document.getElementById('audioPlayer');
+            var cards = document.getElementsByClassName('surah-card');
+            for (var i = 0; i < cards.length; i++) { cards[i].classList.remove('active'); }
             element.classList.add('active');
-            
-            audio.currentTime = seconds;
-            audio.play();
+            player.currentTime = seconds;
+            player.play();
         }
     </script>
-
 </body>
 </html>
