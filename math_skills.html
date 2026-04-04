@@ -29,7 +29,14 @@
 <div class="container">
     
     <section class="card">
-        <h2>1. حجم المنشور والأسطوانة <span class="badge">مهارة أساسية</span></h2>
+    <div class="calculator" style="margin-top:15px; background:#f9f9f9; padding:10px; border-radius:10px;">
+    <strong>حاسبة تفاعلية:</strong><br>
+    نق: <input type="number" id="radius" style="width:50px"> 
+    ع: <input type="number" id="height" style="width:50px">
+    <button onclick="calculateCylinderVolume()" style="background:#8e44ad; color:white; border:none; border-radius:5px; padding:5px 10px; cursor:pointer;">احسبي</button>
+    <p id="cyl-result" style="color:#8e44ad; font-weight:bold;"></p>
+</div>
+    <h2>1. حجم المنشور والأسطوانة <span class="badge">مهارة أساسية</span></h2>
         <p>التركيز على ربط مساحة القاعدة للارتفاع: $V = B \times h$</p>
         <a href="#" class="btn">شرح فيديو</a>
         <a href="#" class="btn" style="background:#2980b9;">تدريب تفاعلي</a>
