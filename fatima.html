@@ -1,1 +1,176 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مبدعة الفهم الرياضي | أ. فاطمة الزبيدي</title>
+    <style>
+        :root { --mauve: #7b1fa2; --pink-soft: #fce4ec; --accent: #e91e63; --gray: #f8f9fb; }
+        body { background-color: var(--gray); font-family: 'Segoe UI', Tahoma, sans-serif; margin: 0; padding: 0; text-align: center; }
+        
+        .screen { display: none; flex-direction: column; align-items: center; min-height: 100vh; padding: 20px; }
+        .active { display: flex; }
+
+        /* البطاقات */
+        .card { background: white; width: 90%; max-width: 450px; padding: 25px; border-radius: 20px; border: 2px solid var(--pink-soft); box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-top: 20px; }
+        
+        input, select { width: 90%; padding: 12px; margin: 10px 0; border-radius: 12px; border: 1.5px solid #ddd; font-family: inherit; font-size: 16px; outline: none; }
+        
+        .btn { background: var(--mauve); color: white; padding: 12px 45px; border-radius: 30px; border: none; font-weight: bold; cursor: pointer; transition: 0.3s; margin-top: 15px; font-size: 17px; }
+        .btn:hover { transform: scale(1.05); background: var(--accent); }
+
+        .timer { background: #fff3e0; color: #e65100; padding: 10px 25px; border-radius: 25px; font-weight: bold; border: 1px solid #ffb74d; font-size: 20px; margin-bottom: 15px; }
+
+        .option { background: white; width: 90%; padding: 15px; margin: 10px auto; border-radius: 15px; border: 2px solid #eee; cursor: pointer; font-weight: bold; transition: 0.2s; position: relative; }
+        .correct { background: #e8f5e9 !important; border-color: #4caf50 !important; color: #2e7d32; }
+        .wrong { background: #ffebee !important; border-color: #f44336 !important; color: #c62828; }
+        .locked { pointer-events: none; }
+
+        .feedback { display: none; width: 90%; padding: 15px; border-radius: 15px; margin: 15px auto; font-weight: bold; }
+        .fb-style { background: #e3f2fd; color: #0d47a1; border: 1px solid #2196f3; }
+
+        #grades-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        #grades-table th, #grades-table td { border: 1px solid #eee; padding: 12px; text-align: center; }
+        #grades-table th { background: var(--mauve); color: white; }
+    </style>
+</head>
+<body>
+
+    <div id="login-screen" class="screen active">
+        <div class="card">
+            <h2 style="color:var(--mauve)">🌸 مـرحـباً بمبـدعتنا 🌸</h2>
+            <p>سجلي بياناتكِ للبدء في تحدي الفهم الرياضي</p>
+            <input type="text" id="studentName" placeholder="اسمكِ الثلاثي المبدع">
+            <select id="studentClass">
+                <option value="">اختاري صفكِ</option>
+                <option value="ثاني متوسط ٤">ثاني متوسط ٤</option>
+                <option value="ثاني متوسط ٥">ثاني متوسط ٥</option>
+            </select>
+            <button class="btn" onclick="login()">انطلاق 🚀</button>
+        </div>
+    </div>
+
+    <div id="menu-screen" class="screen">
+        <div class="card">
+            <h1 style="color:var(--accent)">الفهم الرياضي</h1>
+            <p id="welcomeNote" style="font-weight:bold; color:var(--mauve)"></p>
+        </div>
+        <button class="btn" style="width:90%" onclick="startLesson('L1')">🎯 استراتيجية التخمين والتحقق</button>
+        <button class="btn" style="width:90%" onclick="startLesson('L2')">🔍 استراتيجية البحث عن نمط</button>
+        
+        <p style="margin-top:auto; color:#ccc; cursor:pointer;" onclick="adminPanel()">لوحة المعلمة 🔐</p>
+    </div>
+
+    <div id="game-screen" class="screen">
+        <div id="timer" class="timer">02:00</div>
+        <div id="questionBox" class="card" style="text-align:right; font-size:18px; line-height:1.6;"></div>
+        <div id="optionsBox" style="width:100%; max-width:450px;"></div>
+        <div id="feedback" class="feedback fb-style"></div>
+        <button id="nextBtn" class="btn" style="display:none" onclick="nextQuestion()">المستوى التالي ⬅️</button>
+    </div>
+
+    <div id="admin-screen" class="screen">
+        <div class="card" style="max-width:600px">
+            <h2>سجل إنجاز المبدعات</h2>
+            <table id="grades-table">
+                <thead><tr><th>الاسم</th><th>الصف</th><th>الدرجة</th></tr></thead>
+                <tbody id="grades-body"></tbody>
+            </table>
+            <button class="btn" onclick="showScreen('menu-screen')">عودة</button>
+        </div>
+    </div>
+
+    <script>
+        let student = {}, score = 0, qIdx = 0, timer, timeLeft = 120;
+        const results = JSON.parse(localStorage.getItem('math_scores')) || [];
+
+        const lessons = {
+            L1: [
+                { q: "عددان مجموعهما ٤٥ والفرق بينهما ٩. ما هما؟", opts: ["٢٧ و ١٨", "٣٠ و ١٥", "٢٠ و ٢٥"], cor: 0, f: "مبدعة! ٢٧+١٨=٤٥ والفرق ٩." },
+                { q: "خمني عددين ضربهما ٣٦ ومجموعهما ١٣:", opts: ["٦ × ٦", "٩ × ٤", "١٢ × ٣"], cor: 1, f: "أحسنتِ! ٩×٤=٣٦ ومجموعهما ١٣." }
+            ]
+        };
+
+        function login() {
+            const n = document.getElementById('studentName').value;
+            const c = document.getElementById('studentClass').value;
+            if(!n || !c) return alert("أكملي بياناتكِ يا جميلة");
+            student = { n, c };
+            document.getElementById('welcomeNote').innerText = `المبدعة: ${n} (${c})`;
+            showScreen('menu-screen');
+        }
+
+        function startLesson(id) {
+            qIdx = 0; score = 0;
+            currentL = lessons[id];
+            showQuestion();
+            showScreen('game-screen');
+        }
+
+        function showQuestion() {
+            const data = currentL[qIdx];
+            document.getElementById('questionBox').innerText = data.q;
+            const optBox = document.getElementById('optionsBox');
+            optBox.innerHTML = '';
+            data.opts.forEach((o, i) => {
+                const d = document.createElement('div');
+                d.className = 'option';
+                d.innerText = o;
+                d.onclick = () => checkAns(d, i === data.cor, data.f);
+                optBox.appendChild(d);
+            });
+            document.getElementById('feedback').style.display = 'none';
+            document.getElementById('nextBtn').style.display = 'none';
+            resetTimer();
+        }
+
+        function checkAns(el, isCor, msg) {
+            clearInterval(timer);
+            document.querySelectorAll('.option').forEach(o => o.classList.add('locked'));
+            el.classList.add(isCor ? 'correct' : 'wrong');
+            if(isCor) score++;
+            
+            const fb = document.getElementById('feedback');
+            fb.innerText = msg; fb.style.display = 'block';
+            document.getElementById('nextBtn').style.display = 'block';
+        }
+
+        function nextQuestion() {
+            qIdx++;
+            if(qIdx < currentL.length) showQuestion();
+            else {
+                results.push({...student, s: score});
+                localStorage.setItem('math_scores', JSON.stringify(results));
+                alert(`انتهى التحدي! حصلتِ على ${score} من ${currentL.length}`);
+                showScreen('menu-screen');
+            }
+        }
+
+        function resetTimer() {
+            clearInterval(timer);
+            timeLeft = 120;
+            timer = setInterval(() => {
+                timeLeft--;
+                let m = Math.floor(timeLeft/60), s = timeLeft%60;
+                document.getElementById('timer').innerText = `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+                if(timeLeft <= 0) { clearInterval(timer); alert("انتهى الوقت!"); nextQuestion(); }
+            }, 1000);
+        }
+
+        function adminPanel() {
+            if(prompt("الرمز السري:") === "1234") {
+                const b = document.getElementById('grades-body');
+                b.innerHTML = '';
+                results.forEach(r => b.innerHTML += `<tr><td>${r.n}</td><td>${r.c}</td><td>${r.s}</td></tr>`);
+                showScreen('admin-screen');
+            }
+        }
+
+        function showScreen(id) {
+            document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+        }
+    </script>
+</body>
+</html>
 
