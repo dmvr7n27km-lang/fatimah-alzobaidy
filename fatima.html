@@ -3,151 +3,178 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مبدعة الفهم الرياضي | أ. فاطمة الزبيدي</title>
+    <title>مبدعة الفهم الرياضي: فاطمة الزبيدي</title>
     <style>
-        :root { --mauve: #7b1fa2; --pink-soft: #fce4ec; --accent: #e91e63; --gray: #f8f9fb; }
-        body { background-color: var(--gray); font-family: 'Segoe UI', Tahoma, sans-serif; margin: 0; padding: 0; text-align: center; }
+        :root { --mauve: #7b1fa2; --pink-border: #fce4ec; --accent-pink: #e91e63; --bg-gray: #f8f9fb; }
+        body { background-color: var(--bg-gray); font-family: 'Segoe UI', Tahoma, sans-serif; margin: 0; padding: 0; }
 
-        .header-official { text-align: right; padding: 20px 30px 10px 0; font-weight: bold; font-size: 14px; line-height: 1.6; }
+        /* شاشة تسجيل الدخول */
+        #login-overlay { 
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+            background: white; z-index: 3000; display: flex; flex-direction: column; 
+            align-items: center; justify-content: center; 
+        }
+        .login-box { width: 85%; padding: 25px; border-radius: 20px; border: 2px solid var(--pink-border); text-align: center; background: white; box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+        input, select { width: 100%; padding: 12px; margin: 10px 0; border-radius: 12px; border: 1.5px solid #ddd; text-align: center; font-size: 16px; box-sizing: border-box; }
+        .btn-start { background: var(--mauve); color: white; padding: 12px 50px; border-radius: 25px; border: none; font-weight: bold; cursor: pointer; font-size: 17px; }
 
-        /* البطاقة الرئيسية */
-        .card { background: white; width: 92%; margin: 10px auto; padding: 20px; border-radius: 20px; border: 2px solid var(--pink-soft); box-sizing: border-box; }
-        .card h1 { color: var(--accent); font-size: 22px; margin: 5px 0; }
-        .card h2 { color: var(--mauve); font-size: 16px; margin: 5px 0; }
+        .official-header { text-align: right; padding: 20px 30px 10px 0; line-height: 1.6; font-weight: bold; font-size: 14px; color: #444; width: 100%; }
+        .teacher-card { width: 90%; background: white; margin: 10px auto; padding: 20px; border-radius: 20px; border: 2px solid var(--pink-border); text-align: center; }
+        .teacher-card h1 { color: var(--accent-pink); font-size: 22px; margin: 5px 0; }
+        .details { color: var(--mauve); font-weight: bold; font-size: 16px; }
 
-        /* خانات البيانات */
-        .input-group { width: 92%; margin: 15px auto; display: flex; flex-direction: column; gap: 10px; }
-        .input-group input, .input-group select { padding: 12px; border-radius: 12px; border: 1px solid #ddd; font-family: inherit; font-size: 15px; outline: none; }
+        .stats { display: flex; width: 90%; background: white; border-radius: 15px; margin: 15px auto; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        .stat-box { flex: 1; padding: 10px; text-align: center; border-left: 1px solid #f0f0f0; }
+        .stat-box:last-child { border-left: none; }
+        .stat-box b { display: block; font-size: 24px; color: var(--mauve); }
+        .stat-box span { font-size: 14px; color: #777; font-weight: bold; }
 
-        /* الإحصائيات */
-        .stats { display: flex; width: 92%; background: white; border-radius: 15px; margin: 15px auto; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
-        .stat-item { flex: 1; padding: 15px; border-left: 1px solid #eee; }
-        .stat-item:last-child { border-left: none; }
-        .stat-item b { display: block; font-size: 24px; color: var(--mauve); }
-        .stat-item span { font-size: 14px; color: #777; }
+        .lesson-btn { width: 90%; background: white; margin: 10px auto; padding: 15px; border-radius: 15px; border: 2.5px solid var(--mauve); display: flex; align-items: center; cursor: pointer; transition: 0.3s; }
+        .icon { width: 45px; height: 45px; border-radius: 50%; border: 1.5px solid var(--pink-border); display: flex; align-items: center; justify-content: center; font-size: 20px; margin-left: 15px; background: #fff; }
+        .text { font-size: 17px; font-weight: bold; color: #333; flex-grow: 1; text-align: right; }
 
-        /* المؤقت الزمني */
-        #timer-display { background: #fff3e0; color: #e65100; padding: 10px; border-radius: 10px; margin: 10px auto; width: 90%; font-weight: bold; display: none; border: 1px solid #ffe0b2; }
+        .screen { display: none; flex-direction: column; align-items: center; width: 100%; }
+        .active { display: flex; }
 
-        /* أزرار الاستراتيجيات */
-        .strategy-btn { width: 92%; background: white; margin: 10px auto; padding: 15px; border-radius: 15px; border: 2.5px solid var(--mauve); display: flex; align-items: center; cursor: pointer; transition: 0.3s; box-sizing: border-box; }
-        .strategy-btn:hover { background: var(--pink-soft); }
-        .btn-text { flex-grow: 1; text-align: right; font-weight: bold; font-size: 17px; }
-        .btn-icon { width: 45px; height: 45px; border-radius: 50%; border: 1px solid #eee; display: flex; align-items: center; justify-content: center; font-size: 20px; margin-right: 15px; background: #fff; }
-
-        /* شاشة الأسئلة */
-        .screen { display: none; padding-top: 20px; }
-        .active { display: block; }
-        .question-box { background: white; width: 92%; margin: 10px auto; padding: 25px; border-radius: 15px; border-right: 8px solid var(--accent); text-align: right; box-sizing: border-box; }
+        .top-bar { width: 90%; display: flex; justify-content: space-between; align-items: center; margin-top: 15px; }
+        .back-btn { background: #eee; padding: 8px 15px; border-radius: 10px; cursor: pointer; font-weight: bold; font-size: 14px; border: 1px solid #ccc; }
         
-        .option { background: white; width: 92%; padding: 15px; margin: 10px auto; border-radius: 12px; border: 2px solid #eee; text-align: right; cursor: pointer; font-weight: bold; }
+        .reading-box { width: 90%; background: white; padding: 25px; border-radius: 15px; margin: 15px auto; border-right: 8px solid var(--accent-pink); text-align: justify; line-height: 1.9; font-size: 16.5px; box-sizing: border-box; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .reading-box h3 { margin: 0 0 15px 0; color: var(--mauve); font-size: 20px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+
+        .option { background: white; width: 90%; padding: 15px; margin: 10px auto; border-radius: 12px; border: 2px solid #eee; display: flex; align-items: center; gap: 10px; font-weight: bold; cursor: pointer; box-sizing: border-box; }
+        .circle { width: 30px; height: 30px; border: 2px solid var(--mauve); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--mauve); flex-shrink: 0; }
         .correct { background: #e8f5e9 !important; border-color: #4caf50 !important; color: #2e7d32; }
         .wrong { background: #ffebee !important; border-color: #f44336 !important; }
-        .disabled { pointer-events: none; }
 
-        .teacher-admin { margin-top: 40px; color: #bbb; font-size: 11px; cursor: pointer; text-decoration: underline; }
+        .feedback { display: none; width: 85%; padding: 12px; background: #e3f2fd; border-radius: 10px; margin: 10px auto; color: #0d47a1; font-weight: bold; text-align: center; border: 1px solid #2196f3; }
+        .next-btn { background: var(--accent-pink); color: white; padding: 12px 60px; border-radius: 30px; border: none; font-weight: bold; margin: 20px auto; cursor: pointer; display: none; }
+        .admin-trigger { margin-top: 40px; color: #ddd; font-size: 10px; cursor: pointer; }
     </style>
 </head>
 <body>
 
-    <div id="main-screen" class="active">
-        <div class="header-official">
-            المملكة العربية السعودية<br>وزارة التعليم<br>إدارة التعليم بمنطقة مكة المكرمة<br>المتوسطة الأولى بالليث
-        </div>
-
-        <div class="card">
-            <h1>🌸 مبدعة الفهم الرياضي 🌸</h1>
-            <h2>المادة: رياضيات | الصف: الثاني متوسط</h2>
-            <div style="font-size: 14px; color: #666;">إعداد وتنفيذ: أ. فاطمة حسن الزبيدي</div>
-        </div>
-
-        <div class="input-group">
-            <input type="text" id="s-name" placeholder="اسم الطالبة الثلاثي المبدع">
+    <div id="login-overlay">
+        <div class="login-box">
+            <h2 style="color: var(--mauve);">🌸 مرحباً بمبدعتنا 🌸</h2>
+            <input type="text" id="s-name" placeholder="اسمكِ الثلاثي المبدع">
             <select id="s-class">
-                <option value="">اختاري صفكِ</option>
+                <option value="">اختاري الصف</option>
                 <option value="2/4">ثاني متوسط (4)</option>
                 <option value="2/5">ثاني متوسط (5)</option>
             </select>
+            <button class="btn-start" onclick="enterApp()">انطلاق 🚀</button>
         </div>
-
-        <div class="stats">
-            <div class="stat-item"><b>5</b><span>دروس</span></div>
-            <div class="stat-item"><b id="count-done">0</b><span>تم إنجازها</span></div>
-            <div class="stat-item"><b id="count-stars">0</b><span>النجوم ⭐</span></div>
-        </div>
-
-        <div id="timer-display">الوقت المتبقي: 02:00</div>
-
-        <div style="text-align: right; width: 90%; margin: 10px auto; font-weight: bold; color: var(--mauve);">اختاري الاستراتيجية للبدء:</div>
-
-        <div class="strategy-btn" onclick="startQuiz('L1')"><div class="btn-text">١. استراتيجية التخمين والتحقق</div><div class="btn-icon">🎯</div></div>
-        <div class="strategy-btn" onclick="startQuiz('L2')"><div class="btn-text">٢. استراتيجية البحث عن نمط</div><div class="btn-icon">🔍</div></div>
-        <div class="strategy-btn" onclick="startQuiz('L3')"><div class="btn-text">٣. استراتيجية الحل عكسياً</div><div class="btn-icon">🔄</div></div>
-        <div class="strategy-btn" onclick="startQuiz('L4')"><div class="btn-text">٤. استراتيجية حل مسألة أبسط</div><div class="btn-icon">🧩</div></div>
-        <div class="strategy-btn" onclick="startQuiz('L5')"><div class="btn-text">٥. استراتيجية إنشاء جدول</div><div class="btn-icon">📊</div></div>
-
-        <div class="teacher-admin" onclick="showResults()">دخول المعلمة 🔐</div>
     </div>
 
-    <div id="quiz-screen" class="screen">
-        <div class="question-box" id="q-content"></div>
-        <div id="options-list"></div>
-        <button id="back-btn" style="margin-top: 20px; padding: 10px 30px; border-radius: 20px; border: none; background: var(--mauve); color: white; display: none;" onclick="resetUI()">العودة للقائمة</button>
+    <div id="menu" class="screen">
+        <div class="official-header">المملكة العربية السعودية<br>وزارة التعليم<br>إدارة التعليم بمنطقة مكة المكرمة<br>المتوسطة الأولى بالليث</div>
+        <div class="teacher-card">
+            <h1>🌸 مبدعة الفهم الرياضي 🌸</h1>
+            <div class="details">المادة: رياضيات | الصف: الثاني متوسط</div>
+            <div style="font-size: 14px; margin-top:5px; color:#666;">إعداد وتنفيذ: أ. فاطمة حسن الزبيدي</div>
+        </div>
+        <div class="stats">
+            <div class="stat-box"><b>5</b><span>دروس</span></div>
+            <div class="stat-box"><b id="done-total">0</b><span>تم إنجازها</span></div>
+            <div class="stat-box"><b id="stars-total">0</b><span>النجوم ⭐</span></div>
+        </div>
+        <div style="width:90%; margin:10px auto; text-align:right; font-weight:bold; color:var(--mauve);">اختاري الاستراتيجية للبدء:</div>
+        <div class="lesson-btn" onclick="startL('L1')"><div class="icon">🎯</div><div class="text">١. استراتيجية التخمين والتحقق</div></div>
+        <div class="lesson-btn" onclick="startL('L2')"><div class="icon">🔍</div><div class="text">٢. استراتيجية البحث عن نمط</div></div>
+        <div class="lesson-btn" onclick="startL('L3')"><div class="icon">🔄</div><div class="text">٣. استراتيجية الحل عكسياً</div></div>
+        <div class="lesson-btn" onclick="startL('L4')"><div class="icon">🧩</div><div class="text">٤. استراتيجية حل مسألة أبسط</div></div>
+        <div class="lesson-btn" onclick="startL('L5')"><div class="icon">📊</div><div class="text">٥. استراتيجية إنشاء جدول</div></div>
+        <div class="admin-trigger" onclick="showLog()">دخول المعلمة 🔐</div>
+    </div>
+
+    <div id="lesson-screen" class="screen">
+        <div class="top-bar">
+            <div id="progress" style="font-weight:bold; color:var(--mauve);">المستوى ١ / ٣</div>
+            <div class="back-btn" onclick="goHome()">رجوع ↩️</div>
+        </div>
+        <div class="reading-box" id="reading-content"></div>
+        <div id="options-area" style="width:100%;"></div>
+        <div id="feedback-box" class="feedback"></div>
+        <button id="next-btn" class="next-btn" onclick="nextQ()">المستوى التالي ⬅️</button>
     </div>
 
     <script>
-        let stars = 0, done = 0, timer, timeLeft = 120, results = [];
+        let stars = 0, done = 0, curQIdx = 0, curLID = '';
+        let studentInfo = { name: '', class: '' };
+        let logs = [];
 
-        function startQuiz(id) {
-            const name = document.getElementById('s-name').value;
-            const cls = document.getElementById('s-class').value;
-            if(!name || !cls) return alert("لطفاً سجلي بياناتكِ أولاً يا مبدعة! ✨");
-
-            document.getElementById('main-screen').style.display = 'none';
-            document.getElementById('quiz-screen').classList.add('active');
-            document.getElementById('timer-display').style.display = 'block';
-
-            // مثال لسؤال فهم قرائي (يمكنك استبدال النص حسب كل استراتيجية)
-            document.getElementById('q-content').innerHTML = "<h3>تحدي الفهم القرائي:</h3>اشترت سارة كتابين بقيمة 45 ريالاً، الفرق بينهما 9 ريالات. ما هو سعر الكتاب الأول؟";
-            document.getElementById('options-list').innerHTML = `
-                <div class="option" onclick="checkAns(this, true)">27 ريالاً</div>
-                <div class="option" onclick="checkAns(this, false)">18 ريالاً</div>
-            `;
-            
-            timeLeft = 120;
-            timer = setInterval(() => {
-                timeLeft--;
-                document.getElementById('timer-display').innerText = `الوقت المتبقي: ${Math.floor(timeLeft/60)}:${timeLeft%60 < 10 ? '0':''}${timeLeft%60}`;
-                if(timeLeft <= 0) { clearInterval(timer); alert("انتهى الوقت!"); resetUI(); }
-            }, 1000);
+        function enterApp() {
+            const n = document.getElementById('s-name').value;
+            const c = document.getElementById('s-class').value;
+            if(n && c) {
+                studentInfo = { name: n, class: c };
+                document.getElementById('login-overlay').style.display = 'none';
+                document.getElementById('menu').classList.add('active');
+            } else { alert("لطفاً أكملي بياناتكِ يا بطلة! ✨"); }
         }
 
-        function checkAns(el, isCorrect) {
-            clearInterval(timer);
-            document.querySelectorAll('.option').forEach(o => o.classList.add('disabled'));
-            el.classList.add(isCorrect ? 'correct' : 'wrong');
-            if(isCorrect) {
-                stars += 3;
-                document.getElementById('count-stars').innerText = stars;
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        function playEffect(isCorrect) {
+            if(audioCtx.state === 'suspended') audioCtx.resume();
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.connect(gain); gain.connect(audioCtx.destination);
+            osc.frequency.setValueAtTime(isCorrect ? 523 : 200, audioCtx.currentTime);
+            gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
+            osc.start(); osc.stop(audioCtx.currentTime + 0.2);
+        }
+
+        // دروسك الأصلية (بدون أي تغيير)
+        const lessons = {
+            L1: {
+                story: "<h3>📖 اقرأ النص التالي:</h3>في إطار تفعيل ساعة القراءة بمدرسة المتوسطة الأولى بالليث، توجهت الطالبة سارة إلى المكتبة المركزية لاقتناء بعض المراجع العلمية. اختارت سارة <b>كتابين</b> متميزين، وعند توجهها لأمين المكتبة، وجدت أن التكلفة الإجمالية لهما بلغت <b>٤٥ ريالاً</b>. لاحظت سارة أن هناك فرقاً في السعر بينهما؛ حيث يزيد ثمن الكتاب الأول عن ثمن الكتاب الثاني بمقدار <b>٩ ريالات</b>. لتقدير ثمن كل كتاب، قررت سارة استخدام استراتيجية التخمين والتحقق، فخمنت في البداية أن ثمن الكتابين (٢٥، ٢٠) ريالاً، ولكنها اكتشفت أن هذا التخمين لا يتوافق مع الفرق المطلوب.",
+                qs: [
+                    { q: "حللي النص: ما هو المبلغ الإجمالي الذي يجب أن تحققه سارة في تخمينها؟", opts: ["٤٥ ريالاً", "٩ ريالات", "٥٤ ريالاً", "٢٥ ريالاً"], cor: 0, f: "إجابة صحيحة! المجموع الكلي هو المعطى الأساسي." },
+                    { q: "لماذا اعتبرت سارة تخمينها الأول (٢٥ و ٢٠) ريالاً تخميناً غير دقيق؟", opts: ["لأن المجموع أكبر من ٤٥", "لأن الفرق بينهما ٥ ريالات فقط", "لأن السعر مرتفع جداً", "لأن الكتب غير علمية"], cor: 1, f: "أحسنتِ! الفرق كان ٥ ريالات والمطلوب في النص ٩ ريالات." },
+                    { q: "ساعدي سارة في الوصول للتخمين الصحيح الذي يحقق (المجموع ٤٥ والفرق ٩):", opts: ["٣٠ و ١٥ ريالاً", "٢٢ و ٢٣ ريالاً", "٢٧ و ١٨ ريالاً", "٢٠ و ٢٥ ريالاً"], cor: 2, f: "مبدعة! ٢٧ + ١٨ = ٤٥ والفرق بينهما ٩ فعلاً." }
+                ]
+            },
+            L2: {
+                story: "<h3>📖 اقرأ النص التالي:</h3>خلال حصة التربية الفنية، قرر الطالب أحمد تصميم لوحة فسيفسائية هندسية باستخدام بلاطات ملونة صغيرة. بدأ أحمد ببناء النمط بشكل هرمي؛ حيث وضع في الصف العلوي الأول <b>بلاطة واحدة</b> فقط، ثم أضاف في الصف الثاني <b>٣ بلاطات</b>، وتابع في الصف الثالث بوضع <b>٥ بلاطات</b>، وفي الصف الرابع أصبحت <b>٧ بلاطات</b>. لاحظ أحمد أن هناك زيادة منتظمة ومستمرة في عدد البلاطات كلما انتقل إلى صف جديد لأسفل، وأراد معرفة العدد الإجمالي الذي سيحتاجه للوصول إلى الصف السابع لإتمام لوحته الفنية بدقة.",
+                qs: [
+                    { q: "بناءً على تتبعك للنمط في النص، ما هو مقدار الزيادة في كل صف جديد؟", opts: ["يزداد بمقدار ١", "يزداد بمقدار ٢", "يزداد بمقدار ٣", "العدد ثابت لا يتغير"], cor: 1, f: "صحيح! هذا هو نمط الأعداد الفردية المتتالية." },
+                    { q: "إذا استمر أحمد بنفس الوتيرة، كم بلاطة سيضع في الصف الخامس والصف السادس؟", opts: ["٨ و ٩ بلاطات", "٩ و ١٠ بلاطات", "٩ و ١١ بلاطة", "١٠ و ١٢ بلاطة"], cor: 2, f: "ممتازة! استمرار الزيادة (+٢) يعطينا ٩ ثم ١١." },
+                    { q: "ما هو العدد النهائي للبلاطات التي سيحتاجها أحمد في الصف السابع فقط؟", opts: ["١٣ بلاطة", "١٥ بلاطة", "١٧ بلاطة", "١٩ بلاطة"], cor: 0, f: "عبقرية! الصف السابع يحتاج ١٣ بلاطة بناءً على النمط." }
+                ]
+            },
+            L3: {
+                story: "<h3>📖 اقرأ النص التالي:</h3>انطلقت مريم في رحلة تسوق قصيرة بعد انتهاء اليوم الدراسي. في البداية، دخلت مريم متجراً للمستلزمات الدراسية وأنفقت هناك <b>نصف ما كان معها</b> من مال. بعد ذلك، توجهت إلى المقصف واشترت وجبة خفيفة بقيمة <b>١٥ ريالاً</b>. وقبل عودتها للمنزل، رغبت في عمل خير فتصدقت بـ <b>٥ ريالات</b> لأحد المحتاجين. عندما وصلت مريم للمنزل وراجعت محفظتها، وجدت أن المتبقي معها هو <b>١٠ ريالات</b> فقط. فكرت مريم: كم كان المبلغ الأصلي الذي بدأت به رحلتي قبل كل هذه النفقات؟",
+                qs: [
+                    { q: "ما هو المبلغ النهائي الذي يمثل نقطة البداية لاستراتيجية الحل عكسياً؟", opts: ["٥ ريالات", "١٥ ريالاً", "١٠ ريالات", "٣٠ ريالاً"], cor: 2, f: "أحسنتِ! نبدأ دائماً من النتيجة النهائية المتبقية." },
+                    { q: "عند العودة بالعمليات عكسياً، كيف نتعامل مع الصدقة (٥ ريالات) والوجبة (١٥ ريالاً)؟", opts: ["نطرح المبالغ من المتبقي", "نقسم المبالغ على المتبقي", "نجمع المبالغ مع المتبقي", "نتجاهل هذه المبالغ"], cor: 2, f: "صحيح! عكس الإنفاق هو الجمع لاستعادة المبلغ الأصلي." },
+                    { q: "بعد إجراء الحسابات العكسية بدقة، كم كان المبلغ الإجمالي الأصلي مع مريم؟", opts: ["٤٠ ريالاً", "٥٠ ريالاً", "٦٠ ريالاً", "٨٠ ريالاً"], cor: 2, f: "مذهلة! (١٠+٥+١٥) = ٣٠، ثم نضرب في ٢ لعكس النصف = ٦٠ ريالاً." }
+                ]
+            },
+            L4: {
+                story: "<h3>📖 اقرأ النص التالي:</h3>أعلنت إدارة المدرسة عن مشروع لتطوير الفناء الخارجي وتبليطه بالكامل. الفناء عبارة عن مساحة مستطيلة ضخمة يبلغ طولها <b>٤٠ متراً</b> وعرضها <b>٣٠ متراً</b>. اختارت الإدارة بلاطاً مربع الشكل، حيث يبلغ طول ضلع البلاطة الواحدة <b>٠.٥ متر</b>. ولصعوبة حساب عدد البلاط مباشرة لصغر حجمه مقارنة بالمساحة، قرر المهندس المسؤول تبسيط المسألة؛ وذلك من خلال حساب المساحة الكلية للفناء أولاً، ثم حساب مساحة البلاطة الواحدة، ومن ثم تحديد العدد الإجمالي المطلوب لتغطية الفناء دون نقص.",
+                qs: [
+                    { q: "ما هي مساحة فناء المدرسة الكلية التي استنتجها المهندس من النص؟", opts: ["٧٠ متراً مربعاً", "١٠٠ متر مربع", "١٢٠٠ متر مربع", "١٥٠٠ متر مربع"], cor: 2, f: "رائعة! الطول (٤٠) × العرض (٣٠) = ١٢٠٠ م²." },
+                    { q: "إذا كانت مساحة البلاطة الواحدة (٠.٥ × ٠.٥) هي ٠.٢٥ م²، فما هي الطريقة الأبسط لإيجاد العدد؟", opts: ["ضرب مساحة الفناء في مساحة البلاطة", "تقسيم مساحة الفناء على مساحة البلاطة", "طرح مساحة البلاطة من الفناء", "جمع المساحتين معاً"], cor: 1, f: "ممتازة! التقسيم يخبرنا كم بلاطة تتسع داخل المساحة." },
+                    { q: "كم عدد البلاطات الذي ستقوم المدرسة بشرائه لإتمام المشروع؟", opts: ["٢٤٠٠ بلاطة", "٣٦٠٠ بلاطة", "٤٨٠٠ بلاطة", "٦٠٠٠ بلاطة"], cor: 2, f: "عبقرية! ١٢٠٠ ÷ ٠.٢٥ يعطينا ٤٨٠٠ بلاطة." }
+                ]
+            },
+            L5: {
+                story: "<h3>📖 اقرأ النص التالي:</h3>ينظم نادي النشاط الطلابي رحلة ترفيهية علمية لنهاية الفصل الدراسي. حددت الإدارة تكلفة المشاركة للطالبة الواحدة بمبلغ <b>٥٠ ريالاً</b> شاملة المواصلات والوجبات. لتسهيل عملية جمع الرسوم ومتابعة الميزانية، قرر الأستاذة فاطمة إنشاء جدول تنظيمي يوضح العلاقة بين عدد الطالبات المشاركات والتكلفة الإجمالية المحصلة. بدأ الجدول من طالبة واحدة، ثم طالبتين، ثم ثلاث، وهكذا، ليكون مرجعاً سريعاً للمعلمات عند تسجيل أسماء الطالبات وتدقيق المبالغ المالية بدقة وشفافية.",
+                qs: [
+                    { q: "بناءً على الجدول المنظم، ما هي العملية الحسابية التي تربط عدد الطالبات بالتكلفة؟", opts: ["جمع العدد مع ٥٠", "ضرب العدد في ٥٠", "طرح العدد من ٥٠", "قسمة ٥٠ على العدد"], cor: 1, f: "صحيح! التكلفة الإجمالية هي ناتج ضرب العدد في سعر التذكرة." },
+                    { q: "إذا أظهر الجدول أن المبلغ المجموع هو ٢٠٠ ريال، فكم طالبة تم تسجيلها؟", opts: ["طالبتان", "٣ طالبات", "٤ طالبات", "٥ طالبات"], cor: 2, f: "أحسنتِ! ٢٠٠ ÷ ٥٠ = ٤ طالبات مشاركات." },
+                    { q: "كم ستكون القيمة الإجمالية في الجدول عندما يصل عدد المشاركات إلى ١٠ طالبات؟", opts: ["٤٠٠ ريال", "٥٠٠ ريال", "٦٠٠ ريال", "١٠٠٠ ريال"], cor: 1, f: "مبدعة! ١٠ × ٥٠ = ٥٠٠ ريال." }
+                ]
             }
-            results.push({اسم: document.getElementById('s-name').value, درجة: stars});
-            document.getElementById('back-btn').style.display = 'inline-block';
-        }
+        };
 
-        function resetUI() {
-            done++;
-            document.getElementById('count-done').innerText = done;
-            document.getElementById('quiz-screen').classList.remove('active');
-            document.getElementById('main-screen').style.display = 'block';
-            document.getElementById('timer-display').style.display = 'none';
-            document.getElementById('back-btn').style.display = 'none';
-        }
-
-        function showResults() {
-            if(prompt("كلمة المرور:") === "1234") {
-                alert("سجل المبدعات:\n" + results.map(r => `${r.اسم}: ${r.درجة}`).join("\n"));
-            }
-        }
+        function startL(id) { curLID = id; curQIdx = 0; document.getElementById('menu').classList.remove('active'); document.getElementById('lesson-screen').classList.add('active'); document.getElementById('reading-content').innerHTML = lessons[id].story; showQ(); }
+        function showQ() { const d = lessons[curLID].qs[curQIdx]; document.getElementById('progress').innerText = `المستوى ${curQIdx + 1} / ٣`; document.getElementById('next-btn').style.display = 'none'; document.getElementById('feedback-box').style.display = 'none'; let h = `<p style="padding:0 20px; font-weight:bold; color:var(--mauve); text-align:right;">أجب عن السؤال التالي:</p><p style="padding:0 20px; color:#444; font-weight:bold;">${d.q}</p>`; d.opts.forEach((o, i) => { h += `<div class="option" onclick="processAnswer(this, ${i === d.cor}, '${d.f}')"><div class="circle">${['أ','ب','ج','د'][i]}</div><span>${o}</span></div>`; }); document.getElementById('options-area').innerHTML = h; }
+        function processAnswer(el, isCorrect, f) { playEffect(isCorrect); if(isCorrect) { el.classList.add('correct'); stars += 3; document.getElementById('stars-total').innerText = stars; document.getElementById('feedback-box').innerText = f; document.getElementById('feedback-box').style.display = 'block'; document.getElementById('next-btn').style.display = 'block'; document.querySelectorAll('.option').forEach(opt => opt.style.pointerEvents = 'none'); } else { el.classList.add('wrong'); setTimeout(() => el.classList.remove('wrong'), 500); } }
+        function nextQ() { if(curQIdx < 2) { curQIdx++; showQ(); } else { done++; document.getElementById('done-total').innerText = done; logs.push({n: studentInfo.name, c: studentInfo.class, s: stars}); alert("مبارك يا " + studentInfo.name + "! تم إتقان المهمة."); goHome(); } }
+        function goHome() { document.getElementById('lesson-screen').classList.remove('active'); document.getElementById('menu').classList.add('active'); }
+        function showLog() { if(prompt("كلمة السر:") === "1234") { let t = "سجل المبدعات:\n"; logs.forEach(l => t += `${l.n} (${l.c}): ${l.s} ⭐\n`); alert(t || "لا يوجد بيانات بعد."); } }
     </script>
 </body>
 </html>
